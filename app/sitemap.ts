@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/seo';
 
-const PATHS = ['', '/properties'];
+const PATHS = ['', '/properties', '/complexes'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

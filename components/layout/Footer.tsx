@@ -74,9 +74,9 @@ export async function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#projects" className={linkCls}>
+                <Link href="/complexes" className={linkCls}>
                   {tn('complexes')}
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/properties" className={linkCls}>

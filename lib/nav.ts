@@ -9,7 +9,7 @@ export interface NavItem {
 export const primaryNav: NavItem[] = [
   { key: 'about', href: 'values', hash: true },
   { key: 'objects', href: '/properties' },
-  { key: 'complexes', href: 'projects', hash: true },
+  { key: 'complexes', href: '/complexes' },
   { key: 'rental', href: '/properties' },
   { key: 'services', href: 'services', hash: true },
   { key: 'blog', href: 'blog', hash: true },

@@ -204,5 +204,25 @@
     "toSea": "To sea",
     "project": "Project",
     "autodesc": "{type} {rooms} in {project}, {district}. {distance} m to the sea, completion {completion}."
+  },
+  "complex": {
+    "location": "Location",
+    "price": "Price",
+    "layouts": "Layouts",
+    "area": "Area",
+    "completion": "Completion",
+    "floors": "Floors",
+    "balconies": "Balconies",
+    "from": "from",
+    "getInfo": "Get detailed information",
+    "overview": "Overview",
+    "gallery": "Gallery",
+    "back": "All complexes",
+    "enquire": "Enquire on WhatsApp",
+    "infrastructure": "Infrastructure",
+    "distanceToSea": "To sea",
+    "allTitle": "Our complexes",
+    "allSub": "Signature residences across Alanya’s finest districts.",
+    "eyebrow": "Complexes"
   }
 }

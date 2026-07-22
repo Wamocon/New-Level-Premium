@@ -90,7 +90,7 @@ export function Projects() {
 
                 <div className="mt-7">
                   <Button asChild variant="outline">
-                    <Link href="/properties">
+                    <Link href={`/complexes/${p.id}`}>
                       {t('cta')}
                       <ArrowRight className="size-4" />
                     </Link>

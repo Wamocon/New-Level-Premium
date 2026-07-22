@@ -48,6 +48,8 @@ export interface Project {
   complexArea?: number; // m²
   distanceToSea: number; // meters
   priceFrom: number; // EUR
+  floors?: number;
+  balconies?: string;
   badge?: Record<Locale, string>;
   image: string;
   gallery: string[];

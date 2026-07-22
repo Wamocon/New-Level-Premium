@@ -204,5 +204,25 @@
     "toSea": "До моря",
     "project": "Проект",
     "autodesc": "{type} {rooms} в проекте {project}, {district}. {distance} м до моря, срок сдачи {completion}."
+  },
+  "complex": {
+    "location": "Локация",
+    "price": "Цена",
+    "layouts": "Планировки",
+    "area": "Площадь",
+    "completion": "Срок сдачи",
+    "floors": "Этажей",
+    "balconies": "Балконы",
+    "from": "от",
+    "getInfo": "Получить подробную информацию",
+    "overview": "Обзор",
+    "gallery": "Галерея",
+    "back": "Все комплексы",
+    "enquire": "Написать в WhatsApp",
+    "infrastructure": "Инфраструктура",
+    "distanceToSea": "До моря",
+    "allTitle": "Наши комплексы",
+    "allSub": "Знаковые резиденции в лучших районах Аланьи.",
+    "eyebrow": "Комплексы"
   }
 }

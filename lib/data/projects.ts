@@ -25,6 +25,8 @@ export const projects: Project[] = [
     complexArea: 52000,
     distanceToSea: 900,
     priceFrom: 136400,
+    floors: 12,
+    balconies: '1-2',
     badge: { ru: 'Гарантия аренды', en: 'Rental guarantee', tr: 'Kira garantisi' },
     image: img('premium-hero', 1600, 1000),
     gallery: [img('premium-1'), img('premium-2'), img('premium-3'), img('premium-4')],

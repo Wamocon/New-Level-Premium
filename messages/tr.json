@@ -204,5 +204,25 @@
     "toSea": "Denize",
     "project": "Proje",
     "autodesc": "{project} projesinde {type} {rooms}, {district}. Denize {distance} m, teslim {completion}."
+  },
+  "complex": {
+    "location": "Konum",
+    "price": "Fiyat",
+    "layouts": "Planlar",
+    "area": "Alan",
+    "completion": "Teslim",
+    "floors": "Kat",
+    "balconies": "Balkon",
+    "from": "başlangıç",
+    "getInfo": "Ayrıntılı bilgi alın",
+    "overview": "Genel bakış",
+    "gallery": "Galeri",
+    "back": "Tüm projeler",
+    "enquire": "WhatsApp’tan sorun",
+    "infrastructure": "Altyapı",
+    "distanceToSea": "Denize",
+    "allTitle": "Projelerimiz",
+    "allSub": "Alanya’nın en iyi bölgelerinde imza rezidanslar.",
+    "eyebrow": "Projeler"
   }
 }
