@@ -144,5 +144,25 @@
     "menu": "Menü",
     "close": "Kapat",
     "loading": "Yükleniyor"
+  },
+  "reviews": {
+    "eyebrow": "Yorumlar",
+    "heading": "Müşterilerimiz ne diyor",
+    "subline": "Avrupa, Rusya ve Türkiye’den mülk sahiplerinin gerçek hikâyeleri.",
+    "cta": "Tüm yorumlar",
+    "google": "Google’da görün"
+  },
+  "contact": {
+    "eyebrow": "Bize ulaşın",
+    "heading": "Alanya’daki ofisimizi ziyaret edin",
+    "subline": "Sizi ağırlamaktan mutluluk duyarız. Uğrayın, arayın veya WhatsApp’tan yazın — hızlıca yanıtlıyoruz.",
+    "call": "Bizi arayın",
+    "whatsapp": "WhatsApp",
+    "directions": "Yol tarifi al",
+    "addressLabel": "Adres",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-posta",
+    "hoursLabel": "Çalışma saatleri",
+    "hours": "Pzt–Cmt, 09:00–19:00"
   }
 }

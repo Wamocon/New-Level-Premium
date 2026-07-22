@@ -9,6 +9,7 @@ import { SmoothScroll } from '@/components/providers/SmoothScroll';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ChatWidget } from '@/components/ai/ChatWidget';
+import { WhatsAppFab } from '@/components/ui/WhatsAppFab';
 import '../globals.css';
 
 const manrope = Manrope({
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
             <main id="top">{children}</main>
             <Footer />
           </SmoothScroll>
+          <WhatsAppFab />
           <ChatWidget />
         </NextIntlClientProvider>
       </body>

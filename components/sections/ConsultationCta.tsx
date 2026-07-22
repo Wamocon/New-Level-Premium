@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
-import { MessageCircle, Check } from 'lucide-react';
+import { MessageCircle, Check, Phone } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
 import { site } from '@/lib/data/site';
@@ -42,9 +42,21 @@ export function ConsultationCta() {
                 subline={t('subline')}
                 align="left"
               />
-              <div className="mt-8">
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <a
+                  href={site.phoneHref}
+                  className="group inline-flex items-center gap-3"
+                  aria-label={site.phone}
+                >
+                  <span className="flex size-11 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-obsidian">
+                    <Phone className="size-5" />
+                  </span>
+                  <span className="font-display text-xl text-cloud transition-colors group-hover:text-gold">
+                    {site.phone}
+                  </span>
+                </a>
                 <Button asChild variant="outline">
-                  <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+                  <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="size-4" />
                     {t('secondary')}
                   </a>

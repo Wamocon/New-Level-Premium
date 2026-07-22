@@ -10,6 +10,8 @@ import {
   FacebookIcon,
   YoutubeIcon,
   TelegramIcon,
+  WhatsAppIcon,
+  ViberIcon,
 } from '@/components/icons/Social';
 import { LogoMark } from '@/components/brand/LogoMark';
 
@@ -18,6 +20,8 @@ const SOCIAL_ICONS: Record<string, typeof InstagramIcon> = {
   Facebook: FacebookIcon,
   Youtube: YoutubeIcon,
   Send: TelegramIcon,
+  WhatsApp: WhatsAppIcon,
+  Viber: ViberIcon,
 };
 
 export async function Footer() {

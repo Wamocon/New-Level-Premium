@@ -144,5 +144,25 @@
     "menu": "Menu",
     "close": "Close",
     "loading": "Loading"
+  },
+  "reviews": {
+    "eyebrow": "Reviews",
+    "heading": "What our clients say",
+    "subline": "Real stories from owners across Europe, Russia and Türkiye.",
+    "cta": "All reviews",
+    "google": "See us on Google"
+  },
+  "contact": {
+    "eyebrow": "Find us",
+    "heading": "Visit our office in Alanya",
+    "subline": "We would love to welcome you. Drop by, call, or message us on WhatsApp — we reply fast.",
+    "call": "Call us",
+    "whatsapp": "WhatsApp",
+    "directions": "Get directions",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Hours",
+    "hours": "Mon–Sat, 09:00–19:00"
   }
 }

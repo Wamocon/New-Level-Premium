@@ -6,12 +6,24 @@ export const site = {
   phoneHref: 'tel:+905454224070',
   email: 'info@newlevel-group.com',
   address: 'Dinek, Zamanoğlu Cd. NO:27A KAT 3, 07460 Alanya/Antalya',
-  whatsapp: 'https://wa.me/905454224070',
+  whatsappHref: 'https://wa.me/905454224070',
+  viberHref: 'viber://chat?number=905454224070',
+  // Google Business location (New Level Kleopatra 1), satellite/3D view.
+  geo: {
+    lat: 36.5563932,
+    lng: 31.9770521,
+    mapsUrl: 'https://maps.app.goo.gl/P1CgFFLh7nd5FrdEA',
+    embedUrl:
+      'https://maps.google.com/maps?q=36.5563932,31.9770521&z=17&t=k&hl=en&output=embed',
+    directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=36.5563932,31.9770521',
+  },
   socials: [
     { name: 'Instagram', url: 'https://www.instagram.com/newlevel_group', icon: 'Instagram' },
     { name: 'Facebook', url: 'https://www.facebook.com/newlevel.turkey', icon: 'Facebook' },
     { name: 'YouTube', url: 'https://www.youtube.com/@NEWLEVELGROUPTR', icon: 'Youtube' },
     { name: 'Telegram', url: 'https://t.me/newlevel_group', icon: 'Send' },
+    { name: 'WhatsApp', url: 'https://wa.me/905454224070', icon: 'WhatsApp' },
+    { name: 'Viber', url: 'viber://chat?number=905454224070', icon: 'Viber' },
   ],
 } as const;
 
