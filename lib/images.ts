@@ -8,11 +8,18 @@ import { PHOTOS } from './photos';
  *   3. deterministic placeholder, last resort.
  */
 const ORIGINAL: Record<string, string> = {
-  'premium-hero': '/images/original/1-H0_ctfKN.png', // New Level Premium, real render
-  'city-hero': '/images/original/5-DKTvB5z_.jpg', // City, real complex shot
-  'alanya-map': '/images/original/2-D3qltBdX.png', // Alanya aerial, map backdrop
-  'blog-insight-1': '/images/original/3-CzByt5mS.png', // Alanya bay terrace view
-  'blog-insight-3': '/images/original/4-Bli5dtw9.png', // Alanya hillside + sea (districts)
+  // Real official complex renders from newlevel-group.com
+  'premium-hero': '/images/site/premium.webp',
+  'panorama-hero': '/images/site/panorama.webp',
+  'cleo1-hero': '/images/site/cleopatra1.webp',
+  'cleo2-hero': '/images/site/cleopatra2.webp',
+  'city-hero': '/images/site/city.webp',
+  // Real blog thumbnails
+  'blog-insight-1': '/images/site/blog-tapu.webp',
+  'blog-insight-2': '/images/site/blog-aidat.webp',
+  'blog-insight-3': '/images/site/blog-checklist.webp',
+  // Alanya aerial for the map section
+  'alanya-map': '/images/original/2-D3qltBdX.png',
 };
 
 export function img(seed: string, w = 1400, h = 900): string {
