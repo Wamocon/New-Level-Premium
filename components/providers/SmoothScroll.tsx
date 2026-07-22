@@ -34,7 +34,13 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     <ReactLenis
       root
       ref={lenisRef}
-      options={{ autoRaf: false, lerp: 0.1, smoothWheel: true, wheelMultiplier: 1 }}
+      options={{
+        autoRaf: false,
+        lerp: 0.09,
+        smoothWheel: true,
+        syncTouch: true,
+        wheelMultiplier: 1,
+      }}
     >
       {children}
     </ReactLenis>
