@@ -1,30 +1,14 @@
 'use client';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { MapPin } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Reveal } from '@/components/anim/Reveal';
 import { Button } from '@/components/ui/Button';
-import { img } from '@/lib/images';
-import { cn } from '@/lib/utils';
+import { site } from '@/lib/data/site';
 
-type Pin = {
-  name: string;
-  top: string;
-  left: string;
-  pulse?: boolean;
-  hideOnMobile?: boolean;
-};
-
-const pins: Pin[] = [
-  { name: 'Mahmutlar', top: '68%', left: '72%', pulse: true },
-  { name: 'Oba', top: '46%', left: '54%' },
-  { name: 'Kargıcak', top: '78%', left: '84%', hideOnMobile: true },
-  { name: 'Cikcilli', top: '34%', left: '44%', hideOnMobile: true },
-  { name: 'Kestel', top: '58%', left: '63%', pulse: true },
-  { name: 'Avsallar', top: '24%', left: '20%', hideOnMobile: true },
-];
+// Real satellite view of the Alanya coast, where the complexes are.
+const ALANYA_EMBED =
+  'https://maps.google.com/maps?q=Alanya,Antalya,Turkey&t=k&z=11&hl=en&output=embed';
 
 export function MapCallout() {
   const t = useTranslations('map');
@@ -32,77 +16,47 @@ export function MapCallout() {
   return (
     <section id="map" className="relative py-24 md:py-32">
       <div className="container-lux">
-        <div className="relative min-h-[30rem] overflow-hidden rounded-3xl border border-white/8">
-          {/* Faux-map background (decorative) */}
-          <Image
-            src={img('alanya-map', 1600, 900)}
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="(max-width: 1280px) 100vw, 1200px"
-            className="object-cover"
-          />
-          {/* Dark overlays for depth */}
-          <div className="absolute inset-0 bg-obsidian/85" aria-hidden="true" />
-          <div
-            className="absolute inset-0 bg-gradient-to-tr from-obsidian via-obsidian/70 to-obsidian/40"
-            aria-hidden="true"
-          />
-          {/* Subtle CSS grid pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.14] [background-image:linear-gradient(to_right,rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:56px_56px]"
-            aria-hidden="true"
-          />
-          {/* Gold radial glow accent */}
-          <div
-            className="absolute -right-24 top-1/3 h-80 w-80 rounded-full bg-gold/10 blur-3xl"
-            aria-hidden="true"
+        <Reveal
+          y={30}
+          className="relative overflow-hidden rounded-[2rem] border border-white/8 bg-ink"
+        >
+          <iframe
+            title="Alanya map"
+            src={ALANYA_EMBED}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="block h-[26rem] w-full md:h-[34rem]"
+            style={{ border: 0 }}
           />
 
-          {/* Scattered district pins (decorative) */}
-          <div className="absolute inset-0" aria-hidden="true">
-            {pins.map((pin) => (
-              <div
-                key={pin.name}
-                className={cn(
-                  'absolute -translate-x-1/2 -translate-y-1/2',
-                  pin.hideOnMobile && 'hidden sm:block',
-                )}
-                style={{ top: pin.top, left: pin.left }}
-              >
-                <div className="relative flex flex-col items-center gap-2">
-                  <span className="relative flex size-5 items-center justify-center">
-                    {pin.pulse && (
-                      <span className="absolute inline-flex size-8 animate-ping rounded-full bg-gold/30" />
-                    )}
-                    <MapPin className="relative size-5 text-gold drop-shadow-[0_2px_8px_rgba(201,162,75,0.6)]" />
-                  </span>
-                  <span className="glass whitespace-nowrap rounded-full px-3 py-1 text-xs font-medium tracking-wide text-cloud">
-                    {pin.name}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* readability gradient (map stays interactive on the clear side) */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/55 to-transparent md:bg-gradient-to-r md:from-obsidian md:via-obsidian/65 md:to-transparent"
+          />
 
-          {/* Content block */}
-          <div className="relative flex min-h-[30rem] items-end p-6 sm:p-10 lg:p-14">
-            <div className="glass w-full max-w-md rounded-3xl p-8 sm:p-10">
-              <SectionHeading
-                eyebrow={t('eyebrow')}
-                heading={t('heading')}
-                subline={t('subline')}
-                align="left"
-                className="max-w-md"
-              />
-              <div className="mt-8">
-                <Button asChild variant="metal" size="lg">
-                  <Link href="/complexes">{t('cta')}</Link>
+          {/* content */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6 md:inset-y-0 md:right-auto md:flex md:w-[30rem] md:max-w-[82%] md:flex-col md:justify-center md:p-12">
+            <div className="pointer-events-auto max-w-md">
+              <span className="inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
+                {t('eyebrow')}
+              </span>
+              <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.05] tracking-tight text-cloud">
+                {t('heading')}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-cloud/70">{t('subline')}</p>
+              <div className="mt-7">
+                <Button asChild variant="metal">
+                  <a href={site.geo.mapsUrl} target="_blank" rel="noopener noreferrer">
+                    <MapPin className="size-4" />
+                    {t('cta')}
+                  </a>
                 </Button>
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
