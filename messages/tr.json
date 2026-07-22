@@ -182,5 +182,25 @@
     "sortArea": "En geniş",
     "reset": "Sıfırla",
     "seaView": "Deniz manzarası"
+  },
+  "property": {
+    "back": "Tüm mülklere dön",
+    "overview": "Genel bakış",
+    "description": "Bu ev hakkında",
+    "floor": "Kat",
+    "completion": "Teslim",
+    "ref": "Ref",
+    "furnished": "Eşyalı",
+    "unfurnished": "Eşyasız",
+    "enquire": "WhatsApp’tan sorun",
+    "viewing": "Görüntüleme ayarla",
+    "statusready": "Hazır",
+    "statusconstruction": "İnşaat halinde",
+    "statusplanned": "Planlanan",
+    "rooms": "Oda",
+    "area": "Alan",
+    "toSea": "Denize",
+    "project": "Proje",
+    "autodesc": "{project} projesinde {type} {rooms}, {district}. Denize {distance} m, teslim {completion}."
   }
 }

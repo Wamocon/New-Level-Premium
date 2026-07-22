@@ -182,5 +182,25 @@
     "sortArea": "Площадь",
     "reset": "Сбросить",
     "seaView": "Вид на море"
+  },
+  "property": {
+    "back": "Ко всем объектам",
+    "overview": "Обзор",
+    "description": "Об этом объекте",
+    "floor": "Этаж",
+    "completion": "Срок сдачи",
+    "ref": "Артикул",
+    "furnished": "С мебелью",
+    "unfurnished": "Без мебели",
+    "enquire": "Написать в WhatsApp",
+    "viewing": "Записаться на просмотр",
+    "statusready": "Сдан",
+    "statusconstruction": "Строится",
+    "statusplanned": "В проекте",
+    "rooms": "Комнаты",
+    "area": "Площадь",
+    "toSea": "До моря",
+    "project": "Проект",
+    "autodesc": "{type} {rooms} в проекте {project}, {district}. {distance} м до моря, срок сдачи {completion}."
   }
 }

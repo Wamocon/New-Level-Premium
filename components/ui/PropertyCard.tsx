@@ -30,7 +30,7 @@ export function PropertyCard({ property, index = 0 }: { property: Property; inde
 
   return (
     <Link
-      href="/properties"
+      href={`/properties/${property.id}`}
       className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/8 bg-graphite/60 transition-all duration-500 ease-lux hover:-translate-y-1.5 hover:border-gold/30 hover:shadow-[0_30px_80px_-40px_rgba(201,162,75,0.4)]"
     >
       <div className="relative aspect-[4/3] overflow-hidden">

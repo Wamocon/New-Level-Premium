@@ -182,5 +182,25 @@
     "sortArea": "Largest",
     "reset": "Reset filters",
     "seaView": "Sea view"
+  },
+  "property": {
+    "back": "Back to properties",
+    "overview": "Overview",
+    "description": "About this home",
+    "floor": "Floor",
+    "completion": "Completion",
+    "ref": "Ref",
+    "furnished": "Furnished",
+    "unfurnished": "Unfurnished",
+    "enquire": "Enquire on WhatsApp",
+    "viewing": "Book a viewing",
+    "statusready": "Ready",
+    "statusconstruction": "Under construction",
+    "statusplanned": "Planned",
+    "rooms": "Rooms",
+    "area": "Area",
+    "toSea": "To sea",
+    "project": "Project",
+    "autodesc": "{type} {rooms} in {project}, {district}. {distance} m to the sea, completion {completion}."
   }
 }
