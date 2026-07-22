@@ -1,0 +1,40 @@
+import type { Locale } from '@/lib/types';
+
+export const site = {
+  name: 'New Level Group',
+  phone: '+90 545 422 40 70',
+  phoneHref: 'tel:+905454224070',
+  email: 'info@newlevel-group.com',
+  address: 'Dinek, Zamanoğlu Cd. NO:27A KAT 3, 07460 Alanya/Antalya',
+  whatsapp: 'https://wa.me/905454224070',
+  socials: [
+    { name: 'Instagram', url: 'https://www.instagram.com/newlevel_group', icon: 'Instagram' },
+    { name: 'Facebook', url: 'https://www.facebook.com/newlevel.turkey', icon: 'Facebook' },
+    { name: 'YouTube', url: 'https://www.youtube.com/@NEWLEVELGROUPTR', icon: 'Youtube' },
+    { name: 'Telegram', url: 'https://t.me/newlevel_group', icon: 'Send' },
+  ],
+} as const;
+
+export interface Stat {
+  value: string;
+  label: Record<Locale, string>;
+}
+
+export const stats: Stat[] = [
+  {
+    value: '14',
+    label: { ru: 'лет на рынке', en: 'years on the market', tr: 'yıllık tecrübe' },
+  },
+  {
+    value: '20+',
+    label: { ru: 'сданных проектов', en: 'completed projects', tr: 'tamamlanan proje' },
+  },
+  {
+    value: '2000+',
+    label: { ru: 'счастливых семей', en: 'happy families', tr: 'mutlu aile' },
+  },
+  {
+    value: '100%',
+    label: { ru: 'собственное строительство', en: 'in-house construction', tr: 'kendi inşaatımız' },
+  },
+];

@@ -1,0 +1,27 @@
+import knowledge from './knowledge.json';
+import type { Locale } from '@/lib/types';
+
+type Trilingual = { ru: string; en: string; tr: string };
+interface KnowledgeFile {
+  systemPrompt: Trilingual;
+  guardrails: string[];
+  knowledge: Array<{ topic: string } & Trilingual>;
+}
+
+const kb = knowledge as KnowledgeFile;
+
+/** Assemble the full, guardrailed system prompt for the concierge in a locale. */
+export function buildSystemPrompt(locale: Locale): string {
+  const persona = kb.systemPrompt[locale] ?? kb.systemPrompt.en;
+  const guardrails = kb.guardrails.map((g, i) => `${i + 1}. ${g}`).join('\n');
+  const facts = kb.knowledge
+    .map((k) => `### ${k.topic}\n${k[locale] ?? k.en}`)
+    .join('\n\n');
+
+  return [
+    persona,
+    `# NON-NEGOTIABLE GUARDRAILS\n${guardrails}`,
+    `# KNOWLEDGE BASE — grounding only; never invent specifics beyond this\n${facts}`,
+    `# STYLE\nAlways reply in the user's language. Keep answers concise (2–5 sentences) unless more detail is requested. Suggest a natural next step (a consultation, a call, or a viewing) when it fits. Never output code, and never present unconfirmed prices, availability or legal/tax specifics as fact — route those to a human advisor.`,
+  ].join('\n\n');
+}

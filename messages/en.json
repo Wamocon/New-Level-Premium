@@ -1,0 +1,148 @@
+{
+  "nav": {
+    "about": "About",
+    "aboutCompany": "About the company",
+    "ourHistory": "Our history",
+    "ourTeam": "Our team",
+    "careers": "Careers",
+    "objects": "All properties",
+    "complexes": "Our complexes",
+    "rental": "Rental",
+    "services": "Services",
+    "propertyManagement": "Property management",
+    "afterSales": "After-sales service",
+    "residence": "Residence permit",
+    "citizenship": "Citizenship",
+    "blog": "Blog",
+    "reviews": "Reviews",
+    "contacts": "Contacts",
+    "cta": "Book a consultation"
+  },
+  "hero": {
+    "eyebrow": "Our own developments on the Alanya coast",
+    "headlineTop": "Premium residences",
+    "headlineAccent": "by the Mediterranean",
+    "subline": "New Level Group designs, builds and sells its own residential complexes in Alanya. Premium quality at every stage — guaranteed by the developer.",
+    "ctaPrimary": "Browse properties",
+    "ctaSecondary": "Book a consultation",
+    "scroll": "Scroll to explore"
+  },
+  "search": {
+    "title": "Find your property by the sea",
+    "type": "Property type",
+    "typeAll": "All types",
+    "location": "Location",
+    "locationAll": "All Alanya",
+    "rooms": "Rooms",
+    "roomsAll": "Any",
+    "price": "Price",
+    "priceAll": "Any price",
+    "cta": "Search"
+  },
+  "featured": {
+    "eyebrow": "Selected for you",
+    "heading": "Featured Listings",
+    "subline": "A curated selection of residences along the Mediterranean coast",
+    "tabNew": "New",
+    "tabHot": "Popular",
+    "tabInvestment": "Investment",
+    "viewAll": "View all {count} listings",
+    "seaView": "Sea view",
+    "toSea": "{m} m to sea",
+    "furnished": "Furnished",
+    "from": "from"
+  },
+  "types": {
+    "eyebrow": "Explore by type",
+    "heading": "Property for the way you live",
+    "subline": "Five formats on the Mediterranean coast — choose the one that fits.",
+    "count": "{count} objects"
+  },
+  "values": {
+    "eyebrow": "Why New Level Group",
+    "heading": "The difference is in the details",
+    "subline": "Four principles behind every home we build and every promise we keep.",
+    "v1t": "Uncompromising construction quality",
+    "v1d": "Trusted materials, thoughtful engineering and rigorous oversight at every stage. We build homes made to be lived in for years.",
+    "v2t": "Perfect location",
+    "v2d": "Our projects rise where the sea, the views and everyday convenience meet. You choose not just a home, but a Mediterranean way of life.",
+    "v3t": "Openness and responsibility",
+    "v3d": "Transparent terms, honest timelines and nothing hidden between the lines. We stand behind every commitment — on paper and in practice.",
+    "v4t": "Reliability, professionalism, personalized approach",
+    "v4d": "An experienced team guides you from the first viewing to your residence permit. We listen to your goals and shape the solution around them."
+  },
+  "projects": {
+    "eyebrow": "Signature projects",
+    "heading": "Residences that define the standard",
+    "subline": "Premium residences on the Mediterranean coast of Alanya",
+    "cta": "View project",
+    "unitsLabel": "units",
+    "toSeaLabel": "to sea",
+    "fromLabel": "from"
+  },
+  "map": {
+    "eyebrow": "The coast, mapped",
+    "heading": "All of Alanya on one map",
+    "subline": "Every New Level Group residence along the Mediterranean coast, on an interactive map. Find the location that will become your home.",
+    "cta": "Open the map"
+  },
+  "services": {
+    "eyebrow": "Beyond the keys",
+    "heading": "Complete support",
+    "subline": "From property management to residence and citizenship — we stay by your side at every step.",
+    "cta": "All services"
+  },
+  "blog": {
+    "eyebrow": "Insights & guides",
+    "heading": "An Expert View on Alanya",
+    "subline": "Your guide to buying property, securing residency and living on the Mediterranean — from a team that knows the region from the inside.",
+    "cta": "Read the articles",
+    "p1t": "How to buy property in Turkey in 2026: a step-by-step guide",
+    "p1c": "Buyer guide",
+    "p2t": "Residence permit vs citizenship: which path is right for you?",
+    "p2c": "Relocation",
+    "p3t": "Alanya districts decoded: where to live, where to invest",
+    "p3c": "Locations",
+    "readMore": "Read more"
+  },
+  "cta": {
+    "eyebrow": "Let’s talk",
+    "heading": "Your personal consultation — free",
+    "subline": "Tell us what you have in mind — we'll match you with the right property and guide you through every step, from the first viewing to the keys.",
+    "name": "Your name",
+    "phone": "Phone",
+    "consent": "By submitting, you agree to the processing of your personal data.",
+    "submit": "Book a consultation",
+    "secondary": "Message us on WhatsApp",
+    "success": "Thank you! Your personal advisor will contact you shortly."
+  },
+  "footer": {
+    "tagline": "New Level Group — building and selling premium Mediterranean property in Alanya.",
+    "colProperties": "Properties",
+    "colServices": "Services",
+    "colCompany": "Company",
+    "colContacts": "Contact",
+    "rights": "© {year} New Level Group. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of use"
+  },
+  "chat": {
+    "title": "New Level Concierge",
+    "subtitle": "Property & relocation assistant",
+    "placeholder": "Ask about projects, prices, residency…",
+    "greeting": "Hi! I’m the New Level concierge. How can I help you find your home in Turkey?",
+    "disclaimer": "AI assistant — answers may be approximate. For details, we’ll connect you with a human advisor.",
+    "send": "Send",
+    "open": "Chat with us",
+    "you": "You",
+    "thinking": "Typing…",
+    "error": "Something went wrong. Please try again or contact us directly.",
+    "reset": "New chat"
+  },
+  "common": {
+    "language": "Language",
+    "menu": "Menu",
+    "close": "Close",
+    "loading": "Loading"
+  }
+}

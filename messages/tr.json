@@ -1,0 +1,148 @@
+{
+  "nav": {
+    "about": "Hakkımızda",
+    "aboutCompany": "Şirket hakkında",
+    "ourHistory": "Tarihçemiz",
+    "ourTeam": "Ekibimiz",
+    "careers": "Kariyer",
+    "objects": "Tüm mülkler",
+    "complexes": "Projelerimiz",
+    "rental": "Kiralama",
+    "services": "Hizmetler",
+    "propertyManagement": "Mülk yönetimi",
+    "afterSales": "Satış sonrası hizmet",
+    "residence": "Oturma izni",
+    "citizenship": "Vatandaşlık",
+    "blog": "Blog",
+    "reviews": "Yorumlar",
+    "contacts": "İletişim",
+    "cta": "Danışmanlık"
+  },
+  "hero": {
+    "eyebrow": "Alanya sahilinde kendi projelerimiz",
+    "headlineTop": "Akdeniz kıyısında",
+    "headlineAccent": "premium rezidanslar",
+    "subline": "New Level Group, Alanya'daki kendi konut projelerini tasarlar, inşa eder ve satar. Her aşamada premium kalite, geliştirici güvencesiyle.",
+    "ctaPrimary": "Konutları inceleyin",
+    "ctaSecondary": "Danışmanlık randevusu alın",
+    "scroll": "Keşfetmek için kaydırın"
+  },
+  "search": {
+    "title": "Deniz kıyısında mülkünüzü bulun",
+    "type": "Mülk türü",
+    "typeAll": "Tüm tipler",
+    "location": "Konum",
+    "locationAll": "Tüm Alanya",
+    "rooms": "Oda sayısı",
+    "roomsAll": "Hepsi",
+    "price": "Fiyat",
+    "priceAll": "Tüm fiyatlar",
+    "cta": "Ara"
+  },
+  "featured": {
+    "eyebrow": "Sizin için seçtik",
+    "heading": "Öne Çıkan Konutlar",
+    "subline": "Akdeniz kıyısında özenle seçilmiş rezidanslar",
+    "tabNew": "Yeni",
+    "tabHot": "Popüler",
+    "tabInvestment": "Yatırım",
+    "viewAll": "Tüm {count} ilanı gör",
+    "seaView": "Deniz manzarası",
+    "toSea": "Denize {m} m",
+    "furnished": "Eşyalı",
+    "from": "başlangıç"
+  },
+  "types": {
+    "eyebrow": "Tipe göre keşfet",
+    "heading": "Yaşam tarzınıza göre gayrimenkul",
+    "subline": "Akdeniz kıyısında beş format — size en yakın olanı seçin.",
+    "count": "{count} mülk"
+  },
+  "values": {
+    "eyebrow": "Neden New Level Group",
+    "heading": "Fark ayrıntılarda",
+    "subline": "İnşa ettiğimiz her evin ve tuttuğumuz her sözün ardındaki dört ilke.",
+    "v1t": "Ödünsüz inşaat kalitesi",
+    "v1d": "Güvenilir malzemeler, özenli mühendislik ve her aşamada titiz kontrol. Yıllarca huzurla yaşanacak evler inşa ediyoruz.",
+    "v2t": "Kusursuz konum",
+    "v2d": "Projelerimiz deniz, manzara ve günlük yaşam kolaylığının buluştuğu noktalarda yükseliyor. Yalnızca bir ev değil, Akdeniz'e özgü bir yaşam biçimi seçiyorsunuz.",
+    "v3t": "Şeffaflık ve sorumluluk",
+    "v3d": "Şeffaf koşullar, dürüst teslim süreleri ve satır aralarında gizli hiçbir şey yok. Verdiğimiz her sözün arkasında duruyoruz — kâğıt üzerinde de, uygulamada da.",
+    "v4t": "Güvenilirlik, profesyonellik, kişiye özel yaklaşım",
+    "v4d": "Deneyimli ekibimiz ilk gösterimden oturma izni işlemlerine kadar size eşlik eder. Hedeflerinizi dinler, çözümü tam size göre şekillendiririz."
+  },
+  "projects": {
+    "eyebrow": "İmza projeler",
+    "heading": "Standardı belirleyen rezidanslar",
+    "subline": "Alanya'nın Akdeniz kıyısında premium rezidanslar",
+    "cta": "Projeyi incele",
+    "unitsLabel": "daire",
+    "toSeaLabel": "denize",
+    "fromLabel": "başlangıç"
+  },
+  "map": {
+    "eyebrow": "Harita üzerinde kıyı",
+    "heading": "Tüm Alanya tek bir haritada",
+    "subline": "New Level Group'un tüm konut projeleri, Akdeniz kıyısı boyunca uzanan interaktif haritada. Eviniz olacak konumu keşfedin.",
+    "cta": "Haritayı açın"
+  },
+  "services": {
+    "eyebrow": "Anahtarların ötesinde",
+    "heading": "Tam destek",
+    "subline": "Mülk yönetiminden ikamet ve vatandaşlığa kadar her adımda yanınızdayız.",
+    "cta": "Tüm hizmetler"
+  },
+  "blog": {
+    "eyebrow": "İçgörüler ve rehberler",
+    "heading": "Alanya'ya Uzman Bir Bakış",
+    "subline": "Gayrimenkul satın alma, oturma izni ve Akdeniz'de yaşam üzerine rehberiniz — bölgeyi içeriden tanıyan bir ekipten.",
+    "cta": "Yazıları okuyun",
+    "p1t": "2026’da Türkiye’de nasıl mülk alınır: adım adım rehber",
+    "p1c": "Alıcı rehberi",
+    "p2t": "Oturma izni mi vatandaşlık mı: hangisi size uygun?",
+    "p2c": "Relokasyon",
+    "p3t": "Alanya bölgeleri: nerede yaşamalı, nereye yatırım yapmalı",
+    "p3c": "Konumlar",
+    "readMore": "Devamını oku"
+  },
+  "cta": {
+    "eyebrow": "Konuşalım",
+    "heading": "Kişisel danışmanlık — ücretsiz",
+    "subline": "Planlarınızı bizimle paylaşın; sizin için doğru mülkü seçelim ve onu ilk gördüğünüz andan anahtar teslimine kadar her adımda yanınızda olalım.",
+    "name": "Adınız",
+    "phone": "Telefon",
+    "consent": "Formu göndererek kişisel verilerinizin işlenmesini kabul edersiniz.",
+    "submit": "Danışmanlık randevusu alın",
+    "secondary": "WhatsApp'tan yazın",
+    "success": "Teşekkürler! Kişisel danışmanınız kısa süre içinde sizinle iletişime geçecek."
+  },
+  "footer": {
+    "tagline": "New Level Group — Alanya'da Akdeniz kıyısında premium gayrimenkul inşaatı ve satışı.",
+    "colProperties": "Gayrimenkuller",
+    "colServices": "Hizmetler",
+    "colCompany": "Kurumsal",
+    "colContacts": "İletişim",
+    "rights": "© {year} New Level Group. Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım koşulları"
+  },
+  "chat": {
+    "title": "New Level Konsiyerj",
+    "subtitle": "Gayrimenkul ve relokasyon asistanı",
+    "placeholder": "Projeler, fiyatlar, oturma izni hakkında sorun…",
+    "greeting": "Merhaba! Ben New Level konsiyerjiyim. Türkiye’deki evinizi bulmanıza yardımcı olayım. Nereden başlayalım?",
+    "disclaimer": "AI asistan — yanıtlar yaklaşık olabilir. Ayrıntılar için sizi bir danışmana bağlarız.",
+    "send": "Gönder",
+    "open": "Bize yazın",
+    "you": "Siz",
+    "thinking": "Yazıyor…",
+    "error": "Bir şeyler ters gitti. Lütfen tekrar deneyin veya bizimle doğrudan iletişime geçin.",
+    "reset": "Yeni sohbet"
+  },
+  "common": {
+    "language": "Dil",
+    "menu": "Menü",
+    "close": "Kapat",
+    "loading": "Yükleniyor"
+  }
+}
