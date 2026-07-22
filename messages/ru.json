@@ -223,6 +223,13 @@
     "distanceToSea": "До моря",
     "allTitle": "Наши комплексы",
     "allSub": "Знаковые резиденции в лучших районах Аланьи.",
-    "eyebrow": "Комплексы"
+    "eyebrow": "Комплексы",
+    "benefitsTitle": "Преимущества",
+    "layoutsTitle": "Планировки и цены",
+    "paymentTitle": "Условия оплаты",
+    "distancesTitle": "Расстояния",
+    "statusLabel": "Статус",
+    "complexAreaLabel": "Площадь комплекса",
+    "unitLayout": "Планировка"
   }
 }

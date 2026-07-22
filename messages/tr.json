@@ -223,6 +223,13 @@
     "distanceToSea": "Denize",
     "allTitle": "Projelerimiz",
     "allSub": "Alanya’nın en iyi bölgelerinde imza rezidanslar.",
-    "eyebrow": "Projeler"
+    "eyebrow": "Projeler",
+    "benefitsTitle": "Öne çıkanlar",
+    "layoutsTitle": "Planlar ve fiyatlar",
+    "paymentTitle": "Ödeme koşulları",
+    "distancesTitle": "Mesafeler",
+    "statusLabel": "Durum",
+    "complexAreaLabel": "Kompleks alanı",
+    "unitLayout": "Plan"
   }
 }

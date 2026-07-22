@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { projects } from '@/lib/data/projects';
+import { complexDetails } from '@/lib/data/complexDetails';
 import { ComplexDetail } from '@/components/complexes/ComplexDetail';
 
 export function generateStaticParams() {
@@ -16,5 +17,5 @@ export default async function ComplexPage({
   setRequestLocale(locale);
   const project = projects.find((p) => p.id === slug);
   if (!project) notFound();
-  return <ComplexDetail project={project} />;
+  return <ComplexDetail project={project} detail={complexDetails[slug] ?? null} />;
 }

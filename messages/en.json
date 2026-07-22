@@ -223,6 +223,13 @@
     "distanceToSea": "To sea",
     "allTitle": "Our complexes",
     "allSub": "Signature residences across Alanya’s finest districts.",
-    "eyebrow": "Complexes"
+    "eyebrow": "Complexes",
+    "benefitsTitle": "Highlights",
+    "layoutsTitle": "Layouts & prices",
+    "paymentTitle": "Payment terms",
+    "distancesTitle": "Distances",
+    "statusLabel": "Status",
+    "complexAreaLabel": "Complex area",
+    "unitLayout": "Layout"
   }
 }
