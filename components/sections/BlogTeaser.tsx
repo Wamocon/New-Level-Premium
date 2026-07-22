@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { Clock, ArrowUpRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/lib/types';
 import { img } from '@/lib/images';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/anim/Reveal';
@@ -12,14 +12,54 @@ import { Button } from '@/components/ui/Button';
 type BlogKey = 'p1t' | 'p2t' | 'p3t';
 type BlogCatKey = 'p1c' | 'p2c' | 'p3c';
 
-const posts: { img: string; title: BlogKey; cat: BlogCatKey }[] = [
-  { img: img('blog-insight-1', 1200, 800), title: 'p1t', cat: 'p1c' },
-  { img: img('blog-insight-2', 1200, 800), title: 'p2t', cat: 'p2c' },
-  { img: img('blog-insight-3', 1200, 800), title: 'p3t', cat: 'p3c' },
+const BLOG_URL: Record<Locale, string> = {
+  en: 'https://newlevel-group.com/en/blog',
+  ru: 'https://newlevel-group.com/blog',
+  tr: 'https://newlevel-group.com/tr/blog',
+};
+
+// Real articles from the live site (open until the on-site /blog is built).
+const posts: {
+  img: string;
+  title: BlogKey;
+  cat: BlogCatKey;
+  url: Record<Locale, string>;
+}[] = [
+  {
+    img: img('blog-insight-1', 1200, 800),
+    title: 'p1t',
+    cat: 'p1c',
+    url: {
+      en: 'https://newlevel-group.com/en/post/tapu-residence-permit-in-turkey-in-2026-how-to-obtain-a-residence-permit-with-real-estate',
+      ru: 'https://newlevel-group.com/post/vnzh-po-tapu-v-turtsii-godu-kak-poluchit-vid-na-zhitelstvo-po-nedvizhimosti',
+      tr: 'https://newlevel-group.com/tr/post/tapu-ikamet-izni-2026da-turkiyede-gayrimenkul-ile-ikamet-izni-nasil-alinir',
+    },
+  },
+  {
+    img: img('blog-insight-2', 1200, 800),
+    title: 'p2t',
+    cat: 'p2c',
+    url: {
+      en: 'https://newlevel-group.com/en/post/aidat-in-turkey-in-2026-what-is-it-how-much-does-it-cost-and-who-pays-for-it',
+      ru: 'https://newlevel-group.com/post/aydat-v-turtsii-godu-chto-eto-takoe-skolko-stoit-i-kto-ego-oplachivaet',
+      tr: 'https://newlevel-group.com/tr/post/2026da-turkiyede-aidat-nedir-maliyeti-ne-kadar-ve-kim-oder',
+    },
+  },
+  {
+    img: img('blog-insight-3', 1200, 800),
+    title: 'p3t',
+    cat: 'p3c',
+    url: {
+      en: 'https://newlevel-group.com/en/post/what-to-do-after-buying-property-in-turkey-a-complete-owners-checklist',
+      ru: 'https://newlevel-group.com/post/chto-delat-posle-pokupki-nedvizhimosti-v-turtsii-polnyy-chek-list-sobstvennika',
+      tr: 'https://newlevel-group.com/tr/post/turkiyede-gayrimenkul-satin-aldiktan-sonra-yapilmasi-gerekenler-eksiksiz-bir-ev-sahibi-kontrol-listesi',
+    },
+  },
 ];
 
 export function BlogTeaser() {
   const t = useTranslations('blog');
+  const locale = useLocale() as Locale;
 
   return (
     <section id="blog" className="relative py-24 md:py-32">
@@ -28,19 +68,21 @@ export function BlogTeaser() {
           <SectionHeading eyebrow={t('eyebrow')} heading={t('heading')} subline={t('subline')} />
           <Reveal delay={0.1} className="shrink-0">
             <Button asChild variant="outline" size="lg">
-              <Link href="/blog">
+              <a href={BLOG_URL[locale]} target="_blank" rel="noopener noreferrer">
                 {t('cta')}
                 <ArrowUpRight className="size-4" />
-              </Link>
+              </a>
             </Button>
           </Reveal>
         </div>
 
         <Reveal className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08} y={40}>
           {posts.map((post) => (
-            <Link
+            <a
               key={post.title}
-              href="/blog"
+              href={post.url[locale]}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={t(post.title)}
               className="group flex flex-col overflow-hidden rounded-3xl border border-white/8 bg-white/5 transition-all duration-500 ease-lux hover:-translate-y-1.5 hover:shadow-[0_30px_80px_-40px_rgba(201,162,75,0.4)]"
             >
@@ -70,10 +112,13 @@ export function BlogTeaser() {
 
                 <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-gold">
                   {t('readMore')}
-                  <ArrowUpRight className="size-4 transition-transform duration-300 ease-lux group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                  <ArrowUpRight
+                    className="size-4 transition-transform duration-300 ease-lux group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                  />
                 </span>
               </div>
-            </Link>
+            </a>
           ))}
         </Reveal>
       </div>
