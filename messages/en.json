@@ -119,7 +119,9 @@
     "consent": "By submitting, you agree to the processing of your personal data.",
     "submit": "Book a consultation",
     "secondary": "Message us on WhatsApp",
-    "success": "Thank you! Your personal advisor will contact you shortly."
+    "success": "Thank you! Your personal advisor will contact you shortly.",
+    "advisor": "Your personal advisor",
+    "advisorNote": "Replies within minutes"
   },
   "footer": {
     "tagline": "New Level Group, building and selling premium Mediterranean property in Alanya.",

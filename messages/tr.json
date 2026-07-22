@@ -119,7 +119,9 @@
     "consent": "Formu göndererek kişisel verilerinizin işlenmesini kabul edersiniz.",
     "submit": "Danışmanlık randevusu alın",
     "secondary": "WhatsApp'tan yazın",
-    "success": "Teşekkürler! Kişisel danışmanınız kısa süre içinde sizinle iletişime geçecek."
+    "success": "Teşekkürler! Kişisel danışmanınız kısa süre içinde sizinle iletişime geçecek.",
+    "advisor": "Kişisel danışmanınız",
+    "advisorNote": "Dakikalar içinde yanıtlar"
   },
   "footer": {
     "tagline": "New Level Group, Alanya'da Akdeniz kıyısında premium gayrimenkul inşaatı ve satışı.",

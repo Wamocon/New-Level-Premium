@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { MessageCircle, Check, Phone } from 'lucide-react';
@@ -23,15 +24,24 @@ export function ConsultationCta() {
     <section id="consultation" className="relative py-24 md:py-32">
       <div className="container-lux">
         <div className="relative overflow-hidden rounded-[2.5rem] border border-white/8 bg-onyx">
-          <div
+          {/* Alanya cityscape backdrop */}
+          <Image
+            src="/images/original/2-D3qltBdX.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-25"
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_20%,rgba(201,162,75,0.18),transparent)]"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_50%_at_90%_90%,rgba(46,90,110,0.14),transparent)]"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-obsidian/95 via-obsidian/88 to-obsidian/72"
           />
-          <div aria-hidden className="grain absolute inset-0 opacity-40" />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_18%_18%,rgba(201,162,75,0.16),transparent)]"
+          />
+          <div aria-hidden className="grain absolute inset-0 opacity-30" />
 
           <div className="relative grid items-center gap-12 p-8 md:p-14 lg:grid-cols-2">
             {/* LEFT */}
@@ -42,19 +52,32 @@ export function ConsultationCta() {
                 subline={t('subline')}
                 align="left"
               />
-              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-                <a
-                  href={site.phoneHref}
-                  className="group inline-flex items-center gap-3"
-                  aria-label={site.phone}
-                >
-                  <span className="flex size-11 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-obsidian">
-                    <Phone className="size-5" />
-                  </span>
-                  <span className="font-display text-xl text-cloud transition-colors group-hover:text-gold">
+
+              {/* personal advisor */}
+              <div className="mt-8 flex items-center gap-4">
+                <div className="relative size-16 shrink-0 overflow-hidden rounded-full ring-2 ring-gold/40">
+                  <Image
+                    src="/images/original/manager-DDFX_ukq.png"
+                    alt={t('advisor')}
+                    fill
+                    sizes="64px"
+                    className="object-cover"
+                  />
+                  <span className="absolute bottom-0.5 right-0.5 size-3.5 rounded-full bg-emerald-400 ring-2 ring-onyx" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-cloud">{t('advisor')}</div>
+                  <div className="text-xs text-cloud/50">{t('advisorNote')}</div>
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Button asChild variant="outline">
+                  <a href={site.phoneHref}>
+                    <Phone className="size-4" />
                     {site.phone}
-                  </span>
-                </a>
+                  </a>
+                </Button>
                 <Button asChild variant="outline">
                   <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="size-4" />
