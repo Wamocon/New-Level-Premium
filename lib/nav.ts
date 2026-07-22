@@ -1,38 +1,18 @@
-export interface NavChild {
-  key: string;
-  href: string;
-}
 export interface NavItem {
   key: string;
+  /** section id (when hash) or route path */
   href: string;
-  children?: NavChild[];
+  /** true = in-page anchor to a homepage section */
+  hash?: boolean;
 }
 
 export const primaryNav: NavItem[] = [
-  {
-    key: 'about',
-    href: '/about',
-    children: [
-      { key: 'aboutCompany', href: '/about' },
-      { key: 'ourHistory', href: '/about/history' },
-      { key: 'ourTeam', href: '/about/team' },
-      { key: 'careers', href: '/careers' },
-    ],
-  },
+  { key: 'about', href: 'values', hash: true },
   { key: 'objects', href: '/properties' },
-  { key: 'complexes', href: '/complexes' },
-  { key: 'rental', href: '/rental' },
-  {
-    key: 'services',
-    href: '/services',
-    children: [
-      { key: 'propertyManagement', href: '/services/management' },
-      { key: 'afterSales', href: '/services/after-sales' },
-      { key: 'residence', href: '/services/residence' },
-      { key: 'citizenship', href: '/services/citizenship' },
-    ],
-  },
-  { key: 'blog', href: '/blog' },
-  { key: 'reviews', href: '/reviews' },
-  { key: 'contacts', href: '/contacts' },
+  { key: 'complexes', href: 'projects', hash: true },
+  { key: 'rental', href: '/properties' },
+  { key: 'services', href: 'services', hash: true },
+  { key: 'blog', href: 'blog', hash: true },
+  { key: 'reviews', href: 'reviews', hash: true },
+  { key: 'contacts', href: 'contacts', hash: true },
 ];

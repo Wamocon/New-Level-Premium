@@ -5,6 +5,8 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale, getMessages, getTranslations } from 'next-intl/server';
 import { Manrope, Playfair_Display } from 'next/font/google';
 import { routing } from '@/i18n/routing';
+import { organizationLd, websiteLd, faqLd, SITE_URL } from '@/lib/seo';
+import type { Locale } from '@/lib/types';
 import { SmoothScroll } from '@/components/providers/SmoothScroll';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -36,18 +38,38 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'hero' });
+  const title = `New Level Group, ${t('headlineTop')} ${t('headlineAccent')}`;
+  const description = t('subline');
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
-    title: {
-      default: `New Level Group — ${t('headlineTop')} ${t('headlineAccent')}`,
-      template: '%s · New Level Group',
+    metadataBase: new URL(SITE_URL),
+    title: { default: title, template: '%s · New Level Group' },
+    description,
+    keywords: [
+      'Alanya real estate',
+      'property in Turkey',
+      'New Level Group',
+      'apartments in Alanya',
+      'Avsallar property',
+      'Mediterranean property',
+      'Turkish citizenship by investment',
+      'residence permit Turkey',
+    ],
+    applicationName: 'New Level Group',
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { ru: '/ru', en: '/en', tr: '/tr', 'x-default': '/en' },
     },
-    description: t('subline'),
     openGraph: {
-      title: 'New Level Group',
-      description: t('subline'),
       type: 'website',
+      siteName: 'New Level Group',
+      title,
+      description,
+      url: `/${locale}`,
+      locale,
+      images: [{ url: '/images/original/1-H0_ctfKN.png', alt: 'New Level Group' }],
     },
+    twitter: { card: 'summary_large_image', title, description },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -63,6 +85,7 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const jsonLd = [organizationLd(), websiteLd(), faqLd(locale as Locale)];
 
   return (
     <html
@@ -71,6 +94,10 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-obsidian text-cloud antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SmoothScroll>
             <Header />

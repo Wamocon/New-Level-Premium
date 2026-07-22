@@ -37,13 +37,18 @@ export interface Project {
   id: string;
   name: string;
   location: Record<Locale, string>;
+  beach: Record<Locale, string>;
   tagline: Record<Locale, string>;
   description: Record<Locale, string>;
   status: PropertyStatus;
-  completion: string; // e.g. "Q4 2026"
-  units: number;
-  distanceToSea: number;
-  priceFrom: number;
+  completion: string; // e.g. "July 2026"
+  layouts: string; // e.g. "1+1, 2+1, 3+1"
+  areaFrom: number; // m²
+  areaTo: number; // m²
+  complexArea?: number; // m²
+  distanceToSea: number; // meters
+  priceFrom: number; // EUR
+  badge?: Record<Locale, string>;
   image: string;
   gallery: string[];
   amenities: Record<Locale, string>[];

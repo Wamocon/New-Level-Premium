@@ -8,7 +8,7 @@ export interface Review {
   text: Record<Locale, string>;
 }
 
-// Real client testimonials published on newlevel-group.com/reviews — faithful
+// Real client testimonials published on newlevel-group.com/reviews, faithful
 // short summaries of their video/text reviews (full versions on the source page).
 export const reviews: Review[] = [
   {
@@ -17,9 +17,9 @@ export const reviews: Review[] = [
     date: '2025-06-16',
     rating: 5,
     text: {
-      ru: 'После покупки квартиры поделился впечатлениями — отметил впечатляющую скорость строительства и профессионализм команды.',
-      en: 'After buying an apartment, shared his excitement — praising the impressive speed of construction and the professionalism of the team.',
-      tr: 'Daire aldıktan sonra izlenimlerini paylaştı — inşaatın etkileyici hızını ve ekibin profesyonelliğini övdü.',
+      ru: 'После покупки квартиры поделился впечатлениями, отметил впечатляющую скорость строительства и профессионализм команды.',
+      en: 'After buying an apartment, shared his excitement, praising the impressive speed of construction and the professionalism of the team.',
+      tr: 'Daire aldıktan sonra izlenimlerini paylaştı, inşaatın etkileyici hızını ve ekibin profesyonelliğini övdü.',
     },
   },
   {
@@ -39,9 +39,9 @@ export const reviews: Review[] = [
     date: '2025-07-20',
     rating: 5,
     text: {
-      ru: 'Рассказали, почему ценят проект New Level Premium — как надёжную инвестицию и вклад в качество жизни.',
-      en: 'Explained why they value the New Level Premium project — as a reliable investment and a contribution to wellbeing.',
-      tr: 'New Level Premium projesine neden değer verdiklerini anlattılar — güvenilir bir yatırım ve yaşam kalitesine katkı olarak.',
+      ru: 'Рассказали, почему ценят проект New Level Premium, как надёжную инвестицию и вклад в качество жизни.',
+      en: 'Explained why they value the New Level Premium project, as a reliable investment and a contribution to wellbeing.',
+      tr: 'New Level Premium projesine neden değer verdiklerini anlattılar, güvenilir bir yatırım ve yaşam kalitesine katkı olarak.',
     },
   },
   {

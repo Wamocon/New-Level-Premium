@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Design tokens — Obsidian & Champagne. Warm luxury, high
+   Design tokens, Obsidian & Champagne. Warm luxury, high
    contrast, generous space. Covers Latin + Cyrillic + Turkish.
    ============================================================ */
 @theme {
@@ -22,7 +22,7 @@
   --color-sand: #F4EFE7;
   --color-linen: #EBE3D5;
 
-  /* Accents — champagne gold + deep sea */
+  /* Accents, champagne gold + deep sea */
   --color-gold: #C9A24B;
   --color-gold-soft: #D8B968;
   --color-champagne: #E7D6B0;

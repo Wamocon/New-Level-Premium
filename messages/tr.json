@@ -16,7 +16,10 @@
     "blog": "Blog",
     "reviews": "Yorumlar",
     "contacts": "İletişim",
-    "cta": "Danışmanlık"
+    "cta": "Danışmanlık",
+    "partners": "Partnerlere",
+    "sell": "Mülk Sat",
+    "contactUs": "İletişim"
   },
   "hero": {
     "eyebrow": "Alanya sahilinde kendi projelerimiz",
@@ -55,7 +58,7 @@
   "types": {
     "eyebrow": "Tipe göre keşfet",
     "heading": "Yaşam tarzınıza göre gayrimenkul",
-    "subline": "Akdeniz kıyısında beş format — size en yakın olanı seçin.",
+    "subline": "Akdeniz kıyısında beş format, size en yakın olanı seçin.",
     "count": "{count} mülk"
   },
   "values": {
@@ -63,13 +66,13 @@
     "heading": "Fark ayrıntılarda",
     "subline": "İnşa ettiğimiz her evin ve tuttuğumuz her sözün ardındaki dört ilke.",
     "v1t": "Ödünsüz inşaat kalitesi",
-    "v1d": "Güvenilir malzemeler, özenli mühendislik ve her aşamada titiz kontrol. Yıllarca huzurla yaşanacak evler inşa ediyoruz.",
-    "v2t": "Kusursuz konum",
-    "v2d": "Projelerimiz deniz, manzara ve günlük yaşam kolaylığının buluştuğu noktalarda yükseliyor. Yalnızca bir ev değil, Akdeniz'e özgü bir yaşam biçimi seçiyorsunuz.",
+    "v1d": "Biz geliştiriciyiz. Birinci sınıf malzemeler, güvenilir tedarikçiler ve profesyonel bir ekip; inşaatın her aşamasını kendimiz yönetir ve denetleriz.",
+    "v2t": "Mükemmel konum",
+    "v2d": "Yalnızca yatırıma değer konumları seçiyoruz: güçlü ulaşım, gelişmiş altyapı ve Akdeniz’in doğal güzelliği.",
     "v3t": "Şeffaflık ve sorumluluk",
-    "v3d": "Şeffaf koşullar, dürüst teslim süreleri ve satır aralarında gizli hiçbir şey yok. Verdiğimiz her sözün arkasında duruyoruz — kâğıt üzerinde de, uygulamada da.",
+    "v3d": "Şeffaf, dürüst iletişim ve zamanında yanıtlar. Yaptığımız her şeyin merkezinde insan var.",
     "v4t": "Güvenilirlik, profesyonellik, kişiye özel yaklaşım",
-    "v4d": "Deneyimli ekibimiz ilk gösterimden oturma izni işlemlerine kadar size eşlik eder. Hedeflerinizi dinler, çözümü tam size göre şekillendiririz."
+    "v4d": "Kişiye özel yaklaşım ve tam destek: daire seçiminden tapuya ve yeni evinize yerleşene kadar."
   },
   "projects": {
     "eyebrow": "İmza projeler",
@@ -78,7 +81,9 @@
     "cta": "Projeyi incele",
     "unitsLabel": "daire",
     "toSeaLabel": "denize",
-    "fromLabel": "başlangıç"
+    "fromLabel": "başlangıç",
+    "layoutsLabel": "Planlar",
+    "areaLabel": "Alan"
   },
   "map": {
     "eyebrow": "Harita üzerinde kıyı",
@@ -95,19 +100,19 @@
   "blog": {
     "eyebrow": "İçgörüler ve rehberler",
     "heading": "Alanya'ya Uzman Bir Bakış",
-    "subline": "Gayrimenkul satın alma, oturma izni ve Akdeniz'de yaşam üzerine rehberiniz — bölgeyi içeriden tanıyan bir ekipten.",
+    "subline": "Gayrimenkul satın alma, oturma izni ve Akdeniz'de yaşam üzerine rehberiniz, bölgeyi içeriden tanıyan bir ekipten.",
     "cta": "Yazıları okuyun",
-    "p1t": "2026’da Türkiye’de nasıl mülk alınır: adım adım rehber",
-    "p1c": "Alıcı rehberi",
-    "p2t": "Oturma izni mi vatandaşlık mı: hangisi size uygun?",
-    "p2c": "Relokasyon",
-    "p3t": "Alanya bölgeleri: nerede yaşamalı, nereye yatırım yapmalı",
-    "p3c": "Konumlar",
+    "p1t": "2026’da Türkiye’de TAPU ile oturma izni",
+    "p1c": "Oturma ve vatandaşlık",
+    "p2t": "Türkiye’de aidat: nedir ve kim öder",
+    "p2c": "Yasa ve belgeler",
+    "p3t": "Mülk aldıktan sonra: sahip kontrol listesi",
+    "p3c": "Faydalı",
     "readMore": "Devamını oku"
   },
   "cta": {
     "eyebrow": "Konuşalım",
-    "heading": "Kişisel danışmanlık — ücretsiz",
+    "heading": "Kişisel danışmanlık, ücretsiz",
     "subline": "Planlarınızı bizimle paylaşın; sizin için doğru mülkü seçelim ve onu ilk gördüğünüz andan anahtar teslimine kadar her adımda yanınızda olalım.",
     "name": "Adınız",
     "phone": "Telefon",
@@ -117,7 +122,7 @@
     "success": "Teşekkürler! Kişisel danışmanınız kısa süre içinde sizinle iletişime geçecek."
   },
   "footer": {
-    "tagline": "New Level Group — Alanya'da Akdeniz kıyısında premium gayrimenkul inşaatı ve satışı.",
+    "tagline": "New Level Group, Alanya'da Akdeniz kıyısında premium gayrimenkul inşaatı ve satışı.",
     "colProperties": "Gayrimenkuller",
     "colServices": "Hizmetler",
     "colCompany": "Kurumsal",
@@ -131,7 +136,7 @@
     "subtitle": "Gayrimenkul ve relokasyon asistanı",
     "placeholder": "Projeler, fiyatlar, oturma izni hakkında sorun…",
     "greeting": "Merhaba! Ben New Level konsiyerjiyim. Türkiye’deki evinizi bulmanıza yardımcı olayım. Nereden başlayalım?",
-    "disclaimer": "AI asistan — yanıtlar yaklaşık olabilir. Ayrıntılar için sizi bir danışmana bağlarız.",
+    "disclaimer": "AI asistan, yanıtlar yaklaşık olabilir. Ayrıntılar için sizi bir danışmana bağlarız.",
     "send": "Gönder",
     "open": "Bize yazın",
     "you": "Siz",
@@ -155,7 +160,7 @@
   "contact": {
     "eyebrow": "Bize ulaşın",
     "heading": "Alanya’daki ofisimizi ziyaret edin",
-    "subline": "Sizi ağırlamaktan mutluluk duyarız. Uğrayın, arayın veya WhatsApp’tan yazın — hızlıca yanıtlıyoruz.",
+    "subline": "Sizi ağırlamaktan mutluluk duyarız. Uğrayın, arayın veya WhatsApp’tan yazın, hızlıca yanıtlıyoruz.",
     "call": "Bizi arayın",
     "whatsapp": "WhatsApp",
     "directions": "Yol tarifi al",
@@ -163,6 +168,19 @@
     "phoneLabel": "Telefon",
     "emailLabel": "E-posta",
     "hoursLabel": "Çalışma saatleri",
-    "hours": "Pzt–Cmt, 09:00–19:00"
+    "hours": "Pzt-Cmt, 09:00-19:00"
+  },
+  "listing": {
+    "title": "Tüm mülkler",
+    "subtitle": "Alanya kıyısında evinizi bulun, tip, konum, oda ve bütçeye göre filtreleyin.",
+    "results": "{count} mülk",
+    "empty": "Filtrelerinize uygun mülk yok. Aramanızı genişletin.",
+    "sortLabel": "Sırala",
+    "sortNew": "En yeni",
+    "sortPriceAsc": "Fiyat ↑",
+    "sortPriceDesc": "Fiyat ↓",
+    "sortArea": "En geniş",
+    "reset": "Sıfırla",
+    "seaView": "Deniz manzarası"
   }
 }

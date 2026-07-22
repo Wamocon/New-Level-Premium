@@ -39,7 +39,7 @@ function Tower({ def }: { def: TowerDef }) {
   return (
     <RoundedBox args={[def.w, def.h, def.w]} radius={0.08} smoothness={4} position={[def.x, y, def.z]}>
       {def.glass ? (
-        // Cheap glossy translucent "glass" — no transmission pass (big FPS win).
+        // Cheap glossy translucent "glass", no transmission pass (big FPS win).
         <meshPhysicalMaterial
           color="#efe6cd"
           roughness={0.06}

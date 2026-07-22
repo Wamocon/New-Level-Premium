@@ -79,7 +79,7 @@ export function ContactMap() {
           {/* live map (satellite / 3D view of the office location) */}
           <div className="relative min-h-[24rem] bg-ink lg:min-h-full">
             <iframe
-              title="New Level Group — Alanya"
+              title="New Level Group, Alanya"
               src={site.geo.embedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

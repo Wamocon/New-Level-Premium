@@ -6,7 +6,7 @@ import { gsap, ScrollTrigger, registerGsap } from '@/lib/gsap';
 
 /**
  * Lenis smooth scroll (the 2026 standard) driven by GSAP's ticker so that
- * ScrollTrigger and momentum scrolling stay perfectly in sync — no jitter.
+ * ScrollTrigger and momentum scrolling stay perfectly in sync, no jitter.
  */
 export function SmoothScroll({ children }: { children: ReactNode }) {
   const lenisRef = useRef<LenisRef>(null);

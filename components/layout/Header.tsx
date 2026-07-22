@@ -1,25 +1,63 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { primaryNav } from '@/lib/nav';
+import { primaryNav, type NavItem } from '@/lib/nav';
 import { site } from '@/lib/data/site';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
 import { LogoMark } from '@/components/brand/LogoMark';
-import { ChevronDown, Menu, Phone, X } from 'lucide-react';
+import {
+  InstagramIcon,
+  FacebookIcon,
+  YoutubeIcon,
+  TelegramIcon,
+  WhatsAppIcon,
+  ViberIcon,
+} from '@/components/icons/Social';
+import { Heart, Menu, Phone, Search, X } from 'lucide-react';
+
+const SOCIAL_ICONS: Record<string, typeof InstagramIcon> = {
+  Instagram: InstagramIcon,
+  Facebook: FacebookIcon,
+  Youtube: YoutubeIcon,
+  Send: TelegramIcon,
+  WhatsApp: WhatsAppIcon,
+  Viber: ViberIcon,
+};
 
 function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <Link
-      href="/"
-      onClick={onClick}
-      className="group inline-flex items-center"
-      aria-label="New Level Group — home"
-    >
+    <Link href="/" onClick={onClick} className="group inline-flex items-center" aria-label="New Level Group">
       <LogoMark className="h-8 text-cloud transition-colors duration-300 group-hover:text-gold sm:h-9" />
+    </Link>
+  );
+}
+
+/** Renders a nav entry as an in-page anchor or a route link. */
+function NavLink({
+  item,
+  className,
+  onClick,
+  children,
+}: {
+  item: NavItem;
+  className?: string;
+  onClick?: () => void;
+  children: ReactNode;
+}) {
+  if (item.hash) {
+    return (
+      <a href={`#${item.href}`} onClick={onClick} className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={item.href} onClick={onClick} className={className}>
+      {children}
     </Link>
   );
 }
@@ -44,70 +82,102 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-lux',
-        scrolled
-          ? 'border-b border-white/5 bg-obsidian/70 backdrop-blur-xl'
-          : 'bg-transparent',
-      )}
-    >
-      <div className="container-lux flex h-20 items-center justify-between gap-6">
-        <Logo />
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* top contact bar (desktop, collapses on scroll) */}
+      <div
+        className={cn(
+          'hidden overflow-hidden border-b border-white/5 bg-obsidian/70 backdrop-blur-xl transition-all duration-500 ease-lux lg:block',
+          scrolled ? 'h-0 opacity-0' : 'h-10 opacity-100',
+        )}
+      >
+        <div className="container-lux flex h-10 items-center justify-between text-xs">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              {site.socials.map((s) => {
+                const Icon = SOCIAL_ICONS[s.icon] ?? TelegramIcon;
+                return (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.name}
+                    className="flex size-6 items-center justify-center rounded-full text-cloud/55 transition-colors hover:text-gold"
+                  >
+                    <Icon className="size-3.5" />
+                  </a>
+                );
+              })}
+            </div>
+            <span className="h-3.5 w-px bg-white/10" />
+            <a
+              href={site.phoneHref}
+              className="font-medium tracking-wide text-cloud/80 transition-colors hover:text-gold"
+            >
+              {site.phone}
+            </a>
+          </div>
 
-        {/* desktop nav */}
-        <nav className="hidden items-center gap-1 xl:flex">
-          {primaryNav.map((item) => (
-            <div key={item.key} className="group/nav relative">
-              <Link
-                href={item.href}
-                className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-[0.82rem] font-medium text-cloud/75 transition-colors hover:text-gold"
+          <div className="flex items-center gap-4">
+            <a href="#consultation" className="text-cloud/60 transition-colors hover:text-gold">
+              {t('partners')}
+            </a>
+            <a href="#consultation" className="text-cloud/60 transition-colors hover:text-gold">
+              {t('sell')}
+            </a>
+            <a
+              href="#contacts"
+              className="rounded-full bg-white/8 px-3.5 py-1.5 font-medium text-cloud transition-colors hover:bg-gold hover:text-obsidian"
+            >
+              {t('contactUs')}
+            </a>
+            <Link href="/properties" aria-label="Favorites" className="text-cloud/60 transition-colors hover:text-gold">
+              <Heart className="size-4" />
+            </Link>
+            <Link href="/properties" aria-label="Search" className="text-cloud/60 transition-colors hover:text-gold">
+              <Search className="size-4" />
+            </Link>
+            <LanguageSwitcher />
+          </div>
+        </div>
+      </div>
+
+      {/* main bar */}
+      <div
+        className={cn(
+          'transition-all duration-500 ease-lux',
+          scrolled ? 'border-b border-white/5 bg-obsidian/70 backdrop-blur-xl' : 'bg-transparent',
+        )}
+      >
+        <div className="container-lux flex h-20 items-center justify-between gap-6">
+          <Logo />
+
+          <nav className="hidden items-center gap-0.5 xl:flex">
+            {primaryNav.map((item) => (
+              <NavLink
+                key={item.key}
+                item={item}
+                className="whitespace-nowrap rounded-full px-3 py-2 text-[0.82rem] font-medium text-cloud/75 transition-colors hover:text-gold"
               >
                 {t(item.key)}
-                {item.children && (
-                  <ChevronDown className="size-3.5 opacity-60 transition-transform duration-300 group-hover/nav:rotate-180" />
-                )}
-              </Link>
-              {item.children && (
-                <div className="invisible absolute left-0 top-full min-w-56 translate-y-2 pt-3 opacity-0 transition-all duration-300 ease-lux group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100">
-                  <div className="glass overflow-hidden rounded-2xl p-1.5 shadow-2xl">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.key}
-                        href={child.href}
-                        className="block rounded-xl px-3.5 py-2.5 text-sm text-cloud/75 transition-colors hover:bg-white/5 hover:text-gold"
-                      >
-                        {t(child.key)}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
+              </NavLink>
+            ))}
+          </nav>
 
-        {/* right cluster */}
-        <div className="flex items-center gap-2.5">
-          <a
-            href={site.phoneHref}
-            className="hidden items-center gap-2 whitespace-nowrap text-sm font-medium text-cloud/80 transition-colors hover:text-gold 2xl:flex"
-          >
-            <Phone className="size-4 text-gold" />
-            {site.phone}
-          </a>
-          <LanguageSwitcher className="hidden sm:block" />
-          <Button asChild size="sm" variant="metal" className="hidden md:inline-flex">
-            <Link href="/contacts">{t('cta')}</Link>
-          </Button>
-          <button
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            className="flex size-11 items-center justify-center rounded-full border border-white/10 text-cloud xl:hidden"
-            aria-label={t('cta')}
-          >
-            <Menu className="size-5" />
-          </button>
+          <div className="flex items-center gap-2.5">
+            <LanguageSwitcher className="lg:hidden" />
+            <Button asChild size="sm" variant="metal" className="hidden md:inline-flex">
+              <a href="#consultation">{t('cta')}</a>
+            </Button>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              className="flex size-11 items-center justify-center rounded-full border border-white/10 text-cloud xl:hidden"
+              aria-label="Menu"
+            >
+              <Menu className="size-5" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -130,37 +200,39 @@ export function Header() {
           </div>
           <nav className="container-lux flex flex-1 flex-col gap-1 py-6">
             {primaryNav.map((item) => (
-              <div key={item.key} className="border-b border-white/5 py-1">
-                <Link
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 font-display text-2xl text-cloud transition-colors hover:text-gold"
-                >
-                  {t(item.key)}
-                </Link>
-                {item.children && (
-                  <div className="flex flex-col gap-1 pb-3 pl-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.key}
-                        href={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="py-1.5 text-sm text-cloud/60 transition-colors hover:text-gold"
-                      >
-                        {t(child.key)}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <NavLink
+                key={item.key}
+                item={item}
+                onClick={() => setMobileOpen(false)}
+                className="block border-b border-white/5 py-4 font-display text-2xl text-cloud transition-colors hover:text-gold"
+              >
+                {t(item.key)}
+              </NavLink>
             ))}
           </nav>
-          <div className="container-lux flex items-center justify-between gap-4 pb-10">
+          <div className="container-lux flex flex-col gap-4 pb-10">
             <a href={site.phoneHref} className="flex items-center gap-2 text-cloud">
               <Phone className="size-4 text-gold" />
               {site.phone}
             </a>
-            <LanguageSwitcher />
+            <div className="flex items-center gap-2">
+              {site.socials.map((s) => {
+                const Icon = SOCIAL_ICONS[s.icon] ?? TelegramIcon;
+                return (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.name}
+                    className="flex size-9 items-center justify-center rounded-full border border-white/10 text-cloud/70 transition-colors hover:border-gold/60 hover:text-gold"
+                  >
+                    <Icon className="size-4" />
+                  </a>
+                );
+              })}
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}

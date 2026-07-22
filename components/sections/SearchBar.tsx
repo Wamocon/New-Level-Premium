@@ -1,9 +1,16 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { Search } from 'lucide-react';
 import type { FormEvent } from 'react';
+import { districts } from '@/lib/data/districts';
+import { propertyTypeLabels } from '@/lib/data/properties';
+import type { Locale, PropertyType } from '@/lib/types';
+
+const TYPES: PropertyType[] = ['apartment', 'villa', 'penthouse', 'land', 'commercial'];
+const ROOMS = ['1+1', '2+1', '3+1', '4+1'];
+const PRICES = [150000, 250000, 400000, 600000];
 
 function Field({
   label,
@@ -33,11 +40,20 @@ function Field({
 
 export function SearchBar() {
   const t = useTranslations('search');
+  const locale = useLocale() as Locale;
   const router = useRouter();
+  const fmt = (v: number) => new Intl.NumberFormat('en-US').format(v);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    router.push('/properties');
+    const fd = new FormData(e.currentTarget);
+    const p = new URLSearchParams();
+    (['type', 'location', 'rooms', 'price'] as const).forEach((k) => {
+      const v = fd.get(k);
+      if (v) p.set(k, String(v));
+    });
+    const qs = p.toString();
+    router.push(qs ? `/properties?${qs}` : '/properties');
   }
 
   return (
@@ -47,34 +63,35 @@ export function SearchBar() {
     >
       <Field label={t('type')} name="type">
         <option value="">{t('typeAll')}</option>
-        <option value="apartment">Apartments</option>
-        <option value="villa">Villas</option>
-        <option value="penthouse">Penthouses</option>
-        <option value="land">Land</option>
-        <option value="commercial">Commercial</option>
+        {TYPES.map((tp) => (
+          <option key={tp} value={tp}>
+            {propertyTypeLabels[tp][locale]}
+          </option>
+        ))}
       </Field>
       <Field label={t('location')} name="location">
         <option value="">{t('locationAll')}</option>
-        <option value="mahmutlar">Mahmutlar</option>
-        <option value="oba">Oba</option>
-        <option value="kargicak">Kargıcak</option>
-        <option value="cikcilli">Cikcilli</option>
-        <option value="kestel">Kestel</option>
-        <option value="avsallar">Avsallar</option>
+        {districts.map((d) => (
+          <option key={d.value} value={d.value}>
+            {d.label[locale]}
+          </option>
+        ))}
       </Field>
       <Field label={t('rooms')} name="rooms">
         <option value="">{t('roomsAll')}</option>
-        <option value="1+1">1+1</option>
-        <option value="2+1">2+1</option>
-        <option value="3+1">3+1</option>
-        <option value="4+1">4+1</option>
+        {ROOMS.map((r) => (
+          <option key={r} value={r}>
+            {r}
+          </option>
+        ))}
       </Field>
       <Field label={t('price')} name="price">
         <option value="">{t('priceAll')}</option>
-        <option value="150000">€150,000</option>
-        <option value="250000">€250,000</option>
-        <option value="400000">€400,000</option>
-        <option value="600000">€600,000+</option>
+        {PRICES.map((pr) => (
+          <option key={pr} value={pr}>
+            €{fmt(pr)}
+          </option>
+        ))}
       </Field>
       <div className="flex items-center p-2">
         <button

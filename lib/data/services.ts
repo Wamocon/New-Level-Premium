@@ -16,9 +16,9 @@ export const services: Service[] = [
     icon: 'Wrench',
     title: { ru: 'Послепродажный сервис', en: 'After-sales service', tr: 'Satış sonrası hizmet' },
     description: {
-      ru: 'Подключение коммуникаций, страховка, ремонт и меблировка — мы сопровождаем вас и после получения ключей.',
-      en: 'Utility connections, insurance, renovation and furnishing — we stay with you long after you get the keys.',
-      tr: 'Abonelikler, sigorta, tadilat ve mobilya — anahtarları aldıktan sonra da yanınızdayız.',
+      ru: 'Подключение коммуникаций, страховка, ремонт и меблировка, мы сопровождаем вас и после получения ключей.',
+      en: 'Utility connections, insurance, renovation and furnishing, we stay with you long after you get the keys.',
+      tr: 'Abonelikler, sigorta, tadilat ve mobilya, anahtarları aldıktan sonra da yanınızdayız.',
     },
   },
   {
@@ -26,9 +26,9 @@ export const services: Service[] = [
     icon: 'BadgeCheck',
     title: { ru: 'ВНЖ в Турции', en: 'Residence permit in Turkey', tr: 'Türkiye’de oturma izni' },
     description: {
-      ru: 'Оформление вида на жительство для вас и вашей семьи под ключ — от документов до подачи и сопровождения.',
-      en: 'Turn-key residence permits for you and your family — from paperwork to submission and follow-up.',
-      tr: 'Siz ve aileniz için anahtar teslim oturma izni — evraktan başvuruya ve takibe kadar.',
+      ru: 'Оформление вида на жительство для вас и вашей семьи под ключ, от документов до подачи и сопровождения.',
+      en: 'Turn-key residence permits for you and your family, from paperwork to submission and follow-up.',
+      tr: 'Siz ve aileniz için anahtar teslim oturma izni, evraktan başvuruya ve takibe kadar.',
     },
   },
   {

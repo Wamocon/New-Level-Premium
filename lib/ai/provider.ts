@@ -7,10 +7,10 @@ import { openai } from '@ai-sdk/openai';
  *
  * Priority:
  *  1. Self-hosted / custom OpenAI-compatible endpoint (e.g. Sokrates on the
- *     NVIDIA DGX behind Cloudflare) — set AI_API_URL (+ AI_API_KEY). Picks the
+ *     NVIDIA DGX behind Cloudflare), set AI_API_URL (+ AI_API_KEY). Picks the
  *     model from AI_MODEL_CHAT | AI_MODEL_FAST | AI_MODEL.
- *  2. OpenAI        — AI_PROVIDER=openai + OPENAI_API_KEY
- *  3. Anthropic     — ANTHROPIC_API_KEY (default)
+ *  2. OpenAI       , AI_PROVIDER=openai + OPENAI_API_KEY
+ *  3. Anthropic    , ANTHROPIC_API_KEY (default)
  */
 function customEndpoint() {
   const baseURL = process.env.AI_API_URL?.trim();

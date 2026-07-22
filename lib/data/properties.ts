@@ -1,7 +1,22 @@
-import type { Property, PropertyType, PropertyTypeCard } from '@/lib/types';
+import type {
+  Property,
+  PropertyType,
+  PropertyTypeCard,
+  PropertyCategory,
+  PropertyStatus,
+} from '@/lib/types';
 import { img } from '@/lib/images';
+import { districts } from '@/lib/data/districts';
 
-export const properties: Property[] = [
+export const propertyTypeLabels: Record<PropertyType, Record<'ru' | 'en' | 'tr', string>> = {
+  apartment: { ru: 'Апартаменты', en: 'Apartments', tr: 'Daireler' },
+  villa: { ru: 'Виллы', en: 'Villas', tr: 'Villalar' },
+  penthouse: { ru: 'Пентхаусы', en: 'Penthouses', tr: 'Çatı katları' },
+  land: { ru: 'Земля', en: 'Land', tr: 'Arsa' },
+  commercial: { ru: 'Коммерция', en: 'Commercial', tr: 'Ticari' },
+};
+
+const baseProperties: Property[] = [
   {
     id: 'nlp-2p1-a12',
     ref: 'NLG-1042',
@@ -95,7 +110,7 @@ export const properties: Property[] = [
     featured: true,
   },
   {
-    id: 'villa-kargicak-v1',
+    id: 'villa-avsallar-v1',
     ref: 'NLG-1120',
     title: { ru: 'Вилла 4+1 с бассейном', en: '4+1 Villa with private pool', tr: 'Özel havuzlu 4+1 villa' },
     type: 'villa',
@@ -188,23 +203,65 @@ export const properties: Property[] = [
   },
 ];
 
-export const featuredProperties = properties.filter((p) => p.featured);
-
-export const propertyTypeCards: PropertyTypeCard[] = [
-  { type: 'apartment', count: 82, image: img('type-apartment', 1000, 1200) },
-  { type: 'villa', count: 14, image: img('type-villa', 1000, 1200) },
-  { type: 'penthouse', count: 9, image: img('type-penthouse', 1000, 1200) },
-  { type: 'land', count: 7, image: img('type-land', 1000, 1200) },
-  { type: 'commercial', count: 6, image: img('type-commercial', 1000, 1200) },
+// Deterministic catalogue so the listings page + filters have real depth
+// (no Math.random, stable across server/client render, no hydration drift).
+const GEN_TYPES: PropertyType[] = [
+  'apartment', 'apartment', 'apartment', 'penthouse', 'apartment',
+  'villa', 'apartment', 'land', 'apartment', 'commercial',
+];
+const GEN_ROOMS = ['1+1', '2+1', '3+1', '2+1', '1+1', '4+1', '2+1'];
+const GEN_PROJECTS = ['new-level-premium', 'panorama', 'cleopatra-1', 'cleopatra-2', 'city'];
+const GEN_STATUS: PropertyStatus[] = ['ready', 'construction', 'planned'];
+const GEN_CATS: PropertyCategory[][] = [
+  ['new'], ['hot'], ['investment'], ['new', 'investment'], ['hot', 'investment'],
 ];
 
-export const totalListings = 118;
-export const totalRentals = 27;
+const generated: Property[] = Array.from({ length: 40 }, (_, i) => {
+  const type = GEN_TYPES[i % GEN_TYPES.length];
+  const noRooms = type === 'land' || type === 'commercial';
+  const rooms = noRooms ? ', ' : GEN_ROOMS[i % GEN_ROOMS.length];
+  const d = districts[i % districts.length];
+  const label = propertyTypeLabels[type];
+  const totalFloors = 8 + (i % 7);
+  return {
+    id: `nlg-${1200 + i}`,
+    ref: `NLG-${1200 + i}`,
+    title: {
+      ru: noRooms ? label.ru : `${label.ru} ${rooms}`,
+      en: noRooms ? label.en : `${label.en} ${rooms}`,
+      tr: noRooms ? label.tr : `${rooms} ${label.tr}`,
+    },
+    type,
+    category: GEN_CATS[i % GEN_CATS.length],
+    projectId: GEN_PROJECTS[i % GEN_PROJECTS.length],
+    city: 'Alanya',
+    district: d.label,
+    price: 95000 + ((i * 37) % 64) * 8500,
+    rooms,
+    area: noRooms ? 120 + ((i * 17) % 30) * 20 : 48 + ((i * 11) % 40) * 4,
+    floor: noRooms ? 0 : i % totalFloors,
+    totalFloors,
+    distanceToSea: 120 + ((i * 47) % 22) * 85,
+    seaView: i % 3 !== 0,
+    furnished: i % 2 === 0,
+    completionYear: 2024 + (i % 4),
+    status: GEN_STATUS[i % GEN_STATUS.length],
+    image: img(`p-${(i % 8) + 1}`, 1200, 900),
+    gallery: [],
+  };
+});
 
-export const propertyTypeLabels: Record<PropertyType, Record<'ru' | 'en' | 'tr', string>> = {
-  apartment: { ru: 'Апартаменты', en: 'Apartments', tr: 'Daireler' },
-  villa: { ru: 'Виллы', en: 'Villas', tr: 'Villalar' },
-  penthouse: { ru: 'Пентхаусы', en: 'Penthouses', tr: 'Çatı katları' },
-  land: { ru: 'Земля', en: 'Land', tr: 'Arsa' },
-  commercial: { ru: 'Коммерция', en: 'Commercial', tr: 'Ticari' },
-};
+export const properties: Property[] = [...baseProperties, ...generated];
+
+export const featuredProperties = properties.filter((p) => p.featured);
+
+const ALL_TYPES: PropertyType[] = ['apartment', 'villa', 'penthouse', 'land', 'commercial'];
+
+export const propertyTypeCards: PropertyTypeCard[] = ALL_TYPES.map((type) => ({
+  type,
+  count: properties.filter((p) => p.type === type).length,
+  image: img(`type-${type}`, 1000, 1200),
+}));
+
+export const totalListings = properties.length;
+export const totalRentals = 27;
