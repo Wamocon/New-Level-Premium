@@ -54,6 +54,12 @@
     "dragHint": "Drag to rotate",
     "reelLabel": "From the air"
   },
+  "cinematic": {
+    "eyebrow": "The Alanya coast",
+    "heading": "Where every day feels like a holiday.",
+    "subline": "Minutes from the sea and wrapped in pine forest, our residences bring the resort feeling home.",
+    "cta": "Discover the complex"
+  },
   "featured": {
     "eyebrow": "Selected for you",
     "heading": "Featured Listings",

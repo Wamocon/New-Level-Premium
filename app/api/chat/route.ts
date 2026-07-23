@@ -31,12 +31,25 @@ export async function POST(req: Request) {
     );
   }
 
+  const fallback: Record<Locale, string> = {
+    en: 'Sorry, I could not reach the assistant just now. Please try again in a moment, or message us on WhatsApp and a human advisor will help right away.',
+    ru: 'Извините, сейчас не удалось получить ответ ассистента. Попробуйте ещё раз через минуту или напишите нам в WhatsApp, и наш консультант сразу поможет.',
+    tr: 'Üzgünüz, şu anda asistana ulaşılamadı. Lütfen birazdan tekrar deneyin veya WhatsApp’tan yazın; danışmanımız hemen yardımcı olur.',
+  };
+
   const result = streamText({
     model: resolveModel(),
     system: buildSystemPrompt(locale),
     messages: await convertToModelMessages(messages),
     temperature: 0.4,
+    // Don't hang forever if the upstream model stalls (flaky/throttled endpoint).
+    abortSignal: AbortSignal.timeout(28_000),
+    onError: ({ error }) => {
+      console.error('[chat] stream error:', error);
+    },
   });
 
-  return result.toUIMessageStreamResponse();
+  return result.toUIMessageStreamResponse({
+    onError: () => fallback[locale],
+  });
 }

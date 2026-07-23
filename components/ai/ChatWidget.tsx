@@ -28,6 +28,10 @@ export function ChatWidget() {
   const { messages, sendMessage, status, error } = useChat({ transport });
 
   const busy = status === 'submitted' || status === 'streaming';
+  const last = messages[messages.length - 1];
+  // Keep the typing indicator up until the assistant's first token actually
+  // arrives, so a slow/stalled upstream never looks like a dead chat.
+  const waiting = busy && (!last || last.role === 'user' || textOf(last).length === 0);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
@@ -111,7 +115,7 @@ export function ChatWidget() {
                 </Bubble>
               ))}
 
-              {status === 'submitted' && <Typing />}
+              {waiting && <Typing />}
 
               {error && (
                 <div className="rounded-2xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-red-300/90">

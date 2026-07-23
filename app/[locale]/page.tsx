@@ -9,6 +9,7 @@ import { MapCallout } from '@/components/sections/MapCallout';
 import { Services } from '@/components/sections/Services';
 import { BlogTeaser } from '@/components/sections/BlogTeaser';
 import { Reviews } from '@/components/sections/Reviews';
+import { CinematicBand } from '@/components/sections/CinematicBand';
 import { ConsultationCta } from '@/components/sections/ConsultationCta';
 import { ContactMap } from '@/components/sections/ContactMap';
 
@@ -32,6 +33,7 @@ export default async function HomePage({
       <Services />
       <BlogTeaser />
       <Reviews />
+      <CinematicBand />
       <ConsultationCta />
       <ContactMap />
     </>

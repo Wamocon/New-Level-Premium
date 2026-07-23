@@ -54,6 +54,12 @@
     "dragHint": "Döndürmek için sürükleyin",
     "reelLabel": "Havadan"
   },
+  "cinematic": {
+    "eyebrow": "Alanya kıyısı",
+    "heading": "Her günün tatil gibi hissettirdiği yer.",
+    "subline": "Denize dakikalar uzaklıkta ve çam ormanıyla çevrili rezidanslarımız tatil hissini evinize taşır.",
+    "cta": "Kompleksi keşfedin"
+  },
   "featured": {
     "eyebrow": "Sizin için seçtik",
     "heading": "Öne Çıkan Konutlar",

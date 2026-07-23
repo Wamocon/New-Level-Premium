@@ -36,7 +36,7 @@ export function MapCallout() {
           />
 
           {/* content */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6 md:inset-y-0 md:right-auto md:flex md:w-[30rem] md:max-w-[82%] md:flex-col md:justify-center md:p-12">
+          <div className="on-dark pointer-events-none absolute inset-x-0 bottom-0 p-6 md:inset-y-0 md:right-auto md:flex md:w-[30rem] md:max-w-[82%] md:flex-col md:justify-center md:p-12">
             <div className="pointer-events-auto max-w-md">
               <span className="inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                 <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />

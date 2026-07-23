@@ -11,7 +11,7 @@ const buttonVariants = cva(
         primary:
           'bg-gold text-obsidian hover:-translate-y-0.5 hover:bg-gold-soft hover:shadow-[0_12px_40px_-12px_rgba(201,162,75,0.7)]',
         metal:
-          'bg-gradient-to-b from-white via-champagne to-bronze text-obsidian hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-14px_rgba(201,162,75,0.85)]',
+          'bg-gradient-to-b from-[#ffffff] via-[#e7d6b0] to-[#9c7a3c] text-obsidian hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-14px_rgba(201,162,75,0.85)]',
         outline:
           'border border-white/15 text-cloud hover:border-gold/70 hover:bg-white/[0.03] hover:text-gold',
         ghost: 'text-cloud/80 hover:text-gold',

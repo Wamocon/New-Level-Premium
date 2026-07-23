@@ -23,7 +23,7 @@ export function ConsultationCta() {
   return (
     <section id="consultation" className="relative py-24 md:py-32">
       <div className="container-lux">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/8 bg-onyx">
+        <div className="on-dark relative overflow-hidden rounded-[2.5rem] border border-white/8 bg-onyx">
           {/* Alanya cityscape backdrop */}
           <Image
             src="/images/original/2-D3qltBdX.png"

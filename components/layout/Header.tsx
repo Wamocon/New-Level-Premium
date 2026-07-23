@@ -138,7 +138,6 @@ export function Header() {
             <Link href="/properties" aria-label="Search" className="text-cloud/60 transition-colors hover:text-gold">
               <Search className="size-4" />
             </Link>
-            <LanguageSwitcher />
           </div>
         </div>
       </div>
@@ -167,7 +166,7 @@ export function Header() {
 
           <div className="flex items-center gap-2.5">
             <ThemeToggle />
-            <LanguageSwitcher className="lg:hidden" />
+            <LanguageSwitcher />
             <Button asChild size="sm" variant="metal" className="hidden md:inline-flex">
               <a href="#consultation">{t('cta')}</a>
             </Button>
