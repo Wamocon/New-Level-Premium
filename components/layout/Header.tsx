@@ -86,7 +86,7 @@ export function Header() {
       {/* top contact bar (desktop, collapses on scroll) */}
       <div
         className={cn(
-          'hidden overflow-hidden border-b border-white/5 bg-obsidian/70 backdrop-blur-xl transition-all duration-500 ease-lux lg:block',
+          'hidden overflow-hidden border-b border-white/5 bg-obsidian/80 backdrop-blur-md transition-all duration-500 ease-lux lg:block',
           scrolled ? 'h-0 opacity-0' : 'h-10 opacity-100',
         )}
       >
@@ -146,7 +146,7 @@ export function Header() {
       <div
         className={cn(
           'transition-all duration-500 ease-lux',
-          scrolled ? 'border-b border-white/5 bg-obsidian/70 backdrop-blur-xl' : 'bg-transparent',
+          scrolled ? 'border-b border-white/5 bg-obsidian/80 backdrop-blur-md' : 'bg-transparent',
         )}
       >
         <div className="container-lux flex h-20 items-center justify-between gap-6">

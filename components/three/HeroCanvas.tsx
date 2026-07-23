@@ -9,7 +9,6 @@ import {
   RoundedBox,
   AdaptiveDpr,
 } from '@react-three/drei';
-import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { prefersReducedMotion } from '@/lib/hooks';
@@ -52,7 +51,14 @@ function Tower({ def }: { def: TowerDef }) {
           envMapIntensity={1.5}
         />
       ) : (
-        <meshStandardMaterial color={GOLD} metalness={1} roughness={0.24} envMapIntensity={1.35} />
+        <meshStandardMaterial
+          color={GOLD}
+          metalness={1}
+          roughness={0.24}
+          envMapIntensity={1.35}
+          emissive={GOLD}
+          emissiveIntensity={0.16}
+        />
       )}
     </RoundedBox>
   );
@@ -135,7 +141,7 @@ export default function HeroCanvas() {
     <div ref={wrapRef} className="absolute inset-0">
       <Canvas
         frameloop={frameloop}
-        dpr={[1, 1.25]}
+        dpr={[1, 1.2]}
         performance={{ min: 0.5 }}
         gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
         camera={{ position: [0, 1.1, 8.6], fov: 34 }}
@@ -152,14 +158,17 @@ export default function HeroCanvas() {
           <Cluster reduced={reduced} />
         </Float>
         <Dust reduced={reduced} />
+        {/* Baked once (frames=1) instead of every frame: the shadow is very soft
+           and the towers rotate slowly, so a static bake is imperceptible and
+           removes a full shadow render pass per frame. */}
         <ContactShadows
           position={[0, -0.9, 0]}
           opacity={0.5}
           scale={18}
           blur={2.8}
           far={6}
-          resolution={256}
-          frames={reduced ? 1 : undefined}
+          resolution={160}
+          frames={1}
           color="#000000"
         />
         <Environment resolution={256} frames={1}>
@@ -168,10 +177,6 @@ export default function HeroCanvas() {
           <Lightformer intensity={1.1} position={[6, -1, 2]} scale={[8, 8, 1]} color="#b98b3f" />
           <Lightformer form="ring" intensity={2.4} position={[0, 2, 3.5]} scale={3} color="#ffffff" />
         </Environment>
-        <EffectComposer enableNormalPass={false}>
-          <Bloom mipmapBlur intensity={0.45} luminanceThreshold={0.72} luminanceSmoothing={0.2} />
-          <Vignette eskil={false} offset={0.25} darkness={0.72} />
-        </EffectComposer>
       </Canvas>
     </div>
   );

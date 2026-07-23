@@ -36,7 +36,9 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       ref={lenisRef}
       options={{
         autoRaf: false,
-        lerp: 0.12,
+        // A touch snappier than the default 0.1 so scrolling tracks the wheel
+        // closely (less "floaty lag") while staying smooth.
+        lerp: 0.15,
         smoothWheel: true,
         syncTouch: true,
         wheelMultiplier: 1,
