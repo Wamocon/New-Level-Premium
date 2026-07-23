@@ -24,9 +24,36 @@ export function ContentPage({ page }: { page: ContentPageData }) {
   return (
     <section className="relative min-h-dvh pb-24 pt-28 md:pt-36">
       <div className="container-lux">
-        {/* hero */}
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
+        {/* hero: two columns with an image, otherwise a centred reading column */}
+        {hero ? (
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h1 className="font-display text-4xl font-bold tracking-tight text-cloud md:text-5xl">
+                {page.title[locale]}
+              </h1>
+              {intro.length > 0 && (
+                <div className="mt-6 space-y-4">
+                  {intro.map((p, i) => (
+                    <p key={i} className="text-lg leading-relaxed text-cloud/70">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/8">
+              <Image
+                src={hero}
+                alt={page.title[locale]}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="mx-auto max-w-3xl">
             <h1 className="font-display text-4xl font-bold tracking-tight text-cloud md:text-5xl">
               {page.title[locale]}
             </h1>
@@ -40,23 +67,11 @@ export function ContentPage({ page }: { page: ContentPageData }) {
               </div>
             )}
           </div>
-          {hero && (
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/8">
-              <Image
-                src={hero}
-                alt={page.title[locale]}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-                priority
-              />
-            </div>
-          )}
-        </div>
+        )}
 
         {/* body */}
         {page.body[locale] && (
-          <div className="mt-16 max-w-3xl">
+          <div className={`mt-14 max-w-3xl${hero ? '' : ' mx-auto'}`}>
             <RichText text={page.body[locale]} />
           </div>
         )}

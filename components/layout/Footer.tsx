@@ -185,9 +185,9 @@ export async function Footer() {
             <Link href="/privacy-policy" className="transition-colors hover:text-cloud/80">
               {t('privacy')}
             </Link>
-            <a href="#top" className="transition-colors hover:text-cloud/80">
+            <Link href="/terms-of-use" className="transition-colors hover:text-cloud/80">
               {t('terms')}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
