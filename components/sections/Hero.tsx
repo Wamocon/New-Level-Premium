@@ -13,7 +13,8 @@ import { gsap, registerGsap } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect, prefersReducedMotion } from '@/lib/hooks';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 
-const HeroCanvas = dynamic(() => import('@/components/three/HeroCanvas'), {
+// EXPERIMENT (branch): real aerial video + photo backdrop instead of the gold bars.
+const HeroMedia = dynamic(() => import('@/components/sections/HeroMedia'), {
   ssr: false,
   loading: () => null,
 });
@@ -64,7 +65,7 @@ export function Hero() {
             showCanvas ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          {showCanvas && <HeroCanvas />}
+          {showCanvas && <HeroMedia />}
         </div>
       </div>
 
