@@ -109,13 +109,10 @@ html.lenis body {
 /* ---- Surface panel: solid, theme-aware (replaces the old frosted glass so
    panels read cleanly over any content) ---- */
 .glass {
+  /* graphite is theme-aware AND dark-band-aware (via .on-dark): white on light
+     pages, dark inside dark bands, so panel text always keeps its contrast. */
   background-color: var(--color-graphite);
   border: 1px solid color-mix(in oklab, var(--color-cloud) 12%, transparent);
-}
-:root[data-theme="light"] .glass {
-  background-color: #ffffff;
-  border-color: color-mix(in oklab, #201b14 12%, transparent);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
 }
 
 /* ---- Layout helper ---- */
