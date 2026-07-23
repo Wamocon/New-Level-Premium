@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/Button';
@@ -22,6 +22,19 @@ export function Hero() {
   const t = useTranslations('hero');
   const locale = useLocale() as Locale;
   const root = useRef<HTMLElement>(null);
+  // Defer the WebGL backdrop until the browser is idle so its init never blocks
+  // first paint / initial interaction, then fade it in.
+  const [showCanvas, setShowCanvas] = useState(false);
+
+  useEffect(() => {
+    const ric = window.requestIdleCallback;
+    if (ric) {
+      const id = ric(() => setShowCanvas(true), { timeout: 1200 });
+      return () => window.cancelIdleCallback?.(id);
+    }
+    const to = window.setTimeout(() => setShowCanvas(true), 600);
+    return () => window.clearTimeout(to);
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     if (prefersReducedMotion()) return;
@@ -35,11 +48,6 @@ export function Hero() {
         stagger: 0.11,
         delay: 0.15,
       });
-      gsap.from('[data-hero-canvas]', {
-        opacity: 0,
-        duration: 1.8,
-        ease: 'power2.out',
-      });
     }, root);
     return () => ctx.revert();
   }, []);
@@ -49,9 +57,15 @@ export function Hero() {
       ref={root}
       className="grain relative flex min-h-dvh flex-col justify-start overflow-hidden pb-16 pt-28 lg:justify-center lg:pb-40"
     >
-      {/* 3D backdrop */}
+      {/* 3D backdrop (deferred + faded in) */}
       <div data-hero-canvas className="absolute inset-0 z-0">
-        <HeroCanvas />
+        <div
+          className={`size-full transition-opacity duration-[1400ms] ease-out ${
+            showCanvas ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {showCanvas && <HeroCanvas />}
+        </div>
       </div>
 
       {/* atmospheric gradients */}

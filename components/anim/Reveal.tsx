@@ -17,9 +17,10 @@ interface RevealProps {
 }
 
 /**
- * Scroll-triggered reveal. If `stagger` is set, its direct children animate
- * in sequence. Content stays visible when JS is disabled (GSAP only hides it
- * once the tween is created on the client).
+ * Scroll-triggered reveal driven by IntersectionObserver (not GSAP
+ * ScrollTrigger) so it fires reliably under Lenis smooth scroll. Content is
+ * only hidden once JS runs, reveals as soon as it enters the viewport, and a
+ * fail-safe guarantees it can never stay invisible.
  */
 export function Reveal({
   children,
@@ -37,20 +38,49 @@ export function Reveal({
     if (!el || prefersReducedMotion()) return;
     registerGsap();
 
+    const targets: Element[] = stagger ? Array.from(el.children) : [el];
+    if (!targets.length) return;
+
     const ctx = gsap.context(() => {
-      const target = stagger ? (el.children as unknown as Element[]) : el;
-      gsap.from(target, {
-        y,
-        opacity: 0,
+      gsap.set(targets, { y, opacity: 0 });
+    }, el);
+
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      gsap.to(targets, {
+        y: 0,
+        opacity: 1,
         duration,
         delay,
         ease: 'power3.out',
         stagger: stagger ?? 0,
-        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        overwrite: 'auto',
       });
-    }, el);
+    };
 
-    return () => ctx.revert();
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          reveal();
+          io.disconnect();
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.01 },
+    );
+    io.observe(el);
+
+    // Fail-safe: if the element is at/above the fold but never triggered, show it.
+    const safety = window.setTimeout(() => {
+      if (!revealed && el.getBoundingClientRect().top < window.innerHeight) reveal();
+    }, 1500);
+
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+      ctx.revert();
+    };
   }, [y, delay, duration, stagger]);
 
   // createElement keeps the polymorphic `as` prop without tripping TS's

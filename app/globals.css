@@ -118,35 +118,38 @@ html.lenis body {
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
+  /* Rich, clearly-tinted base (warm top -> cool bottom) plus soft colour
+     fields. All static, so it carries the "not pure black" look for free. */
   background:
-    radial-gradient(85% 60% at 50% -6%, rgba(201, 162, 75, 0.1), transparent 58%),
-    radial-gradient(70% 55% at 102% 104%, rgba(44, 122, 128, 0.08), transparent 58%),
-    radial-gradient(60% 55% at -5% 55%, rgba(201, 162, 75, 0.045), transparent 60%),
-    linear-gradient(180deg, rgba(20, 17, 22, 0.55), rgba(10, 9, 12, 0.15) 45%, transparent 80%);
+    radial-gradient(95% 60% at 50% -8%, rgba(201, 162, 75, 0.16), transparent 55%),
+    radial-gradient(80% 62% at 100% 108%, rgba(38, 120, 128, 0.15), transparent 55%),
+    radial-gradient(62% 60% at -6% 42%, rgba(201, 162, 75, 0.08), transparent 58%),
+    linear-gradient(163deg, #17130e 0%, #100e14 44%, #0b0d11 100%);
 }
 .ambient::before,
 .ambient::after {
   content: "";
   position: absolute;
   border-radius: 9999px;
-  filter: blur(100px);
+  filter: blur(72px);
   will-change: transform;
+  transform: translateZ(0);
 }
 .ambient::before {
-  width: 48vw;
-  height: 48vw;
-  left: -12vw;
-  top: -14vw;
-  background: radial-gradient(circle, rgba(201, 162, 75, 0.2), transparent 62%);
-  animation: ambientDrift1 30s ease-in-out infinite alternate;
+  width: 42vw;
+  height: 42vw;
+  left: -10vw;
+  top: -12vw;
+  background: radial-gradient(circle, rgba(201, 162, 75, 0.16), transparent 60%);
+  animation: ambientDrift1 32s ease-in-out infinite alternate;
 }
 .ambient::after {
-  width: 44vw;
-  height: 44vw;
-  right: -10vw;
-  bottom: -16vw;
-  background: radial-gradient(circle, rgba(44, 122, 128, 0.16), transparent 62%);
-  animation: ambientDrift2 38s ease-in-out infinite alternate;
+  width: 38vw;
+  height: 38vw;
+  right: -8vw;
+  bottom: -14vw;
+  background: radial-gradient(circle, rgba(38, 120, 128, 0.13), transparent 60%);
+  animation: ambientDrift2 40s ease-in-out infinite alternate;
 }
 @keyframes ambientDrift1 {
   from { transform: translate3d(0, 0, 0) scale(1); }
