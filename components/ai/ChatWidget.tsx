@@ -8,7 +8,8 @@ import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/lib/types';
 import { STARTERS } from '@/lib/ai/starters';
 import { cn } from '@/lib/utils';
-import { MessageCircle, X, ArrowUp, Sparkles } from 'lucide-react';
+import { ConciergeAvatar } from '@/components/ai/ConciergeAvatar';
+import { X, ArrowUp } from 'lucide-react';
 
 const textOf = (m: UIMessage) =>
   m.parts.map((p) => (p.type === 'text' ? p.text : '')).join('');
@@ -54,10 +55,10 @@ export function ChatWidget() {
             onClick={() => setOpen(true)}
             aria-label={t('open')}
             data-testid="chat-launcher"
-            className="group fixed bottom-6 right-6 z-[80] flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-gold-soft to-bronze text-obsidian shadow-[0_16px_50px_-12px_rgba(201,162,75,0.65)]"
+            className="group fixed bottom-6 right-6 z-[80] size-14 rounded-full shadow-[0_16px_50px_-12px_rgba(201,162,75,0.65)]"
           >
             <span className="absolute inset-0 animate-ping rounded-full bg-gold/40 [animation-duration:2.6s]" />
-            <MessageCircle className="relative size-6" />
+            <ConciergeAvatar className="relative size-14 transition-transform duration-300 group-hover:scale-105" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -76,9 +77,7 @@ export function ChatWidget() {
           >
             {/* header */}
             <div className="flex items-center gap-3 border-b border-white/8 bg-white/[0.03] px-5 py-4">
-              <div className="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-gold-soft to-bronze text-obsidian">
-                <Sparkles className="size-5" />
-              </div>
+              <ConciergeAvatar className="size-10" />
               <div className="min-w-0 flex-1">
                 <div className="truncate font-display text-base font-semibold text-cloud">
                   {t('title')}
