@@ -30,7 +30,7 @@ export function PropertyTypes() {
           {propertyTypeCards.map((card) => (
             <Link
               key={card.type}
-              href="/properties"
+              href={{ pathname: '/properties', query: { type: card.type } }}
               aria-label={propertyTypeLabels[card.type][locale]}
               className="group relative block overflow-hidden rounded-3xl border border-white/8 transition-all duration-500 ease-lux hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_30px_80px_-40px_rgba(201,162,75,0.4)]"
             >

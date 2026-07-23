@@ -62,7 +62,7 @@
     "eyebrow": "Explore by type",
     "heading": "Property for the way you live",
     "subline": "Five formats on the Mediterranean coast, choose the one that fits.",
-    "count": "{count} objects"
+    "count": "{count, plural, one {# object} other {# objects}}"
   },
   "values": {
     "eyebrow": "Why New Level Group",
