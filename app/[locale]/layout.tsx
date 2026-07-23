@@ -94,6 +94,13 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-obsidian text-cloud antialiased">
+        {/* set the theme before first paint (no flash), default to the brand's dark */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}requestAnimationFrame(function(){document.documentElement.classList.add('theme-ready');});})();",
+          }}
+        />
         <div className="ambient" aria-hidden="true" />
         <script
           type="application/ld+json"

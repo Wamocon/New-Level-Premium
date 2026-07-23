@@ -55,7 +55,7 @@ export function Hero() {
   return (
     <section
       ref={root}
-      className="grain relative flex min-h-dvh flex-col justify-start overflow-hidden pb-16 pt-28 lg:justify-center lg:pb-40"
+      className="grain on-dark relative flex min-h-dvh flex-col justify-start overflow-hidden bg-[linear-gradient(180deg,#1c1610_0%,#14131a_52%,#0a0b0e_100%)] pb-16 pt-28 lg:justify-center lg:pb-40"
     >
       {/* 3D backdrop (deferred + faded in) */}
       <div data-hero-canvas className="absolute inset-0 z-0">

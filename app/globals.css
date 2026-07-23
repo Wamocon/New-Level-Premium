@@ -224,3 +224,110 @@ html.lenis body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   LIGHT THEME  (html[data-theme="light"])
+   Warm ivory surfaces + deep warm-ink text. We flip the text and
+   surface tokens at the :root level so the whole site turns light
+   without touching components. Tokens that carry contrast on the
+   gold accent (obsidian) stay dark. Sections that are meant to
+   stay dark, the WebGL hero, the header, the footer and media
+   cards, opt back into the dark palette with `.on-dark`.
+   ============================================================ */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-obsidian: #08080A;   /* kept dark: text on gold + dark anchors */
+  --color-ink: #ffffff;
+  --color-graphite: #ffffff;
+  --color-onyx: #ece5d8;
+  --color-cloud: #201b14;      /* primary text -> warm near-black */
+  --color-mist: #5b554a;       /* secondary text */
+  --color-fog: #8a8375;        /* muted text */
+  --color-sand: #2a241b;       /* was a light tone, now dark on light */
+  --color-linen: #221d16;
+  --color-white: #211c15;      /* flips white/N hairlines + fills to warm ink */
+  --color-gold: #997726;       /* deeper gold reads on ivory */
+  --color-gold-soft: #b0893a;
+  --color-champagne: #7f6224;
+  --color-bronze: #7a5f2c;
+}
+
+/* Re-assert the dark palette inside intentionally-dark sections. */
+:root[data-theme="light"] .on-dark {
+  --color-obsidian: #08080A;
+  --color-ink: #0e0e11;
+  --color-graphite: #16161a;
+  --color-onyx: #1e1e24;
+  --color-cloud: #fbfaf7;
+  --color-mist: #a7a7b2;
+  --color-fog: #71717a;
+  --color-sand: #f4efe7;
+  --color-linen: #ebe3d5;
+  --color-white: #ffffff;
+  --color-gold: #c9a24b;
+  --color-gold-soft: #d8b968;
+  --color-champagne: #e7d6b0;
+  --color-bronze: #9c7a3c;
+}
+
+:root[data-theme="light"] body {
+  background-color: #f2ede3;
+  background-image: linear-gradient(
+    180deg,
+    #f7f2e8 0%,
+    #efece4 22%,
+    #f5f0e6 45%,
+    #edece5 68%,
+    #f6f1e7 100%
+  );
+  color: var(--color-cloud);
+}
+
+/* softer, lighter ambient wash on ivory */
+:root[data-theme="light"] .ambient {
+  background:
+    radial-gradient(85% 55% at 50% -6%, rgba(201, 162, 75, 0.1), transparent 56%),
+    radial-gradient(76% 62% at 104% 106%, rgba(46, 138, 146, 0.07), transparent 56%),
+    radial-gradient(58% 58% at -8% 38%, rgba(201, 162, 75, 0.06), transparent 58%),
+    radial-gradient(130% 105% at 50% 42%, rgba(230, 224, 210, 0.5), transparent 72%);
+}
+:root[data-theme="light"] .ambient::before {
+  background: radial-gradient(circle, rgba(201, 162, 75, 0.1), transparent 60%);
+}
+:root[data-theme="light"] .ambient::after {
+  background: radial-gradient(circle, rgba(46, 138, 146, 0.08), transparent 60%);
+}
+
+/* metal wordmark: deeper gold on light, but keep the bright version on-dark */
+:root[data-theme="light"] .text-metal {
+  background-image: linear-gradient(180deg, #b8973f 0%, #99751f 48%, #7c5f22 100%);
+}
+:root[data-theme="light"] .on-dark .text-metal {
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f2e6c6 16%,
+    #e7d6b0 33%,
+    #c9a24b 52%,
+    #7f6329 74%,
+    #e7d6b0 100%
+  );
+}
+
+/* light scrollbars */
+:root[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #ece5d8;
+}
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #cdbf9a;
+  border-color: #ece5d8;
+}
+:root[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-bronze);
+}
+
+/* theme transition: gentle, and never during the very first paint */
+:root.theme-ready body,
+:root.theme-ready .ambient {
+  transition: background-color 0.4s ease, background-image 0.4s ease;
+}

@@ -52,7 +52,7 @@ export function PropertyTypes() {
                 </div>
 
                 {/* label */}
-                <div className="absolute inset-x-0 bottom-0 p-5">
+                <div className="on-dark absolute inset-x-0 bottom-0 p-5">
                   <h3 className="font-display text-xl font-bold tracking-tight text-linen">
                     {propertyTypeLabels[card.type][locale]}
                   </h3>

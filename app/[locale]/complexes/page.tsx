@@ -64,7 +64,7 @@ export default async function ComplexesPage({
                     {p.badge[loc]}
                   </span>
                 )}
-                <div className="absolute inset-x-4 bottom-4">
+                <div className="on-dark absolute inset-x-4 bottom-4">
                   <h3 className="font-display text-xl font-bold text-cloud">{p.name}</h3>
                   <p className="mt-1 flex items-center gap-1.5 text-sm text-cloud/70">
                     <MapPin className="size-3.5 text-gold" />

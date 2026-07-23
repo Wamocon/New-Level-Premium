@@ -8,6 +8,7 @@ import { site } from '@/lib/data/site';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
 import { LogoMark } from '@/components/brand/LogoMark';
 import {
   InstagramIcon,
@@ -82,7 +83,7 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="on-dark fixed inset-x-0 top-0 z-50">
       {/* top contact bar (desktop, collapses on scroll) */}
       <div
         className={cn(
@@ -165,6 +166,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2.5">
+            <ThemeToggle />
             <LanguageSwitcher className="lg:hidden" />
             <Button asChild size="sm" variant="metal" className="hidden md:inline-flex">
               <a href="#consultation">{t('cta')}</a>
