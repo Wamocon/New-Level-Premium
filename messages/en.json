@@ -19,11 +19,14 @@
     "cta": "Book a consultation",
     "partners": "For Partners",
     "sell": "Sell Property",
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "history": "Our history",
+    "team": "Our team",
+    "privacy": "Privacy Policy"
   },
   "hero": {
     "eyebrow": "Our own developments on the Alanya coast",
-    "headlineTop": "Premium residences",
+    "headlineTop": "Landmark residences",
     "headlineAccent": "by the Mediterranean",
     "subline": "New Level Group designs, builds and sells its own residential complexes in Alanya. Premium quality at every stage, guaranteed by the developer.",
     "ctaPrimary": "Browse properties",
@@ -35,7 +38,7 @@
     "type": "Property type",
     "typeAll": "All types",
     "location": "Location",
-    "locationAll": "All Alanya",
+    "locationAll": "All locations",
     "rooms": "Rooms",
     "roomsAll": "Any",
     "price": "Price",
@@ -97,6 +100,22 @@
     "subline": "From property management to residence and citizenship, we stay by your side at every step.",
     "cta": "All services"
   },
+  "service": {
+    "eyebrow": "Services",
+    "title": "Our services",
+    "subline": "Full-cycle support for buying, owning and earning from property in Türkiye, from your first viewing to citizenship.",
+    "back": "All services",
+    "cta": "Book a consultation",
+    "learnMore": "Learn more",
+    "helpTitle": "Need guidance?",
+    "helpText": "Our specialists will walk you through every step, in your language.",
+    "other": "Other services"
+  },
+  "page": {
+    "ctaTitle": "Want to know more?",
+    "ctaText": "Leave a request and our manager will contact you shortly.",
+    "cta": "Book a consultation"
+  },
   "blog": {
     "eyebrow": "Insights & guides",
     "heading": "An Expert View on Alanya",
@@ -108,7 +127,14 @@
     "p2c": "Laws and documents",
     "p3t": "What to do after buying property in Turkey: a complete owner’s checklist",
     "p3c": "Useful information",
-    "readMore": "Read more"
+    "readMore": "Read",
+    "pageTitle": "Insights and guides",
+    "pageSubline": "Market analysis, legal guides and news on buying, owning and renting property in Türkiye.",
+    "all": "All",
+    "related": "Related articles",
+    "back": "All articles",
+    "contents": "In this article",
+    "readingTime": "{min} min read"
   },
   "cta": {
     "eyebrow": "Let’s talk",
@@ -131,7 +157,8 @@
     "colContacts": "Contact",
     "rights": "© {year} New Level Group. All rights reserved.",
     "privacy": "Privacy Policy",
-    "terms": "Terms of use"
+    "terms": "Terms of use",
+    "colLegal": "Legal"
   },
   "chat": {
     "title": "New Level Concierge",
@@ -157,7 +184,10 @@
     "heading": "What our clients say",
     "subline": "Real stories from owners across Europe, Russia and Türkiye.",
     "cta": "All reviews",
-    "google": "See us on Google"
+    "google": "See us on Google",
+    "pageSubline": "Verified stories from owners across Europe, Russia and Türkiye who bought, invested and moved with New Level Group.",
+    "leaveTitle": "Bought with us?",
+    "leaveText": "Share your experience on Google, it helps other families choose with confidence."
   },
   "contact": {
     "eyebrow": "Find us",
@@ -203,7 +233,7 @@
     "area": "Area",
     "toSea": "To sea",
     "project": "Project",
-    "autodesc": "{type} {rooms} in {project}, {district}. {distance} m to the sea, completion {completion}."
+    "autodesc": "{type} {rooms} in {district}, {city}. {distance} m to the sea, completion {completion}."
   },
   "complex": {
     "location": "Location",
@@ -230,6 +260,25 @@
     "distancesTitle": "Distances",
     "statusLabel": "Status",
     "complexAreaLabel": "Complex area",
-    "unitLayout": "Layout"
+    "unitLayout": "Layout",
+    "floorPlansTitle": "Floor plans"
+  },
+  "form": {
+    "name": "Your name",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Your message (optional)",
+    "consent": "By submitting, you agree to the processing of your personal data.",
+    "send": "Send request",
+    "success": "Thank you! We will contact you shortly. WhatsApp is opening so you can send it right away.",
+    "continueWa": "Continue on WhatsApp",
+    "chatWhatsapp": "Chat on WhatsApp"
+  },
+  "properties": {
+    "all": "All properties",
+    "otherSearches": "Other searches",
+    "browseByLocation": "Browse by location",
+    "metaTitle": "Property for sale in Turkey",
+    "metaDescription": "Browse apartments, villas and penthouses for sale in Alanya and across Turkey, direct from New Level Group with interest-free installments and full legal support to the TAPU."
   }
 }

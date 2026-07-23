@@ -12,7 +12,7 @@ export const services: Service[] = [
     },
   },
   {
-    id: 'after-sales',
+    id: 'after-sales-service',
     icon: 'Wrench',
     title: { ru: 'Послепродажный сервис', en: 'After-sales service', tr: 'Satış sonrası hizmet' },
     description: {
@@ -22,7 +22,7 @@ export const services: Service[] = [
     },
   },
   {
-    id: 'residence-permit',
+    id: 'residence-permit-turkey',
     icon: 'BadgeCheck',
     title: { ru: 'ВНЖ в Турции', en: 'Residence permit in Turkey', tr: 'Türkiye’de oturma izni' },
     description: {
@@ -32,7 +32,7 @@ export const services: Service[] = [
     },
   },
   {
-    id: 'citizenship',
+    id: 'citizenship-turkey',
     icon: 'Landmark',
     title: { ru: 'Гражданство Турции', en: 'Turkish citizenship', tr: 'Türk vatandaşlığı' },
     description: {

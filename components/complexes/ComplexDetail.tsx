@@ -37,7 +37,7 @@ export function ComplexDetail({
         ];
   const [active, setActive] = useState(0);
 
-  const specs: [string, string | undefined][] = [
+  const specs: [string, string | null | undefined][] = [
     [t('location'), project.location[locale]],
     [t('price'), `${t('from')} ${formatPrice(project.priceFrom, locale)}`],
     [t('layouts'), project.layouts],
@@ -82,7 +82,7 @@ export function ComplexDetail({
               {project.name}
             </h1>
             <p className="mt-3 text-lg text-cloud/70">{project.tagline[locale]}</p>
-            {detail && (
+            {detail?.status[locale] && (
               <p className="mt-2 text-sm text-cloud/45">{detail.status[locale]}</p>
             )}
 
@@ -203,12 +203,35 @@ export function ComplexDetail({
                       <td className="px-6 py-4 font-semibold text-cloud">{u.layout}</td>
                       <td className="px-6 py-4 text-cloud/70">{u.area}</td>
                       <td className="px-6 py-4 font-display font-bold text-metal">
-                        {t('from')} {u.priceFrom}
+                        {u.priceFrom ? `${t('from')} ${u.priceFrom}` : ''}
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {/* floor plans */}
+        {detail && detail.floorPlans.length > 0 && (
+          <div className="mt-16">
+            <h2 className="font-display text-2xl font-bold text-cloud">{t('floorPlansTitle')}</h2>
+            <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
+              {detail.floorPlans.map((src, i) => (
+                <div
+                  key={i}
+                  className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/8 bg-white"
+                >
+                  <Image
+                    src={src}
+                    alt={`${t('floorPlansTitle')} ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-contain p-3"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}

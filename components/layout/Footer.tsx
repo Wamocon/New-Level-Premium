@@ -38,7 +38,7 @@ export async function Footer() {
         className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[46rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[120px]"
       />
       <div className="container-lux relative py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_0.9fr_1fr_1fr_1.1fr]">
           {/* brand */}
           <div className="max-w-sm">
             <LogoMark className="h-9 text-cloud" />
@@ -62,6 +62,30 @@ export async function Footer() {
             </div>
           </div>
 
+          {/* company */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold/80">
+              {t('colCompany')}
+            </h3>
+            <ul className="mt-5 space-y-3 text-sm text-cloud/60">
+              <li>
+                <Link href="/about" className={linkCls}>
+                  {tn('about')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/history" className={linkCls}>
+                  {tn('history')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/team" className={linkCls}>
+                  {tn('team')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* properties */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold/80">
@@ -79,19 +103,19 @@ export async function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/properties" className={linkCls}>
+                <Link href="/rent" className={linkCls}>
                   {tn('rental')}
                 </Link>
               </li>
               <li>
-                <a href="#consultation" className={linkCls}>
+                <Link href="/sell-property" className={linkCls}>
                   {tn('sell')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#consultation" className={linkCls}>
+                <Link href="/partners" className={linkCls}>
                   {tn('partners')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -104,20 +128,20 @@ export async function Footer() {
             <ul className="mt-5 space-y-3 text-sm text-cloud/60">
               {services.map((s) => (
                 <li key={s.id}>
-                  <a href="#services" className={linkCls}>
+                  <Link href={`/services/${s.id}`} className={linkCls}>
                     {s.title[locale]}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
-                <a href="#blog" className={linkCls}>
+                <Link href="/blog" className={linkCls}>
                   {tn('blog')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#reviews" className={linkCls}>
+                <Link href="/reviews" className={linkCls}>
                   {tn('reviews')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -158,9 +182,9 @@ export async function Footer() {
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-cloud/40 md:flex-row">
           <p>{t('rights', { year })}</p>
           <div className="flex gap-6">
-            <a href="#top" className="transition-colors hover:text-cloud/80">
+            <Link href="/privacy-policy" className="transition-colors hover:text-cloud/80">
               {t('privacy')}
-            </a>
+            </Link>
             <a href="#top" className="transition-colors hover:text-cloud/80">
               {t('terms')}
             </a>

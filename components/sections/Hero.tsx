@@ -47,7 +47,7 @@ export function Hero() {
   return (
     <section
       ref={root}
-      className="grain relative flex min-h-dvh flex-col justify-center overflow-hidden pb-40 pt-28"
+      className="grain relative flex min-h-dvh flex-col justify-start overflow-hidden pb-16 pt-28 lg:justify-center lg:pb-40"
     >
       {/* 3D backdrop */}
       <div data-hero-canvas className="absolute inset-0 z-0">
@@ -121,8 +121,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* search bar */}
-      <div className="container-lux absolute inset-x-0 bottom-10 z-10">
+      {/* search bar: flows under the hero on mobile, pinned to the base on desktop */}
+      <div className="container-lux relative z-10 mt-10 w-full lg:absolute lg:inset-x-0 lg:bottom-10 lg:mt-0">
         <SearchBar />
       </div>
 

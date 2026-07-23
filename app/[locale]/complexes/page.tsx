@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations, getLocale } from 'next-intl/server';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
@@ -5,6 +6,20 @@ import { projects } from '@/lib/data/projects';
 import { formatPrice } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
 import { MapPin, ArrowUpRight } from 'lucide-react';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'complex' });
+  return {
+    title: t('allTitle'),
+    description: t('allSub'),
+    alternates: { canonical: `/${locale}/complexes` },
+  };
+}
 
 export default async function ComplexesPage({
   params,

@@ -1,11 +1,30 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { projects } from '@/lib/data/projects';
 import { complexDetails } from '@/lib/data/complexDetails';
 import { ComplexDetail } from '@/components/complexes/ComplexDetail';
+import type { Locale } from '@/lib/types';
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const project = projects.find((p) => p.id === slug);
+  if (!project) return {};
+  const lc = locale as Locale;
+  return {
+    title: `${project.name} · ${project.location[lc]}`,
+    description: project.description[lc],
+    alternates: { canonical: `/${locale}/complexes/${slug}` },
+    openGraph: { images: project.image ? [project.image] : [] },
+  };
 }
 
 export default async function ComplexPage({

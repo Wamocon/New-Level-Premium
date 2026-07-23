@@ -7,12 +7,12 @@ export interface NavItem {
 }
 
 export const primaryNav: NavItem[] = [
-  { key: 'about', href: 'values', hash: true },
+  { key: 'about', href: '/about' },
   { key: 'objects', href: '/properties' },
   { key: 'complexes', href: '/complexes' },
-  { key: 'rental', href: '/properties' },
-  { key: 'services', href: 'services', hash: true },
-  { key: 'blog', href: 'blog', hash: true },
-  { key: 'reviews', href: 'reviews', hash: true },
-  { key: 'contacts', href: 'contacts', hash: true },
+  { key: 'rental', href: '/rent' },
+  { key: 'services', href: '/services' },
+  { key: 'blog', href: '/blog' },
+  { key: 'reviews', href: '/reviews' },
+  { key: 'contacts', href: '/contacts' },
 ];

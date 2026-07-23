@@ -19,12 +19,15 @@
     "cta": "Danışmanlık",
     "partners": "Partnerlere",
     "sell": "Mülk Sat",
-    "contactUs": "İletişim"
+    "contactUs": "İletişim",
+    "history": "Tarihçe",
+    "team": "Ekibimiz",
+    "privacy": "Gizlilik Politikası"
   },
   "hero": {
     "eyebrow": "Alanya sahilinde kendi projelerimiz",
     "headlineTop": "Akdeniz kıyısında",
-    "headlineAccent": "premium rezidanslar",
+    "headlineAccent": "ikonik rezidanslar",
     "subline": "New Level Group, Alanya'daki kendi konut projelerini tasarlar, inşa eder ve satar. Her aşamada premium kalite, geliştirici güvencesiyle.",
     "ctaPrimary": "Konutları inceleyin",
     "ctaSecondary": "Danışmanlık randevusu alın",
@@ -35,7 +38,7 @@
     "type": "Mülk türü",
     "typeAll": "Tüm tipler",
     "location": "Konum",
-    "locationAll": "Tüm Alanya",
+    "locationAll": "Tüm bölgeler",
     "rooms": "Oda sayısı",
     "roomsAll": "Hepsi",
     "price": "Fiyat",
@@ -97,6 +100,22 @@
     "subline": "Mülk yönetiminden ikamet ve vatandaşlığa kadar her adımda yanınızdayız.",
     "cta": "Tüm hizmetler"
   },
+  "service": {
+    "eyebrow": "Hizmetler",
+    "title": "Hizmetlerimiz",
+    "subline": "Türkiye'de gayrimenkul satın alma, sahip olma ve kazanç sağlama sürecinin tamamı, ilk görüşmeden vatandaşlığa kadar.",
+    "back": "Tüm hizmetler",
+    "cta": "Danışmanlık alın",
+    "learnMore": "Daha fazla",
+    "helpTitle": "Yardıma mı ihtiyacınız var?",
+    "helpText": "Uzmanlarımız her adımda kendi dilinizde size rehberlik eder.",
+    "other": "Diğer hizmetler"
+  },
+  "page": {
+    "ctaTitle": "Daha fazlasını mı öğrenmek istiyorsunuz?",
+    "ctaText": "Talebinizi bırakın, yöneticimiz en kısa sürede sizinle iletişime geçsin.",
+    "cta": "Danışmanlık alın"
+  },
   "blog": {
     "eyebrow": "İçgörüler ve rehberler",
     "heading": "Alanya'ya Uzman Bir Bakış",
@@ -108,7 +127,14 @@
     "p2c": "Kanunlar ve belgeler",
     "p3t": "Türkiye’de gayrimenkul aldıktan sonra: eksiksiz ev sahibi kontrol listesi",
     "p3c": "Faydalı bilgiler",
-    "readMore": "Devamını oku"
+    "readMore": "Oku",
+    "pageTitle": "Rehberler ve analizler",
+    "pageSubline": "Türkiyede gayrimenkul satın alma, sahip olma ve kiralama üzerine piyasa analizleri, hukuki rehberler ve haberler.",
+    "all": "Tümü",
+    "related": "İlgili yazılar",
+    "back": "Tüm yazılar",
+    "contents": "İçindekiler",
+    "readingTime": "{min} dk okuma"
   },
   "cta": {
     "eyebrow": "Konuşalım",
@@ -127,11 +153,12 @@
     "tagline": "New Level Group, Alanya'da Akdeniz kıyısında premium gayrimenkul inşaatı ve satışı.",
     "colProperties": "Gayrimenkuller",
     "colServices": "Hizmetler",
-    "colCompany": "Kurumsal",
+    "colCompany": "Şirket",
     "colContacts": "İletişim",
     "rights": "© {year} New Level Group. Tüm hakları saklıdır.",
     "privacy": "Gizlilik Politikası",
-    "terms": "Kullanım koşulları"
+    "terms": "Kullanım koşulları",
+    "colLegal": "Yasal"
   },
   "chat": {
     "title": "New Level Konsiyerj",
@@ -157,7 +184,10 @@
     "heading": "Müşterilerimiz ne diyor",
     "subline": "Avrupa, Rusya ve Türkiye’den mülk sahiplerinin gerçek hikâyeleri.",
     "cta": "Tüm yorumlar",
-    "google": "Google’da görün"
+    "google": "Google’da görün",
+    "pageSubline": "New Level Group ile satın alan, yatırım yapan ve taşınan Avrupa, Rusya ve Türkiye’den ev sahiplerinin doğrulanmış hikayeleri.",
+    "leaveTitle": "Bizden mi aldınız?",
+    "leaveText": "Deneyiminizi Google’da paylaşın, bu diğer ailelerin güvenle seçim yapmasına yardımcı olur."
   },
   "contact": {
     "eyebrow": "Bize ulaşın",
@@ -203,7 +233,7 @@
     "area": "Alan",
     "toSea": "Denize",
     "project": "Proje",
-    "autodesc": "{project} projesinde {type} {rooms}, {district}. Denize {distance} m, teslim {completion}."
+    "autodesc": "{district}, {city} bölgesinde {type} {rooms}. Denize {distance} m, teslim {completion}."
   },
   "complex": {
     "location": "Konum",
@@ -230,6 +260,25 @@
     "distancesTitle": "Mesafeler",
     "statusLabel": "Durum",
     "complexAreaLabel": "Kompleks alanı",
-    "unitLayout": "Plan"
+    "unitLayout": "Plan",
+    "floorPlansTitle": "Kat planları"
+  },
+  "form": {
+    "name": "Adınız",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "message": "Mesajınız (isteğe bağlı)",
+    "consent": "Göndererek, kişisel verilerinizin işlenmesini kabul edersiniz.",
+    "send": "Talep gönder",
+    "success": "Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz. Talebinizi hemen gönderebilmeniz için WhatsApp açılıyor.",
+    "continueWa": "WhatsApp ile devam et",
+    "chatWhatsapp": "WhatsApp'tan yazın"
+  },
+  "properties": {
+    "all": "Tüm mülkler",
+    "otherSearches": "Diğer aramalar",
+    "browseByLocation": "Bölgeye göre ara",
+    "metaTitle": "Türkiye'de satılık gayrimenkul",
+    "metaDescription": "Alanya ve Türkiye genelinde satılık daireler, villalar ve çatı katları; New Level Group'tan doğrudan, faizsiz taksit ve TAPU'ya kadar tam hukuki destekle."
   }
 }

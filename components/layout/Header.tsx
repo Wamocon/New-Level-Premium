@@ -119,18 +119,18 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="#consultation" className="text-cloud/60 transition-colors hover:text-gold">
+            <Link href="/partners" className="text-cloud/60 transition-colors hover:text-gold">
               {t('partners')}
-            </a>
-            <a href="#consultation" className="text-cloud/60 transition-colors hover:text-gold">
+            </Link>
+            <Link href="/sell-property" className="text-cloud/60 transition-colors hover:text-gold">
               {t('sell')}
-            </a>
-            <a
-              href="#contacts"
+            </Link>
+            <Link
+              href="/contacts"
               className="rounded-full bg-white/8 px-3.5 py-1.5 font-medium text-cloud transition-colors hover:bg-gold hover:text-obsidian"
             >
               {t('contactUs')}
-            </a>
+            </Link>
             <Link href="/properties" aria-label="Favorites" className="text-cloud/60 transition-colors hover:text-gold">
               <Heart className="size-4" />
             </Link>

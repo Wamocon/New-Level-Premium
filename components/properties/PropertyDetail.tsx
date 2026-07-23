@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { Property, Locale } from '@/lib/types';
-import { projectById } from '@/lib/data/projects';
+import { cityLabel } from '@/lib/data/geo';
 import { propertyTypeLabels } from '@/lib/data/properties';
 import { site } from '@/lib/data/site';
 import { formatPrice, cn } from '@/lib/utils';
@@ -23,7 +23,6 @@ export function PropertyDetail({ property }: { property: Property }) {
   const t = useTranslations('property');
   const tf = useTranslations('featured');
   const locale = useLocale() as Locale;
-  const project = projectById(property.projectId);
   const images = [property.image, ...property.gallery].slice(0, 5);
   const [active, setActive] = useState(0);
 
@@ -43,8 +42,8 @@ export function PropertyDetail({ property }: { property: Property }) {
   const description = t('autodesc', {
     type: propertyTypeLabels[property.type][locale],
     rooms: property.rooms,
-    project: project?.name ?? '',
     district: property.district[locale],
+    city: cityLabel(property.city, locale),
     distance: property.distanceToSea,
     completion: property.completionYear,
   });
@@ -64,9 +63,9 @@ export function PropertyDetail({ property }: { property: Property }) {
           {t('back')}
         </Link>
 
-        <div className="mt-6 grid gap-10 lg:grid-cols-[1.15fr_1fr]">
+        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
           {/* gallery */}
-          <div>
+          <div className="min-w-0">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/8">
               <Image
                 src={images[active]}
@@ -91,13 +90,13 @@ export function PropertyDetail({ property }: { property: Property }) {
               </div>
             </div>
             {images.length > 1 && (
-              <div className="mt-3 flex gap-3">
+              <div className="no-scrollbar mt-3 flex gap-3 overflow-x-auto pb-1">
                 {images.map((src, i) => (
                   <button
                     key={i}
                     onClick={() => setActive(i)}
                     className={cn(
-                      'relative aspect-[4/3] w-24 overflow-hidden rounded-xl border transition-colors',
+                      'relative aspect-[4/3] w-24 shrink-0 overflow-hidden rounded-xl border transition-colors',
                       i === active ? 'border-gold' : 'border-white/10 hover:border-white/30',
                     )}
                   >
@@ -118,7 +117,7 @@ export function PropertyDetail({ property }: { property: Property }) {
             </h1>
             <p className="mt-2 flex items-center gap-2 text-cloud/60">
               <MapPin className="size-4 text-gold" />
-              {project?.name} · {property.district[locale]}
+              {property.district[locale]}, {cityLabel(property.city, locale)}
             </p>
 
             <div className="mt-5 flex items-end gap-2">

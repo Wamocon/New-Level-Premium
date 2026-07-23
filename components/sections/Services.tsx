@@ -35,7 +35,7 @@ export function Services() {
             return (
               <Link
                 key={service.id}
-                href="/services"
+                href={`/services/${service.id}`}
                 className="group flex flex-col rounded-3xl border border-white/8 bg-white/5 p-7 transition-all duration-500 ease-lux hover:-translate-y-1.5 hover:border-gold/30 hover:shadow-[0_30px_80px_-40px_rgba(201,162,75,0.4)]"
               >
                 <span className="inline-flex w-fit rounded-2xl bg-gold/10 p-3 text-gold transition-colors duration-500 group-hover:bg-gold/20">

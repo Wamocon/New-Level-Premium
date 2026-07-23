@@ -4,7 +4,8 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { Search } from 'lucide-react';
 import type { FormEvent } from 'react';
-import { districts } from '@/lib/data/districts';
+import { districtsByCity } from '@/lib/data/districts';
+import { cityLabel } from '@/lib/data/geo';
 import { propertyTypeLabels } from '@/lib/data/properties';
 import type { Locale, PropertyType } from '@/lib/types';
 
@@ -71,10 +72,14 @@ export function SearchBar() {
       </Field>
       <Field label={t('location')} name="location">
         <option value="">{t('locationAll')}</option>
-        {districts.map((d) => (
-          <option key={d.value} value={d.value}>
-            {d.label[locale]}
-          </option>
+        {districtsByCity.map((g) => (
+          <optgroup key={g.city} label={cityLabel(g.city, locale)}>
+            {g.districts.map((d) => (
+              <option key={d.value} value={d.value}>
+                {d.label[locale]}
+              </option>
+            ))}
+          </optgroup>
         ))}
       </Field>
       <Field label={t('rooms')} name="rooms">

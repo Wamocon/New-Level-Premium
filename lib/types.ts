@@ -50,6 +50,7 @@ export interface Project {
   priceFrom: number; // EUR
   floors?: number;
   balconies?: string;
+  subProduct?: boolean;
   badge?: Record<Locale, string>;
   image: string;
   gallery: string[];

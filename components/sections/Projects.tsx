@@ -21,7 +21,9 @@ export function Projects() {
         <SectionHeading eyebrow={t('eyebrow')} heading={t('heading')} subline={t('subline')} />
 
         <div className="mt-14 flex flex-col gap-16 md:gap-24">
-          {projects.map((p, i) => (
+          {projects
+            .filter((p) => !p.subProduct)
+            .map((p, i) => (
             <Reveal key={p.id} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12" y={40}>
               <div
                 className={cn(

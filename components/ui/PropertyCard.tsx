@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { Property, Locale } from '@/lib/types';
-import { projectById } from '@/lib/data/projects';
+import { cityLabel } from '@/lib/data/geo';
 import { formatPrice, cn } from '@/lib/utils';
 import { Bed, Maximize, Building, Waves, Heart } from 'lucide-react';
 
@@ -19,8 +19,6 @@ export function PropertyCard({ property, index = 0 }: { property: Property; inde
   const t = useTranslations('featured');
   const locale = useLocale() as Locale;
   const [fav, setFav] = useState(false);
-  const project = projectById(property.projectId);
-  const primaryCat = property.category[0];
 
   const catLabel: Record<string, string> = {
     new: t('tabNew'),
@@ -88,7 +86,7 @@ export function PropertyCard({ property, index = 0 }: { property: Property; inde
             {property.title[locale]}
           </h3>
           <p className="mt-1 text-sm text-cloud/50">
-            {project?.name} · {property.district[locale]}
+            {property.district[locale]}, {cityLabel(property.city, locale)}
           </p>
         </div>
 

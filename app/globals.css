@@ -109,6 +109,63 @@ html.lenis body {
   padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
 
+/* ---- Ambient "mood" background: tinted, layered, slowly drifting glow
+   fields on near-black. Fixed behind all content so pages read as deep and
+   alive rather than flat pure black. ---- */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(85% 60% at 50% -6%, rgba(201, 162, 75, 0.1), transparent 58%),
+    radial-gradient(70% 55% at 102% 104%, rgba(44, 122, 128, 0.08), transparent 58%),
+    radial-gradient(60% 55% at -5% 55%, rgba(201, 162, 75, 0.045), transparent 60%),
+    linear-gradient(180deg, rgba(20, 17, 22, 0.55), rgba(10, 9, 12, 0.15) 45%, transparent 80%);
+}
+.ambient::before,
+.ambient::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  will-change: transform;
+}
+.ambient::before {
+  width: 48vw;
+  height: 48vw;
+  left: -12vw;
+  top: -14vw;
+  background: radial-gradient(circle, rgba(201, 162, 75, 0.2), transparent 62%);
+  animation: ambientDrift1 30s ease-in-out infinite alternate;
+}
+.ambient::after {
+  width: 44vw;
+  height: 44vw;
+  right: -10vw;
+  bottom: -16vw;
+  background: radial-gradient(circle, rgba(44, 122, 128, 0.16), transparent 62%);
+  animation: ambientDrift2 38s ease-in-out infinite alternate;
+}
+@keyframes ambientDrift1 {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(7vw, 9vh, 0) scale(1.18); }
+}
+@keyframes ambientDrift2 {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-6vw, -7vh, 0) scale(1.12); }
+}
+
+/* Hide scrollbars on horizontal filmstrips while keeping them scrollable. */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ---- Subtle film grain overlay ---- */
 .grain::after {
   content: "";

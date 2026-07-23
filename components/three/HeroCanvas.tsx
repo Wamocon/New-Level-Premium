@@ -37,7 +37,7 @@ const TOWERS: TowerDef[] = [
 function Tower({ def }: { def: TowerDef }) {
   const y = def.h / 2 - 0.9;
   return (
-    <RoundedBox args={[def.w, def.h, def.w]} radius={0.08} smoothness={4} position={[def.x, y, def.z]}>
+    <RoundedBox args={[def.w, def.h, def.w]} radius={0.08} smoothness={3} position={[def.x, y, def.z]}>
       {def.glass ? (
         // Cheap glossy translucent "glass", no transmission pass (big FPS win).
         <meshPhysicalMaterial
@@ -135,7 +135,8 @@ export default function HeroCanvas() {
     <div ref={wrapRef} className="absolute inset-0">
       <Canvas
         frameloop={frameloop}
-        dpr={[1, 1.5]}
+        dpr={[1, 1.25]}
+        performance={{ min: 0.5 }}
         gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
         camera={{ position: [0, 1.1, 8.6], fov: 34 }}
       >
@@ -157,7 +158,7 @@ export default function HeroCanvas() {
           scale={18}
           blur={2.8}
           far={6}
-          resolution={512}
+          resolution={256}
           frames={reduced ? 1 : undefined}
           color="#000000"
         />
@@ -168,7 +169,7 @@ export default function HeroCanvas() {
           <Lightformer form="ring" intensity={2.4} position={[0, 2, 3.5]} scale={3} color="#ffffff" />
         </Environment>
         <EffectComposer enableNormalPass={false}>
-          <Bloom mipmapBlur intensity={0.5} luminanceThreshold={0.6} luminanceSmoothing={0.2} />
+          <Bloom mipmapBlur intensity={0.45} luminanceThreshold={0.72} luminanceSmoothing={0.2} />
           <Vignette eskil={false} offset={0.25} darkness={0.72} />
         </EffectComposer>
       </Canvas>
