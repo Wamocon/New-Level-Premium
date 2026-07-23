@@ -57,7 +57,7 @@ export async function generateMetadata({
     applicationName: 'New Level Group',
     alternates: {
       canonical: `/${locale}`,
-      languages: { ru: '/ru', en: '/en', tr: '/tr', 'x-default': '/en' },
+      languages: { tr: '/tr', ru: '/ru', en: '/en', 'x-default': '/tr' },
     },
     openGraph: {
       type: 'website',
