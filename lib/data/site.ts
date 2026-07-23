@@ -17,6 +17,17 @@ export const site = {
       'https://maps.google.com/maps?q=36.5563932,31.9770521&z=17&t=k&hl=en&output=embed',
     directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=36.5563932,31.9770521',
   },
+  // Real Google review profiles shown for trust. `google` is New Level Group's
+  // own 5.0 profile; `ataberk` is the group's agency (Ataberk Real Estate) at
+  // the same Alanya office, its own verified Google listing.
+  reviews: {
+    google: 'https://share.google/lL12rHhTqVJn4vpmL',
+    ataberk: {
+      name: 'Ataberk Real Estate',
+      area: 'Alanya / Antalya',
+      url: 'https://maps.app.goo.gl/ry9JpmXuPwenhFiu7',
+    },
+  },
   socials: [
     { name: 'Instagram', url: 'https://www.instagram.com/newlevel_group', icon: 'Instagram' },
     { name: 'Facebook', url: 'https://www.facebook.com/newlevel.turkey', icon: 'Facebook' },

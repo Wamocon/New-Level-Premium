@@ -1,8 +1,8 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useState, useTransition, useRef, useEffect } from 'react';
-import { usePathname, useRouter } from '@/i18n/navigation';
+import { useState, useRef, useEffect } from 'react';
+import { usePathname } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { Check, Globe } from 'lucide-react';
@@ -16,9 +16,7 @@ const FULL: Record<string, string> = {
 export function LanguageSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [, startTransition] = useTransition();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,9 +28,13 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   }, []);
 
   function switchTo(next: string) {
-    startTransition(() => {
-      router.replace(pathname, { locale: next });
-    });
+    // Full-page navigation (not client-side) so the browser re-detects the page
+    // language for the new locale. This also stops browser auto-translate (e.g.
+    // Chrome translating a Turkish page into German) from carrying across an
+    // in-app locale change and making the switch look like nothing happened.
+    const base = pathname === '/' ? '' : pathname;
+    const target = `/${next}${base}${window.location.search}${window.location.hash}`;
+    window.location.assign(target);
     setOpen(false);
   }
 

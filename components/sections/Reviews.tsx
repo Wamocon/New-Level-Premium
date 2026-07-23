@@ -20,8 +20,14 @@ export function Reviews() {
           <SectionHeading eyebrow={t('eyebrow')} heading={t('heading')} subline={t('subline')} />
           <Reveal delay={0.1} className="flex flex-wrap gap-2">
             <Button asChild variant="outline">
-              <a href={site.geo.mapsUrl} target="_blank" rel="noopener noreferrer">
+              <a href={site.reviews.google} target="_blank" rel="noopener noreferrer">
                 {t('google')}
+                <ArrowUpRight className="size-4" />
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href={site.reviews.ataberk.url} target="_blank" rel="noopener noreferrer">
+                {site.reviews.ataberk.name}
                 <ArrowUpRight className="size-4" />
               </a>
             </Button>

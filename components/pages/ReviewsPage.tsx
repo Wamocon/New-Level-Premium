@@ -36,8 +36,14 @@ export function ReviewsPage() {
             </div>
           </div>
           <Button asChild variant="outline">
-            <a href={site.geo.mapsUrl} target="_blank" rel="noopener noreferrer">
+            <a href={site.reviews.google} target="_blank" rel="noopener noreferrer">
               {t('google')}
+              <ArrowUpRight className="size-4" />
+            </a>
+          </Button>
+          <Button asChild variant="outline">
+            <a href={site.reviews.ataberk.url} target="_blank" rel="noopener noreferrer">
+              {site.reviews.ataberk.name}
               <ArrowUpRight className="size-4" />
             </a>
           </Button>
@@ -72,7 +78,7 @@ export function ReviewsPage() {
               <p className="mt-2 max-w-xl text-cloud/70">{t('leaveText')}</p>
             </div>
             <Button asChild variant="metal">
-              <a href={site.geo.mapsUrl} target="_blank" rel="noopener noreferrer">
+              <a href={site.reviews.google} target="_blank" rel="noopener noreferrer">
                 {t('google')}
                 <ArrowUpRight className="size-4" />
               </a>
