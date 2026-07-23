@@ -74,7 +74,6 @@ app/
   api/chat/route.ts  # streaming AI endpoint (provider-agnostic)
 components/
   sections/          # the 9 homepage sections (Hero, FeaturedListings, …)
-  three/HeroCanvas   # the WebGL hero scene
   ai/ChatWidget      # the concierge UI
   anim/              # Reveal + ScrambleText (GSAP primitives)
   ui/                # Button, SectionHeading, PropertyCard

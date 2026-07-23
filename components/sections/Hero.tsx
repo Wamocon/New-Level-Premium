@@ -1,7 +1,6 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/Button';
@@ -13,27 +12,33 @@ import { gsap, registerGsap } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect, prefersReducedMotion } from '@/lib/hooks';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 
-const HeroCanvas = dynamic(() => import('@/components/three/HeroCanvas'), {
-  ssr: false,
-  loading: () => null,
-});
-
 export function Hero() {
   const t = useTranslations('hero');
   const locale = useLocale() as Locale;
   const root = useRef<HTMLElement>(null);
-  // Defer the WebGL backdrop until the browser is idle so its init never blocks
-  // first paint / initial interaction, then fade it in.
-  const [showCanvas, setShowCanvas] = useState(false);
+  const video = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const ric = window.requestIdleCallback;
-    if (ric) {
-      const id = ric(() => setShowCanvas(true), { timeout: 1200 });
-      return () => window.cancelIdleCallback?.(id);
-    }
-    const to = window.setTimeout(() => setShowCanvas(true), 600);
-    return () => window.clearTimeout(to);
+  // Play the aerial backdrop only while the hero is on screen / the tab is visible.
+  useIsomorphicLayoutEffect(() => {
+    const v = video.current;
+    if (!v || prefersReducedMotion()) return;
+
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting && !document.hidden) v.play?.().catch(() => {});
+        else v.pause?.();
+      },
+      { threshold: 0.1 },
+    );
+    io.observe(v);
+    const onVis = () => {
+      if (document.hidden) v.pause?.();
+    };
+    document.addEventListener('visibilitychange', onVis);
+    return () => {
+      io.disconnect();
+      document.removeEventListener('visibilitychange', onVis);
+    };
   }, []);
 
   useIsomorphicLayoutEffect(() => {
@@ -57,15 +62,19 @@ export function Hero() {
       ref={root}
       className="grain on-dark relative flex min-h-dvh flex-col justify-start overflow-hidden bg-[linear-gradient(180deg,#1c1610_0%,#14131a_52%,#0a0b0e_100%)] pb-16 pt-28 lg:justify-center lg:pb-40"
     >
-      {/* 3D backdrop (deferred + faded in) */}
-      <div data-hero-canvas className="absolute inset-0 z-0">
-        <div
-          className={`size-full transition-opacity duration-[1400ms] ease-out ${
-            showCanvas ? 'opacity-100' : 'opacity-0'
-          }`}
+      {/* aerial video backdrop */}
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={video}
+          className="size-full object-cover"
+          poster="/buildings/aerial-poster.jpg"
+          muted
+          loop
+          playsInline
+          preload="none"
         >
-          {showCanvas && <HeroCanvas />}
-        </div>
+          <source src="/buildings/aerial.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* atmospheric gradients */}
