@@ -32,10 +32,14 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-ink">
+    <footer className="relative overflow-hidden border-t border-gold/10 bg-[linear-gradient(180deg,#17130f_0%,#100e14_52%,#0b0e13_100%)]">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[46rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[120px]"
+        className="pointer-events-none absolute -top-28 left-1/4 h-56 w-[40rem] -translate-x-1/2 rounded-full bg-gold/12 blur-[80px]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-24 right-0 h-64 w-[34rem] rounded-full bg-[rgba(46,138,146,0.12)] blur-[80px]"
       />
       <div className="container-lux relative py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_0.9fr_1fr_1fr_1.1fr]">
