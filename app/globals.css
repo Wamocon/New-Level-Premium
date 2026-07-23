@@ -48,7 +48,19 @@ html {
 }
 
 body {
-  background-color: var(--color-obsidian);
+  background-color: #14110c;
+  /* Gentle full-page gradient that waves warm (gold) <-> cool (sea) as you
+     scroll, so every section reads as a tinted dark, never flat black. */
+  background-image: linear-gradient(
+    180deg,
+    #1b1610 0%,
+    #0e181d 20%,
+    #1a150e 40%,
+    #0d171c 60%,
+    #1b1610 80%,
+    #0e161b 100%
+  );
+  background-attachment: scroll;
   color: var(--color-cloud);
   font-family: var(--font-sans);
   overflow-x: hidden;
@@ -121,10 +133,10 @@ html.lenis body {
   /* Rich, clearly-tinted base (warm top -> cool bottom) plus soft colour
      fields. All static, so it carries the "not pure black" look for free. */
   background:
-    radial-gradient(95% 60% at 50% -8%, rgba(201, 162, 75, 0.16), transparent 55%),
-    radial-gradient(80% 62% at 100% 108%, rgba(38, 120, 128, 0.15), transparent 55%),
-    radial-gradient(62% 60% at -6% 42%, rgba(201, 162, 75, 0.08), transparent 58%),
-    linear-gradient(163deg, #17130e 0%, #100e14 44%, #0b0d11 100%);
+    radial-gradient(85% 55% at 50% -6%, rgba(201, 162, 75, 0.16), transparent 55%),
+    radial-gradient(76% 60% at 104% 108%, rgba(38, 120, 128, 0.16), transparent 55%),
+    radial-gradient(55% 55% at -8% 40%, rgba(201, 162, 75, 0.08), transparent 58%),
+    radial-gradient(125% 100% at 50% 42%, rgba(42, 36, 30, 0.32), transparent 72%);
 }
 .ambient::before,
 .ambient::after {
