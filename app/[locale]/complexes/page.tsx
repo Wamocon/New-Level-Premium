@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { projects } from '@/lib/data/projects';
 import { formatPrice } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
+import { ComplexesShowcase } from '@/components/complexes/ComplexesShowcase';
 import { MapPin, ArrowUpRight } from 'lucide-react';
 
 export async function generateMetadata({
@@ -34,16 +35,21 @@ export default async function ComplexesPage({
   return (
     <section className="relative min-h-dvh pb-24 pt-28 md:pt-36">
       <div className="container-lux">
-        <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-          <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
-          {t('eyebrow')}
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
+              {t('eyebrow')}
+            </div>
+            <h1 className="mt-3 font-display text-[clamp(2rem,4.4vw,3.2rem)] font-bold tracking-tight text-cloud">
+              {t('allTitle')}
+            </h1>
+            <p className="mt-3 max-w-xl text-cloud/55">{t('allSub')}</p>
+          </div>
+          <ComplexesShowcase label={t('signatureLabel')} />
         </div>
-        <h1 className="mt-3 font-display text-[clamp(2rem,4.4vw,3.2rem)] font-bold tracking-tight text-cloud">
-          {t('allTitle')}
-        </h1>
-        <p className="mt-3 max-w-xl text-cloud/55">{t('allSub')}</p>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <Link
               key={p.id}
