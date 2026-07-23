@@ -45,6 +45,15 @@
     "priceAll": "Any price",
     "cta": "Search"
   },
+  "showcase": {
+    "eyebrow": "The residences",
+    "heading": "See the real buildings, in the round.",
+    "subline": "Our own completed complex on the Alanya coast, shot from every side. Drag to explore.",
+    "caption": "New Level Premium · Avsallar, Alanya",
+    "cta": "Explore the complex",
+    "dragHint": "Drag to rotate",
+    "reelLabel": "From the air"
+  },
   "featured": {
     "eyebrow": "Selected for you",
     "heading": "Featured Listings",

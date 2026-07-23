@@ -45,6 +45,15 @@
     "priceAll": "Tüm fiyatlar",
     "cta": "Ara"
   },
+  "showcase": {
+    "eyebrow": "Rezidanslarımız",
+    "heading": "Gerçek binaları her açıdan görün.",
+    "subline": "Alanya kıyısındaki kendi tamamlanmış kompleksimiz, her yönden çekildi. Keşfetmek için sürükleyin.",
+    "caption": "New Level Premium · Avsallar, Alanya",
+    "cta": "Kompleksi keşfedin",
+    "dragHint": "Döndürmek için sürükleyin",
+    "reelLabel": "Havadan"
+  },
   "featured": {
     "eyebrow": "Sizin için seçtik",
     "heading": "Öne Çıkan Konutlar",
