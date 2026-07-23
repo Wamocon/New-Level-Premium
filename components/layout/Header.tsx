@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { primaryNav, type NavItem } from '@/lib/nav';
 import { site } from '@/lib/data/site';
 import { cn } from '@/lib/utils';
@@ -65,6 +65,11 @@ function NavLink({
 
 export function Header() {
   const t = useTranslations('nav');
+  const pathname = usePathname();
+  // Only the homepage has a dark hero behind the header; everywhere else the
+  // page background is light (in light mode), so the header needs its bar even
+  // at the top, otherwise the light nav text sits on light content.
+  const isHome = pathname === '/';
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -87,7 +92,7 @@ export function Header() {
       {/* top contact bar (desktop, collapses on scroll) */}
       <div
         className={cn(
-          'hidden overflow-hidden border-b border-white/5 bg-obsidian/80 backdrop-blur-md transition-all duration-500 ease-lux lg:block',
+          'hidden overflow-hidden border-b border-white/5 bg-obsidian transition-all duration-500 ease-lux lg:block',
           scrolled ? 'h-0 opacity-0' : 'h-10 opacity-100',
         )}
       >
@@ -146,7 +151,7 @@ export function Header() {
       <div
         className={cn(
           'transition-all duration-500 ease-lux',
-          scrolled ? 'border-b border-white/5 bg-obsidian/80 backdrop-blur-md' : 'bg-transparent',
+          scrolled || !isHome ? 'border-b border-white/5 bg-obsidian' : 'bg-transparent',
         )}
       >
         <div className="container-lux flex h-20 items-center justify-between gap-6">
@@ -186,7 +191,7 @@ export function Header() {
       {mobileOpen && (
         <div
           data-lenis-prevent
-          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-obsidian/98 backdrop-blur-2xl xl:hidden"
+          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-obsidian xl:hidden"
         >
           <div className="container-lux flex h-20 items-center justify-between">
             <Logo onClick={() => setMobileOpen(false)} />
