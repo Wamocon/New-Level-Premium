@@ -8,12 +8,22 @@ import {
   ContactShadows,
   RoundedBox,
   AdaptiveDpr,
+  Html,
 } from '@react-three/drei';
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState, type MutableRefObject } from 'react';
 import * as THREE from 'three';
+import { useRouter } from '@/i18n/navigation';
+import { projects } from '@/lib/data/projects';
 import { prefersReducedMotion } from '@/lib/hooks';
 
 const GOLD = '#C9A24B';
+
+// Each tower links to a real complex. Use the main developments (skip sub-units);
+// with more towers than complexes, the pool cycles.
+const LINKABLE = projects.filter((p) => !p.subProduct);
+const POOL = LINKABLE.length ? LINKABLE : projects;
+
+type Router = ReturnType<typeof useRouter>;
 
 interface TowerDef {
   x: number;
@@ -35,46 +45,100 @@ const TOWERS: TowerDef[] = [
   { x: -2.15, z: 0.6, h: 1.55, w: 0.6 },
 ];
 
-function Tower({ def }: { def: TowerDef }) {
+function Tower({
+  def,
+  project,
+  router,
+  hoverRef,
+}: {
+  def: TowerDef;
+  project: { id: string; name: string };
+  router: Router;
+  hoverRef: MutableRefObject<boolean>;
+}) {
   const y = def.h / 2 - 0.9;
+  const [hovered, setHovered] = useState(false);
+
+  const over = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    setHovered(true);
+    hoverRef.current = true;
+    document.body.style.cursor = 'pointer';
+  };
+  const out = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    setHovered(false);
+    hoverRef.current = false;
+    document.body.style.cursor = '';
+  };
+  const click = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    document.body.style.cursor = '';
+    router.push(`/complexes/${project.id}`);
+  };
+
   return (
-    <RoundedBox args={[def.w, def.h, def.w]} radius={0.08} smoothness={3} position={[def.x, y, def.z]}>
-      {def.glass ? (
-        // Cheap glossy translucent "glass", no transmission pass (big FPS win).
-        <meshPhysicalMaterial
-          color="#efe6cd"
-          roughness={0.06}
-          metalness={0}
-          transparent
-          opacity={0.34}
-          ior={1.4}
-          clearcoat={1}
-          clearcoatRoughness={0.1}
-          envMapIntensity={1.5}
-        />
-      ) : (
-        <meshStandardMaterial
-          color={GOLD}
-          metalness={1}
-          roughness={0.24}
-          envMapIntensity={1.35}
-          emissive={GOLD}
-          emissiveIntensity={0.16}
-        />
+    <group position={[def.x, y, def.z]}>
+      <RoundedBox
+        args={[def.w, def.h, def.w]}
+        radius={0.08}
+        smoothness={3}
+        scale={hovered ? 1.06 : 1}
+        onPointerOver={over}
+        onPointerOut={out}
+        onClick={click}
+      >
+        {def.glass ? (
+          // Cheap glossy translucent "glass", no transmission pass (big FPS win).
+          <meshPhysicalMaterial
+            color="#efe6cd"
+            roughness={0.06}
+            metalness={0}
+            transparent
+            opacity={hovered ? 0.5 : 0.34}
+            ior={1.4}
+            clearcoat={1}
+            clearcoatRoughness={0.1}
+            envMapIntensity={1.5}
+          />
+        ) : (
+          <meshStandardMaterial
+            color={GOLD}
+            metalness={1}
+            roughness={0.24}
+            envMapIntensity={1.35}
+            emissive={GOLD}
+            emissiveIntensity={hovered ? 0.55 : 0.16}
+          />
+        )}
+      </RoundedBox>
+      {hovered && (
+        <Html position={[0, def.h / 2 + 0.4, 0]} center zIndexRange={[40, 0]}>
+          <div className="pointer-events-none whitespace-nowrap rounded-full border border-gold/30 bg-obsidian/85 px-3 py-1 text-[0.7rem] font-medium text-gold backdrop-blur-sm">
+            {project.name}
+          </div>
+        </Html>
       )}
-    </RoundedBox>
+    </group>
   );
 }
 
-function Cluster({ reduced }: { reduced: boolean }) {
+function Cluster({
+  reduced,
+  router,
+  hoverRef,
+}: {
+  reduced: boolean;
+  router: Router;
+  hoverRef: MutableRefObject<boolean>;
+}) {
   const group = useRef<THREE.Group>(null);
   useFrame((state, delta) => {
     const g = group.current;
     if (!g) return;
     const d = Math.min(delta, 0.05); // clamp to avoid jumps after a pause
-    // The one signature motion: a slow museum turntable. No float/bob — in a
-    // small case a bobbing object reads as a toy.
-    if (!reduced) g.rotation.y += d * 0.11;
+    // Slow museum turntable — paused while a tower is hovered so it's easy to aim.
+    if (!reduced && !hoverRef.current) g.rotation.y += d * 0.11;
     // Barely-there pointer parallax; on touch the pointer stays at 0 so it just
     // sits centered.
     const px = state.pointer.x * 0.12;
@@ -85,7 +149,7 @@ function Cluster({ reduced }: { reduced: boolean }) {
   return (
     <group ref={group}>
       {TOWERS.map((t, i) => (
-        <Tower key={i} def={t} />
+        <Tower key={i} def={t} project={POOL[i % POOL.length]} router={router} hoverRef={hoverRef} />
       ))}
       {/* small reflective plinth disc — the base the model is seated on */}
       <mesh position={[0, -0.9, 0]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -130,6 +194,8 @@ function Dust({ reduced }: { reduced: boolean }) {
  */
 export default function TowerMaquette() {
   const reduced = prefersReducedMotion();
+  const router = useRouter();
+  const hoverRef = useRef(false);
   return (
     <Canvas
       frameloop={reduced ? 'demand' : 'always'}
@@ -143,7 +209,7 @@ export default function TowerMaquette() {
       <directionalLight position={[5, 9, 5]} intensity={1.1} />
       {/* Fit only the cluster (not the wide dust field) to the frame, once. */}
       <Bounds fit clip margin={1.15}>
-        <Cluster reduced={reduced} />
+        <Cluster reduced={reduced} router={router} hoverRef={hoverRef} />
       </Bounds>
       <Dust reduced={reduced} />
       {/* Baked once (frames=1): soft, slow — a static bake is imperceptible and

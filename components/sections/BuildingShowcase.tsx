@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { gsap } from '@/lib/gsap';
+import { gsap, ScrollTrigger, registerGsap } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect, prefersReducedMotion } from '@/lib/hooks';
 import { buildingShots } from '@/lib/data/buildings';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -15,17 +15,21 @@ const N = buildingShots.length;
 const STEP = 360 / N;
 
 /**
- * A slow, auto-rotating 3D coverflow of the real New Level Premium buildings.
- * Pure CSS 3D driven by GSAP's ticker (no second WebGL canvas, so it stays
- * light on performance) with drag-to-rotate, per-card depth dimming and photo
- * reflections. Building info lives in the DOM for SEO / accessibility.
+ * A scroll-piloted 3D coverflow of the real New Level buildings: the section's
+ * scroll progress turns the ring so the visitor "walks around" it themselves,
+ * over a whisper of idle drift, with drag-to-rotate on top. Pure CSS 3D driven
+ * by GSAP's ticker + ScrollTrigger (no second WebGL canvas), per-card depth
+ * dimming and reflections. Reduced motion renders a static ring. Building info
+ * lives in the DOM for SEO / accessibility.
  */
 export function BuildingShowcase() {
   const t = useTranslations('showcase');
   const stageRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const cards = useRef<Array<HTMLDivElement | null>>([]);
-  const st = useRef({ rot: 0, radius: 340, auto: true, dragging: false, lastX: 0 });
+  // rot = idle drift + scroll-pilot + drag. The user "walks the ring" by
+  // scrolling; a whisper of idle keeps it alive; drag still overrides.
+  const st = useRef({ rot: 0, idle: 0, scroll: 0, drag: 0, radius: 340, dragging: false, lastX: 0 });
 
   useIsomorphicLayoutEffect(() => {
     const stage = stageRef.current;
@@ -42,6 +46,7 @@ export function BuildingShowcase() {
     };
 
     const apply = () => {
+      s.rot = s.idle + s.scroll + s.drag;
       ring.style.transform = `rotateY(${s.rot}deg)`;
       for (let i = 0; i < N; i++) {
         const el = cards.current[i];
@@ -68,14 +73,30 @@ export function BuildingShowcase() {
       return () => window.removeEventListener('resize', onResize);
     }
 
-    const SPEED = 4.2; // deg / second (dialed back ~40% for a calmer, classier drift)
+    registerGsap();
+    const IDLE = 2.4; // deg/s ambient life so the ring is never dead-static
+    const SWEEP = 360; // deg the ring turns as you scroll the section past
     const tick = (_time: number, delta: number) => {
-      if (s.auto && !s.dragging) s.rot -= (SPEED * delta) / 1000;
+      if (!s.dragging) s.idle -= (IDLE * delta) / 1000;
       apply();
     };
     gsap.ticker.add(tick);
+
+    // Scroll piloting: the section's progress through the viewport drives rotation
+    // so the visitor "walks the ring" themselves; drag adds on top.
+    const trigger = ScrollTrigger.create({
+      trigger: stage,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: true,
+      onUpdate: (self) => {
+        s.scroll = -self.progress * SWEEP;
+      },
+    });
+
     return () => {
       gsap.ticker.remove(tick);
+      trigger.kill();
       window.removeEventListener('resize', onResize);
     };
   }, []);
@@ -83,23 +104,19 @@ export function BuildingShowcase() {
   const onDown = (e: React.PointerEvent) => {
     const s = st.current;
     s.dragging = true;
-    s.auto = false;
     s.lastX = e.clientX;
     (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
   };
   const onMove = (e: React.PointerEvent) => {
     const s = st.current;
     if (!s.dragging) return;
-    s.rot += (e.clientX - s.lastX) * 0.3;
+    s.drag += (e.clientX - s.lastX) * 0.3;
     s.lastX = e.clientX;
   };
   const onUp = () => {
     const s = st.current;
     if (!s.dragging) return;
     s.dragging = false;
-    window.setTimeout(() => {
-      if (!s.dragging) s.auto = true;
-    }, 1800);
   };
 
   return (
