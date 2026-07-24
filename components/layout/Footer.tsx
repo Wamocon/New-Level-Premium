@@ -32,7 +32,7 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="on-dark relative overflow-hidden border-t border-gold/10 bg-[linear-gradient(180deg,#17130f_0%,#100e14_52%,#0b0e13_100%)]">
+    <footer className="on-dark relative overflow-hidden border-t border-gold/10 bg-[linear-gradient(180deg,#17130f_0%,#100e14_52%,#0b0e13_100%)] pb-[calc(4.5rem+env(safe-area-inset-bottom))] sm:pb-0">
       <div
         aria-hidden
         className="pointer-events-none absolute -top-28 left-1/4 h-56 w-[40rem] -translate-x-1/2 rounded-full bg-gold/12 blur-[80px]"

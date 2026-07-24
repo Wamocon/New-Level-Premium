@@ -59,10 +59,10 @@ export function ChatWidget() {
             onClick={() => setOpen(true)}
             aria-label={t('open')}
             data-testid="chat-launcher"
-            className="group fixed bottom-6 right-6 z-[80] size-14 rounded-full shadow-[0_16px_50px_-12px_rgba(201,162,75,0.65)]"
+            className="group fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-[calc(1rem+env(safe-area-inset-right))] z-[80] size-12 rounded-full shadow-[0_16px_50px_-12px_rgba(201,162,75,0.65)] sm:bottom-6 sm:right-6 sm:size-14"
           >
             <span className="absolute inset-0 animate-ping rounded-full bg-gold/40 [animation-duration:2.6s]" />
-            <ConciergeAvatar className="relative size-14 transition-transform duration-300 group-hover:scale-105" />
+            <ConciergeAvatar className="relative size-12 transition-transform duration-300 group-hover:scale-105 sm:size-14" />
           </motion.button>
         )}
       </AnimatePresence>
