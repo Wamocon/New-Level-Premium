@@ -7,6 +7,8 @@ import { Link } from '@/i18n/navigation';
 import type { Project, Locale } from '@/lib/types';
 import type { ComplexDetailData } from '@/lib/data/complexDetails';
 import { RichText } from '@/components/complexes/RichText';
+import { MapFacade } from '@/components/ui/MapFacade';
+import { Panorama360 } from '@/components/complexes/Panorama360';
 import { img } from '@/lib/images';
 import { site } from '@/lib/data/site';
 import { formatPrice } from '@/lib/utils';
@@ -48,6 +50,8 @@ export function ComplexDetail({
     [t('balconies'), project.balconies],
   ];
 
+  // The one real equirectangular panorama we host is served locally per project id.
+  const has360 = detail?.images.some((s) => /360/i.test(s));
   const coords = detail?.coordinates;
   const mapEmbed = coords
     ? `https://maps.google.com/maps?q=${coords.lat},${coords.lng}&t=k&z=15&hl=en&output=embed`
@@ -289,17 +293,19 @@ export function ComplexDetail({
               </a>
             </Button>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-white/8">
-            <iframe
-              title={project.name}
-              src={mapEmbed}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="block h-[24rem] w-full"
-              style={{ border: 0 }}
-            />
-          </div>
+          <MapFacade
+            src={mapEmbed}
+            title={project.name}
+            className="relative h-[24rem] w-full rounded-3xl border border-white/8"
+          />
         </div>
+
+        {has360 && (
+          <div className="mt-16">
+            <h2 className="mb-4 font-display text-2xl font-bold text-cloud">{t('panoTitle')}</h2>
+            <Panorama360 src={`/360/${project.id}.webp`} />
+          </div>
+        )}
       </div>
     </section>
   );

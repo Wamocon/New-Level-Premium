@@ -19,6 +19,7 @@ export function Hero() {
   const locale = useLocale() as Locale;
   const root = useRef<HTMLElement>(null);
   const backdrop = useRef<HTMLDivElement>(null);
+  const cursorLayer = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
 
   // Play the aerial backdrop only while the hero is on screen / the tab is visible.
@@ -47,6 +48,7 @@ export function Hero() {
   useIsomorphicLayoutEffect(() => {
     if (prefersReducedMotion()) return;
     registerGsap();
+    let onMove: ((e: PointerEvent) => void) | undefined;
     const ctx = gsap.context(() => {
       // Staggered entrance. One extra node (trust ribbon) now, so tighten the
       // cadence a touch so the stats/search don't arrive noticeably later.
@@ -76,8 +78,27 @@ export function Hero() {
           },
         );
       }
+      // Cursor parallax: the backdrop drifts opposite the pointer for depth.
+      // Pointer devices only; the layer is pre-scaled so the drift never reveals
+      // an edge. GSAP owns the transform (scale + translate) on this layer.
+      const layer = cursorLayer.current;
+      if (layer && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        gsap.set(layer, { scale: 1.06 });
+        const xTo = gsap.quickTo(layer, 'x', { duration: 0.7, ease: 'power3' });
+        const yTo = gsap.quickTo(layer, 'y', { duration: 0.7, ease: 'power3' });
+        onMove = (e: PointerEvent) => {
+          const nx = e.clientX / window.innerWidth - 0.5;
+          const ny = e.clientY / window.innerHeight - 0.5;
+          xTo(-nx * 22);
+          yTo(-ny * 18);
+        };
+        window.addEventListener('pointermove', onMove);
+      }
     }, root);
-    return () => ctx.revert();
+    return () => {
+      if (onMove) window.removeEventListener('pointermove', onMove);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -89,7 +110,8 @@ export function Hero() {
           crossfades in over it, with a slow Ken Burns push + scroll parallax */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div ref={backdrop} className="absolute inset-x-0 top-[-6%] h-[112%]">
-          <div className="relative size-full motion-safe:animate-[heroDrift_26s_ease-in-out_infinite_alternate] motion-reduce:animate-none">
+          <div ref={cursorLayer} className="size-full will-change-transform">
+            <div className="relative size-full motion-safe:animate-[heroDrift_26s_ease-in-out_infinite_alternate] motion-reduce:animate-none">
             <Image
               src="/buildings/aerial-poster.jpg"
               alt=""
@@ -110,6 +132,7 @@ export function Hero() {
             >
               <source src="/buildings/aerial.mp4" type="video/mp4" />
             </video>
+            </div>
           </div>
         </div>
       </div>

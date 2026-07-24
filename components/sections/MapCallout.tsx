@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { MapPin } from 'lucide-react';
 import { Reveal } from '@/components/anim/Reveal';
 import { Button } from '@/components/ui/Button';
+import { MapFacade } from '@/components/ui/MapFacade';
 import { site } from '@/lib/data/site';
 
 // Real satellite view of the Alanya coast, where the complexes are.
@@ -18,16 +19,9 @@ export function MapCallout() {
       <div className="container-lux">
         <Reveal
           y={30}
-          className="relative overflow-hidden rounded-[2rem] border border-white/8 bg-ink"
+          className="relative h-[26rem] overflow-hidden rounded-[2rem] border border-white/8 bg-ink md:h-[34rem]"
         >
-          <iframe
-            title="Alanya map"
-            src={ALANYA_EMBED}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="block h-[26rem] w-full md:h-[34rem]"
-            style={{ border: 0 }}
-          />
+          <MapFacade src={ALANYA_EMBED} title="Alanya map" className="absolute inset-0" />
 
           {/* readability gradient (map stays interactive on the clear side) */}
           <div

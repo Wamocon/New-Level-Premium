@@ -5,6 +5,7 @@ import { site } from '@/lib/data/site';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/anim/Reveal';
 import { Button } from '@/components/ui/Button';
+import { MapFacade } from '@/components/ui/MapFacade';
 import { WhatsAppIcon } from '@/components/icons/Social';
 import { Phone, Mail, MapPin, Navigation, Clock } from 'lucide-react';
 
@@ -76,16 +77,13 @@ export function ContactMap() {
             </div>
           </div>
 
-          {/* live map (satellite / 3D view of the office location) */}
+          {/* satellite / 3D view of the office — click-to-load */}
           <div className="relative min-h-[24rem] bg-ink lg:min-h-full">
-            <iframe
-              title="New Level Group, Alanya"
+            <MapFacade
               src={site.geo.embedUrl}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-              className="absolute inset-0 size-full"
-              style={{ border: 0 }}
+              title="New Level Group, Alanya"
+              directionsUrl={site.geo.directionsUrl}
+              className="absolute inset-0"
             />
           </div>
         </Reveal>
