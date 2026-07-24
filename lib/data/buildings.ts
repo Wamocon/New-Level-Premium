@@ -1,8 +1,8 @@
-// Real photos of the New Level Premium complex (Avsallar, Alanya), curated for
-// the 3D building showcase. Optimized to webp; blur is a tiny inline placeholder.
-// Order interleaves aerials among ground shots so the coverflow ring never shows
-// two aerials back to back. Indices 0, 1 and 3 (nl-01, nl-04, nl-03) are also the
-// stills used by the hero backdrop, so keep strong frames there.
+// Real photos of New Level's completed residences (Avsallar / Alanya), curated
+// for the 3D building showcase. Optimized to webp; blur is a tiny inline
+// placeholder. Order interleaves aerials among ground shots so the coverflow ring
+// never shows two aerials back to back. nl-19..23 are fresh 2026 drone captures
+// (sea-view, top-down masterplans, curved-balcony architecture).
 export type BuildingShot = { src: string; kind: 'ground' | 'aerial'; blur: string };
 
 export const buildingShots: BuildingShot[] = [
@@ -24,4 +24,9 @@ export const buildingShots: BuildingShot[] = [
   { src: '/buildings/nl-11.webp', kind: 'aerial', blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JQBOgAhlWNxH9ATCh8vOAAPhCMOWABXxoaXegMfaXiJCzXvld80WeOenN27ZC+joVFlbL+F6Blp7bRP3wr/ehKWTsO+us3Ajvu/BYxFHgjl6o7hqoyfSXyfDyvaUACgkqmU0AAAA=' },
   { src: '/buildings/nl-06.webp', kind: 'ground', blur: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JaACdMoMulEhIDuVD8nl0Oz/BRYAA/fhGIQ64uS449rZLeKB0NBFft4pKuir+oGI4YAYPZlaHqgXkmxa5SjC5ak6ObV+hxXj+rqhs5ar31vt0GEOrwlFv49pNwR0mc0pDNPolZr7hkp8ifQ+RStIipW4q+6Lx15AAAA==' },
   { src: '/buildings/nl-07.webp', kind: 'ground', blur: 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JZACdMoMzGEu7bBccHmOioaAA/pFGnFYwjKW6o6mB3V4bwJRJXRrYJPEeXpaItVDuUHBCj7XsJGMwriOpkgejIGEFJJms/LJcThMUCToFf7TQw4WBPL6CYc8SErYJTRok5Gw1427YiVM0ZEAAAA==' },
+  { src: '/buildings/nl-19.webp', kind: 'aerial', blur: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoUAAsAPxFysFAsJqSisAgBgCIJQBOgA9WqFYzxjCjXrAAA+p4zzftmEuU3IkFQUbbGcLY+Z95OEk7DuhX9hcBcVyI6yg9IGr9o4x0hkv7OunIeitp1WrbmAAA=' },
+  { src: '/buildings/nl-23.webp', kind: 'ground', blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoUAAsAPxFwsFAsJiSisAgBgCIJYgCdABZfX9FQp3zfAAD7hjfDXKtWF2J6BChgktAlIx5Y/XNGdSJslTkAjUhn86UGT2nOVQKQ85U4GvFl+Xjvy3d5AFBOfoHNAAAA' },
+  { src: '/buildings/nl-20.webp', kind: 'aerial', blur: 'data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADQAwCdASoUAAsAPxFysFAsJqSisAgBgCIJQBibAzbiqMtKqDZQHQAA/oOGkqm7vrKCQzbAxgZPQDjbE16EFfUmmlFv8T0C02eGREryvCcRSUvymtrpsorRDWBJw/GQJ03BAZJ7MUUijYyBIgAAAA==' },
+  { src: '/buildings/nl-22.webp', kind: 'aerial', blur: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoUAAsAPxFysFAsJqSisAgBgCIJQBdgA0EBO7YiuqzeWgAA/Y8x/rIlEqX1KtCKE+9fZ2aWQEcNuSA74q0F9dMtXi3GDeBDgFfE9cm5xHC21q3HfwqXgemCX5qfJjYjtmGFS7HGBij3olPbLqU61W7XAAA=' },
+  { src: '/buildings/nl-21.webp', kind: 'aerial', blur: 'data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACwAwCdASoUAAsAPxFwsFAsJiSisAgBgCIJZQC/OBXyUy5nNRWB8AD9nPgbAdM39O13oQvKcLyjVhFnV5TtWByZGVgqykgiOsSliiNGRwJw5/mJ7Xs4ARKQL6deq6hN5SOQfPgtTdD1GsICNrEHWPWP75kAAA==' },
 ];
