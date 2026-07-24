@@ -11,7 +11,21 @@ import { site } from '@/lib/data/site';
 import { formatPrice, cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { WhatsAppIcon } from '@/components/icons/Social';
-import { ArrowLeft, Bed, Maximize, Building, Waves, CalendarDays, Sofa, MapPin } from 'lucide-react';
+import { PropertyMap } from '@/components/properties/PropertyMap';
+import { NeighbourhoodPanel, type Distance } from '@/components/properties/NeighbourhoodPanel';
+import { PaymentPlanCalculator } from '@/components/properties/PaymentPlanCalculator';
+import { Lightbox } from '@/components/properties/Lightbox';
+import {
+  ArrowLeft,
+  Bed,
+  Maximize,
+  Building,
+  Waves,
+  CalendarDays,
+  Sofa,
+  MapPin,
+  Images,
+} from 'lucide-react';
 
 const CATEGORY_STYLES: Record<string, string> = {
   new: 'bg-gold text-obsidian',
@@ -19,12 +33,37 @@ const CATEGORY_STYLES: Record<string, string> = {
   investment: 'bg-sea-soft text-white',
 };
 
-export function PropertyDetail({ property }: { property: Property }) {
+export interface PropertyDetailData {
+  coordinates: { lat: number; lng: number };
+  distances: Distance[];
+  images: string[];
+}
+
+export function PropertyDetail({
+  property,
+  detail,
+}: {
+  property: Property;
+  detail: PropertyDetailData;
+}) {
   const t = useTranslations('property');
   const tf = useTranslations('featured');
   const locale = useLocale() as Locale;
-  const images = [property.image, ...property.gallery].slice(0, 5);
+
+  // Fuller image set: listing photos first, then the parent complex's shots.
+  const gallery = Array.from(
+    new Set([property.image, ...property.gallery, ...detail.images].filter(Boolean)),
+  ).slice(0, 24);
   const [active, setActive] = useState(0);
+  const [lbOpen, setLbOpen] = useState(false);
+  const [lbIndex, setLbIndex] = useState(0);
+
+  const openLightbox = (i: number) => {
+    setLbIndex(i);
+    setLbOpen(true);
+  };
+
+  const pricePerM2 = property.area ? Math.round(property.price / property.area) : 0;
 
   const specs = [
     { icon: Bed, label: t('rooms'), value: property.rooms },
@@ -48,6 +87,7 @@ export function PropertyDetail({ property }: { property: Property }) {
     completion: property.completionYear,
   });
 
+  const place = `${property.district[locale]}, ${cityLabel(property.city, locale)}`;
   const waHref = `${site.whatsappHref}?text=${encodeURIComponent(
     `${property.title[locale]} (${property.ref})`,
   )}`;
@@ -66,13 +106,18 @@ export function PropertyDetail({ property }: { property: Property }) {
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
           {/* gallery */}
           <div className="min-w-0">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/8">
+            <button
+              type="button"
+              onClick={() => openLightbox(active)}
+              aria-label={t('viewAllPhotos')}
+              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/8"
+            >
               <Image
-                src={images[active]}
+                src={gallery[active]}
                 alt={property.title[locale]}
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-700 ease-lux group-hover:scale-[1.03]"
                 priority
               />
               <div className="absolute left-4 top-4 flex gap-2">
@@ -88,10 +133,15 @@ export function PropertyDetail({ property }: { property: Property }) {
                   </span>
                 ))}
               </div>
-            </div>
-            {images.length > 1 && (
+              <span className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full bg-obsidian/55 px-3.5 py-2 text-xs font-medium text-cloud backdrop-blur-md transition-colors group-hover:bg-obsidian/80 group-hover:text-gold">
+                <Images className="size-4" />
+                {t('viewAllPhotos')} · {gallery.length}
+              </span>
+            </button>
+
+            {gallery.length > 1 && (
               <div className="no-scrollbar mt-3 flex gap-3 overflow-x-auto pb-1">
-                {images.map((src, i) => (
+                {gallery.slice(0, 6).map((src, i) => (
                   <button
                     key={i}
                     onClick={() => setActive(i)}
@@ -117,14 +167,35 @@ export function PropertyDetail({ property }: { property: Property }) {
             </h1>
             <p className="mt-2 flex items-center gap-2 text-cloud/60">
               <MapPin className="size-4 text-gold" />
-              {property.district[locale]}, {cityLabel(property.city, locale)}
+              {place}
             </p>
 
-            <div className="mt-5 flex items-end gap-2">
+            {/* pills */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[0.72rem] font-medium text-cloud/80">
+                {t(`status${property.status}`)}
+              </span>
+              {property.seaView && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-[0.72rem] font-medium text-gold">
+                  <Waves className="size-3.5" />
+                  {tf('seaView')}
+                </span>
+              )}
+              <span className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[0.72rem] font-medium text-cloud/80">
+                {propertyTypeLabels[property.type][locale]}
+              </span>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-end gap-x-3 gap-y-1">
               <span className="text-sm uppercase tracking-wider text-cloud/50">{tf('from')}</span>
               <span className="font-display text-4xl font-bold text-metal">
                 {formatPrice(property.price, locale)}
               </span>
+              {pricePerM2 > 0 && (
+                <span className="text-sm text-cloud/50">
+                  {formatPrice(pricePerM2, locale)} {t('perM2')}
+                </span>
+              )}
             </div>
 
             <div className="mt-7 grid grid-cols-2 gap-4 rounded-3xl border border-white/8 bg-graphite/50 p-6 sm:grid-cols-3">
@@ -159,7 +230,50 @@ export function PropertyDetail({ property }: { property: Property }) {
             </div>
           </div>
         </div>
+
+        {/* location + payment */}
+        <div className="mt-16 grid gap-10 lg:grid-cols-2">
+          <div>
+            <h2 className="h2-display font-display font-bold text-cloud">{t('locationTitle')}</h2>
+            <div className="mt-5">
+              <PropertyMap
+                lat={detail.coordinates.lat}
+                lng={detail.coordinates.lng}
+                place={place}
+              />
+            </div>
+            <p className="mt-3 text-xs text-cloud/45">{t('mapApprox')}</p>
+
+            {detail.distances.length > 0 && (
+              <div className="mt-8">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold/80">
+                  {t('nearbyTitle')}
+                </h3>
+                <div className="mt-4">
+                  <NeighbourhoodPanel distances={detail.distances} />
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div>
+            <PaymentPlanCalculator
+              price={property.price}
+              refCode={property.ref}
+              title={property.title[locale]}
+            />
+          </div>
+        </div>
       </div>
+
+      <Lightbox
+        images={gallery}
+        index={lbIndex}
+        open={lbOpen}
+        onIndex={setLbIndex}
+        onClose={() => setLbOpen(false)}
+        alt={property.title[locale]}
+      />
     </section>
   );
 }

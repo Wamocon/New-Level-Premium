@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { properties, propertyTypeLabels } from '@/lib/data/properties';
+import { complexDetails } from '@/lib/data/complexDetails';
+import { site } from '@/lib/data/site';
 import { cityLabel } from '@/lib/data/geo';
-import { PropertyDetail } from '@/components/properties/PropertyDetail';
+import { PropertyDetail, type PropertyDetailData } from '@/components/properties/PropertyDetail';
+import { SimilarListings } from '@/components/properties/SimilarListings';
 import type { Locale } from '@/lib/types';
 
 export function generateStaticParams() {
@@ -45,5 +48,20 @@ export default async function PropertyPage({
   setRequestLocale(locale);
   const property = properties.find((p) => p.id === id);
   if (!property) notFound();
-  return <PropertyDetail property={property} />;
+
+  // Resolve real map coordinates + "what's nearby" from the parent complex,
+  // falling back to the Alanya office if a projectId ever has no complex record.
+  const complex = complexDetails[property.projectId];
+  const detail: PropertyDetailData = {
+    coordinates: complex?.coordinates ?? { lat: site.geo.lat, lng: site.geo.lng },
+    distances: complex?.distances ?? [],
+    images: complex?.images ?? [],
+  };
+
+  return (
+    <>
+      <PropertyDetail property={property} detail={detail} />
+      <SimilarListings property={property} locale={locale as Locale} />
+    </>
+  );
 }

@@ -33,23 +33,31 @@ export default async function ComplexesPage({
   const loc = (await getLocale()) as Locale;
 
   return (
-    <section className="relative min-h-dvh pb-24 pt-28 md:pt-36">
-      <div className="container-lux">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+    <section className="relative min-h-dvh pb-24">
+      {/* Immersive portfolio hero — a full-bleed dark band so the gold maquette
+          sits in its intended dark "display case" in BOTH light and dark themes,
+          instead of floating as a dark card on the ivory page. */}
+      <div className="on-dark relative overflow-hidden bg-[radial-gradient(120%_90%_at_82%_12%,rgba(201,162,75,0.10),transparent_58%),linear-gradient(180deg,#0d0c11_0%,#08080a_100%)] pt-28 md:pt-36">
+        <div className="container-lux grid items-center gap-8 pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24">
           <div>
             <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
               {t('eyebrow')}
             </div>
-            <h1 className="mt-3 font-display text-[clamp(2rem,4.4vw,3.2rem)] font-bold tracking-tight text-cloud">
-              {t('allTitle')}
-            </h1>
-            <p className="mt-3 max-w-xl text-cloud/55">{t('allSub')}</p>
+            <h1 className="h2-display mt-3 font-display font-bold text-cloud">{t('allTitle')}</h1>
+            <p className="mt-4 max-w-xl text-cloud/60">{t('allSub')}</p>
           </div>
           <ComplexesShowcase label={t('signatureLabel')} />
         </div>
+        {/* champagne hairline where the dark hero meets the page */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+        />
+      </div>
 
-        <div className="u-rise mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="container-lux mt-16">
+        <div className="u-rise grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <Link
               key={p.id}
