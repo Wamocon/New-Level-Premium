@@ -16,17 +16,19 @@ export function MapFacade({
   src,
   title,
   directionsUrl,
+  eager = false,
   className,
   children,
 }: {
   src: string;
   title: string;
   directionsUrl?: string;
+  eager?: boolean;
   className?: string;
   children?: ReactNode;
 }) {
   const t = useTranslations('property');
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(eager);
 
   return (
     <div className={cn('on-dark overflow-hidden', className)}>
@@ -34,7 +36,7 @@ export function MapFacade({
         <iframe
           title={title}
           src={src}
-          loading="lazy"
+          loading={eager ? 'eager' : 'lazy'}
           referrerPolicy="no-referrer-when-downgrade"
           allowFullScreen
           className="absolute inset-0 size-full"

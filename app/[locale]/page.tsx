@@ -1,7 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
 import { BuildingShowcase } from '@/components/sections/BuildingShowcase';
-import { AerialFlythrough } from '@/components/sections/AerialFlythrough';
 import { FeaturedListings } from '@/components/sections/FeaturedListings';
 import { PropertyTypes } from '@/components/sections/PropertyTypes';
 import { ValueProps } from '@/components/sections/ValueProps';
@@ -26,7 +25,6 @@ export default async function HomePage({
     <>
       <Hero />
       <BuildingShowcase />
-      <AerialFlythrough />
       <FeaturedListings />
       <PropertyTypes />
       <ValueProps />

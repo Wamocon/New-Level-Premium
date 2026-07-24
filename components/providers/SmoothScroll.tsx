@@ -36,13 +36,14 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       ref={lenisRef}
       options={{
         autoRaf: false,
-        // A touch snappier than the default 0.1 so scrolling tracks the wheel
-        // closely (less "floaty lag") while staying smooth.
-        lerp: 0.15,
+        // Responsive, display-synchronised momentum. Lenis and GSAP share the
+        // same rAF tick, so transforms stay fluid on 60/120 Hz displays without
+        // making the page feel artificially heavy.
+        lerp: 0.14,
         smoothWheel: true,
         syncTouch: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 1.6,
+        wheelMultiplier: 0.95,
+        touchMultiplier: 1.25,
       }}
     >
       {children}

@@ -183,16 +183,34 @@ html.lenis body {
   to { transform: translate3d(-6vw, -7vh, 0) scale(1.12); }
 }
 
-/* Slow cinematic "Ken Burns" push on the hero video backdrop. */
+/* Restrained Ken Burns push for editorial stills. */
 @keyframes heroDrift {
   from { transform: scale(1); }
-  to { transform: scale(1.08); }
+  to { transform: scale(1.025); }
 }
 
-/* Unify all footage into one warm, cinematic palette (graded in CSS, not the
-   source files) so clips read as beige/gold rather than cold drone blue-green. */
-.grade-warm {
-  filter: saturate(1.1) contrast(1.05) sepia(0.15);
+/* Compositor-only light pass: ambient life without filtering or repeatedly
+   repainting the full-screen HD video. */
+@keyframes heroLightPass {
+  from { transform: translate3d(-18vw, -8vh, 0) rotate(-8deg); }
+  to { transform: translate3d(42vw, 7vh, 0) rotate(8deg); }
+}
+.hero-light-pass {
+  left: -20vw;
+  top: -25vh;
+  width: 62vw;
+  height: 115vh;
+  opacity: 0.28;
+  will-change: transform;
+  background: radial-gradient(ellipse at center, rgba(231, 214, 176, 0.24), transparent 64%);
+  animation: heroLightPass 12s var(--ease-lux) infinite alternate;
+}
+@media (max-width: 768px) {
+  .hero-light-pass {
+    left: -55vw;
+    width: 125vw;
+    opacity: 0.2;
+  }
 }
 
 /* ============================================================
@@ -255,7 +273,7 @@ p {
   transform-origin: 0 50%;
   transform: scaleX(0);
   background: linear-gradient(90deg, var(--color-gold), var(--color-champagne));
-  z-index: 60;
+  z-index: 120;
   pointer-events: none;
 }
 @supports (animation-timeline: scroll()) {
@@ -472,4 +490,10 @@ p {
 :root.theme-ready body,
 :root.theme-ready .ambient {
   transition: background-color 0.4s ease, background-image 0.4s ease;
+}
+
+/* A visible, brand-coloured keyboard focus ring in both themes. */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
 }

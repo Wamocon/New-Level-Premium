@@ -21,7 +21,12 @@ export function MapCallout() {
           y={30}
           className="relative h-[26rem] overflow-hidden rounded-[2rem] border border-white/8 bg-ink md:h-[34rem]"
         >
-          <MapFacade src={ALANYA_EMBED} title="Alanya map" className="absolute inset-0" />
+          <MapFacade
+            src={ALANYA_EMBED}
+            title="Satellite map of Alanya"
+            eager
+            className="absolute inset-0"
+          />
 
           {/* readability gradient (map stays interactive on the clear side) */}
           <div

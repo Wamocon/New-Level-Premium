@@ -74,10 +74,23 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const y = Math.max(
+        window.scrollY,
+        document.documentElement.scrollTop,
+        document.body.scrollTop,
+      );
+      setScrolled(y > 24);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    // Lenis uses native root scrolling, but document capture also covers
+    // programmatic/embedded scroll sources that do not consistently bubble.
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('scroll', onScroll, { capture: true });
+    };
   }, []);
 
   useEffect(() => {
@@ -88,7 +101,7 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="on-dark fixed inset-x-0 top-0 z-50">
+    <header className="on-dark fixed inset-x-0 top-0 z-[90]">
       {/* top contact bar (desktop, collapses on scroll) */}
       <div
         className={cn(
@@ -191,7 +204,7 @@ export function Header() {
       {mobileOpen && (
         <div
           data-lenis-prevent
-          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-obsidian xl:hidden"
+          className="fixed inset-0 z-[100] flex flex-col overflow-y-auto bg-obsidian xl:hidden"
         >
           <div className="container-lux flex h-20 items-center justify-between">
             <Logo onClick={() => setMobileOpen(false)} />

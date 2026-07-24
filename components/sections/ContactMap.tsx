@@ -83,6 +83,7 @@ export function ContactMap() {
               src={site.geo.embedUrl}
               title="New Level Group, Alanya"
               directionsUrl={site.geo.directionsUrl}
+              eager
               className="absolute inset-0"
             />
           </div>

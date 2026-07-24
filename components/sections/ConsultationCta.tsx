@@ -17,6 +17,16 @@ export function ConsultationCta() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const message = [
+      t('heading'),
+      `${t('name')}: ${name.trim()}`,
+      `${t('phone')}: ${phone.trim()}`,
+    ].join('\n');
+    window.open(
+      `${site.whatsappHref}?text=${encodeURIComponent(message)}`,
+      '_blank',
+      'noopener,noreferrer',
+    );
     setSubmitted(true);
   };
 
@@ -29,13 +39,13 @@ export function ConsultationCta() {
             src="/images/original/2-D3qltBdX.png"
             alt=""
             fill
-            sizes="100vw"
-            className="object-cover opacity-25"
+            sizes="(max-width: 1024px) 100vw, (max-width: 1440px) 92vw, 84rem"
+            className="object-cover opacity-45"
             aria-hidden
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-obsidian/95 via-obsidian/88 to-obsidian/72"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0c1015]/90 via-[#101116]/80 to-[#121820]/68"
           />
           <div
             aria-hidden
@@ -88,7 +98,7 @@ export function ConsultationCta() {
             </div>
 
             {/* RIGHT */}
-            <div className="glass rounded-3xl border border-white/8 p-6 md:p-8">
+            <div className="rounded-3xl border border-white/12 bg-[#17171d]/90 p-6 shadow-2xl backdrop-blur-sm md:p-8">
               {submitted ? (
                 <div className="flex flex-col items-center justify-center gap-5 py-10 text-center">
                   <div className="flex size-16 items-center justify-center rounded-full bg-gold/15 ring-1 ring-gold/40">
@@ -109,7 +119,9 @@ export function ConsultationCta() {
                       onChange={(e) => setName(e.target.value)}
                       placeholder={t('name')}
                       autoComplete="name"
-                      className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-cloud placeholder-cloud/40 outline-none transition-colors duration-300 focus:border-gold/60"
+                      required
+                      minLength={2}
+                      className="w-full rounded-xl border border-white/14 bg-white/[0.07] px-4 py-3.5 text-cloud placeholder-cloud/55 outline-none transition-colors duration-300 focus:border-gold/70"
                     />
                   </div>
                   <div>
@@ -123,7 +135,10 @@ export function ConsultationCta() {
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder={t('phone')}
                       autoComplete="tel"
-                      className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-cloud placeholder-cloud/40 outline-none transition-colors duration-300 focus:border-gold/60"
+                      required
+                      minLength={7}
+                      inputMode="tel"
+                      className="w-full rounded-xl border border-white/14 bg-white/[0.07] px-4 py-3.5 text-cloud placeholder-cloud/55 outline-none transition-colors duration-300 focus:border-gold/70"
                     />
                   </div>
 

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/Button';
-import { ScrambleText } from '@/components/anim/ScrambleText';
 import { CountUp } from '@/components/anim/CountUp';
 import { SearchBar } from '@/components/sections/SearchBar';
 import { site, stats } from '@/lib/data/site';
@@ -25,23 +24,32 @@ export function Hero() {
   // Play the aerial backdrop only while the hero is on screen / the tab is visible.
   useIsomorphicLayoutEffect(() => {
     const v = video.current;
-    if (!v || prefersReducedMotion()) return;
+    if (!v) return;
 
+    v.defaultPlaybackRate = 1.08;
+    v.playbackRate = 1.08;
+    if (prefersReducedMotion()) {
+      v.pause();
+      return;
+    }
+
+    let inView = true;
+    const syncPlayback = () => {
+      if (inView && !document.hidden) v.play?.().catch(() => {});
+      else v.pause?.();
+    };
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting && !document.hidden) v.play?.().catch(() => {});
-        else v.pause?.();
+        inView = e.isIntersecting;
+        syncPlayback();
       },
       { threshold: 0.1 },
     );
     io.observe(v);
-    const onVis = () => {
-      if (document.hidden) v.pause?.();
-    };
-    document.addEventListener('visibilitychange', onVis);
+    document.addEventListener('visibilitychange', syncPlayback);
     return () => {
       io.disconnect();
-      document.removeEventListener('visibilitychange', onVis);
+      document.removeEventListener('visibilitychange', syncPlayback);
     };
   }, []);
 
@@ -50,24 +58,25 @@ export function Hero() {
     registerGsap();
     let onMove: ((e: PointerEvent) => void) | undefined;
     const ctx = gsap.context(() => {
-      // Staggered entrance. One extra node (trust ribbon) now, so tighten the
-      // cadence a touch so the stats/search don't arrive noticeably later.
+      // One deliberate cinematic entrance. Transform + opacity stay on the
+      // compositor and remain smooth at the display's native refresh rate.
       gsap.from('[data-hero]', {
-        y: 46,
+        y: 34,
         opacity: 0,
-        duration: 1.15,
-        ease: 'power3.out',
-        stagger: 0.09,
-        delay: 0.1,
+        duration: 0.9,
+        ease: 'power4.out',
+        stagger: 0.065,
+        delay: 0.06,
+        clearProps: 'transform,opacity',
       });
       // Slow scroll parallax on the backdrop so it drifts under the content as
       // the hero hands off to the next section.
       if (backdrop.current) {
         gsap.fromTo(
           backdrop.current,
-          { yPercent: -5 },
+          { yPercent: -2 },
           {
-            yPercent: 5,
+            yPercent: 2,
             ease: 'none',
             scrollTrigger: {
               trigger: root.current,
@@ -83,14 +92,15 @@ export function Hero() {
       // an edge. GSAP owns the transform (scale + translate) on this layer.
       const layer = cursorLayer.current;
       if (layer && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        gsap.set(layer, { scale: 1.06 });
-        const xTo = gsap.quickTo(layer, 'x', { duration: 0.7, ease: 'power3' });
-        const yTo = gsap.quickTo(layer, 'y', { duration: 0.7, ease: 'power3' });
+        // Keep movement restrained so the 720p source is not visibly enlarged.
+        gsap.set(layer, { scale: 1.012 });
+        const xTo = gsap.quickTo(layer, 'x', { duration: 0.55, ease: 'power3' });
+        const yTo = gsap.quickTo(layer, 'y', { duration: 0.55, ease: 'power3' });
         onMove = (e: PointerEvent) => {
           const nx = e.clientX / window.innerWidth - 0.5;
           const ny = e.clientY / window.innerHeight - 0.5;
-          xTo(-nx * 22);
-          yTo(-ny * 18);
+          xTo(-nx * 5);
+          yTo(-ny * 4);
         };
         window.addEventListener('pointermove', onMove);
       }
@@ -106,29 +116,39 @@ export function Hero() {
       ref={root}
       className="grain on-dark relative flex min-h-dvh flex-col justify-start overflow-hidden bg-[linear-gradient(180deg,#1c1610_0%,#14131a_52%,#0a0b0e_100%)] pb-16 pt-28 lg:justify-center lg:pb-40"
     >
-      {/* aerial video backdrop — poster paints first (LCP); the muted video
-          crossfades in over it, with a slow Ken Burns push + scroll parallax */}
+      {/* One HD video for the homepage. The poster paints first for LCP and the
+          muted video starts immediately, with no frame-scrubbing or seeking. */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div ref={backdrop} className="absolute inset-x-0 top-[-6%] h-[112%]">
+        <div ref={backdrop} className="absolute inset-x-0 top-[-3%] h-[106%]">
           <div ref={cursorLayer} className="size-full will-change-transform">
-            <div className="relative size-full motion-safe:animate-[heroDrift_26s_ease-in-out_infinite_alternate] motion-reduce:animate-none">
+            <div className="relative size-full">
             <Image
               src="/buildings/aerial-poster.jpg"
               alt=""
               aria-hidden
               fill
               priority
+              quality={95}
               sizes="100vw"
               className="object-cover"
             />
             <video
               ref={video}
-              className="grade-warm absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-[1200ms] ease-out"
+              className="absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-700 ease-out"
+              autoPlay
               muted
               loop
               playsInline
-              preload="none"
-              onLoadedData={(e) => e.currentTarget.classList.remove('opacity-0')}
+              preload="auto"
+              poster="/buildings/aerial-poster.jpg"
+              onLoadedMetadata={(e) => {
+                e.currentTarget.defaultPlaybackRate = 1.08;
+                e.currentTarget.playbackRate = 1.08;
+              }}
+              onCanPlay={(e) => {
+                e.currentTarget.classList.remove('opacity-0');
+                e.currentTarget.play?.().catch(() => {});
+              }}
             >
               <source src="/buildings/aerial.mp4" type="video/mp4" />
             </video>
@@ -140,11 +160,16 @@ export function Hero() {
       {/* atmospheric gradients */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(120%_80%_at_50%_0%,transparent_35%,rgba(8,8,10,0.65)_78%,#08080A_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(120%_82%_at_52%_0%,transparent_48%,rgba(8,8,10,0.34)_82%,rgba(8,8,10,0.88)_100%)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-64 bg-gradient-to-t from-obsidian to-transparent"
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-obsidian/45 via-obsidian/10 to-transparent"
+      />
+      <div aria-hidden className="hero-light-pass pointer-events-none absolute z-[1]" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-72 bg-gradient-to-t from-obsidian/95 via-obsidian/30 to-transparent"
       />
 
       {/* content */}
@@ -152,7 +177,7 @@ export function Hero() {
         <div className="max-w-3xl">
           <div
             data-hero
-            className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 backdrop-blur-sm"
+            className="mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 backdrop-blur-sm"
           >
             <span className="size-1.5 rounded-full bg-gold shadow-[0_0_12px_2px_rgba(201,162,75,0.8)]" />
             <span className="text-[0.72rem] font-medium uppercase tracking-[0.14em] text-cloud/70">
@@ -161,22 +186,26 @@ export function Hero() {
           </div>
 
           <h1 className="display font-extrabold">
-            <span data-hero className="block text-cloud">
-              {t('headlineTop')}
+            <span className="block overflow-hidden pb-[0.04em]">
+              <span data-hero className="block text-cloud">
+                {t('headlineTop')}
+              </span>
             </span>
-            <span data-hero className="block">
-              <ScrambleText text={t('headlineAccent')} className="text-metal" duration={1.8} delay={0.6} />
+            <span className="block overflow-hidden pb-[0.08em]">
+              <span data-hero className="text-metal block">
+                {t('headlineAccent')}
+              </span>
             </span>
           </h1>
 
           <p
             data-hero
-            className="mt-7 max-w-xl text-base leading-relaxed text-cloud/65 sm:text-lg"
+            className="mt-5 max-w-xl text-base leading-relaxed text-cloud/72 sm:text-lg"
           >
             {t('subline')}
           </p>
 
-          <div data-hero className="mt-9 flex flex-wrap items-center gap-3.5">
+          <div data-hero className="mt-7 flex flex-wrap items-center gap-3.5">
             <Button asChild size="lg" variant="metal">
               <Link href="/properties">
                 {t('ctaPrimary')}
@@ -192,7 +221,7 @@ export function Hero() {
               real client testimonials. Warm champagne-gold, lit from within. */}
           <div
             data-hero
-            className="group/ribbon mt-9 flex max-w-2xl flex-col gap-4 rounded-2xl border border-gold/25 bg-[linear-gradient(135deg,rgba(201,162,75,0.12),rgba(216,185,104,0.04))] px-5 py-4 shadow-[0_0_50px_-18px_rgba(201,162,75,0.45)] ring-1 ring-inset ring-white/5 backdrop-blur-md transition-colors duration-500 hover:border-gold/45 sm:flex-row sm:items-center sm:gap-6"
+            className="group/ribbon mt-7 flex max-w-2xl flex-col gap-4 rounded-2xl border border-gold/25 bg-[linear-gradient(135deg,rgba(201,162,75,0.12),rgba(216,185,104,0.04))] px-5 py-4 shadow-[0_0_50px_-18px_rgba(201,162,75,0.45)] ring-1 ring-inset ring-white/5 backdrop-blur-md transition-colors duration-500 hover:border-gold/45 sm:flex-row sm:items-center sm:gap-6"
           >
             {/* Google 5.0 — New Level Group's verified developer profile */}
             <a
@@ -276,7 +305,7 @@ export function Hero() {
           </div>
 
           {/* stats */}
-          <div data-hero className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+          <div data-hero className="mt-9 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-4">
             {stats.map((s) => {
               const m = /^(\d[\d,]*)(.*)$/.exec(s.value);
               return (

@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import type { Locale } from '@/lib/types';
 import type { ContentPageData } from '@/lib/data/contentPages';
 import { RichText } from '@/components/complexes/RichText';
-import { site } from '@/lib/data/site';
+import { site, stats } from '@/lib/data/site';
 import { Button } from '@/components/ui/Button';
 import { WhatsAppIcon } from '@/components/icons/Social';
 import { Phone } from 'lucide-react';
@@ -19,6 +19,7 @@ export function ContentPage({ page }: { page: ContentPageData }) {
   const intro = page.intro[locale].split('\n').map((l) => l.trim()).filter(Boolean);
   const cards = page.cards[locale];
   const isTimeline = page.layout === 'timeline';
+  const isAbout = page.slug === 'about';
   const waHref = `${site.whatsappHref}?text=${encodeURIComponent(page.title[locale])}`;
 
   return (
@@ -41,15 +42,41 @@ export function ContentPage({ page }: { page: ContentPageData }) {
                 </div>
               )}
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/8">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/8 bg-ink shadow-[0_30px_90px_-42px_rgba(0,0,0,0.45)]">
               <Image
                 src={hero}
                 alt={page.title[locale]}
                 fill
+                quality={92}
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className={
+                  isAbout
+                    ? 'object-cover motion-safe:animate-[heroDrift_18s_ease-in-out_infinite_alternate]'
+                    : 'object-cover'
+                }
                 priority
               />
+              {isAbout && (
+                <>
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/75 via-transparent to-transparent"
+                  />
+                  <div className="on-dark absolute inset-x-5 bottom-5 flex flex-wrap gap-2">
+                    {stats.slice(0, 2).map((stat) => (
+                      <div
+                        key={stat.value}
+                        className="rounded-full border border-white/15 bg-obsidian/55 px-3.5 py-2 backdrop-blur-md"
+                      >
+                        <span className="font-display text-lg font-bold text-gold">{stat.value}</span>
+                        <span className="ml-2 text-[0.65rem] uppercase tracking-wider text-cloud/70">
+                          {stat.label[locale]}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         ) : (

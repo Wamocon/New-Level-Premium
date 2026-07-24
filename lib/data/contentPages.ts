@@ -29,9 +29,9 @@ export const contentPages: Record<string, ContentPageData> = {
     "slug": "about",
     "layout": "default",
     "images": [
-      "https://newlevel-group.com/storage/6/conversions/4-medium.webp",
-      "https://newlevel-group.com/storage/5/conversions/1-medium.webp",
-      "https://newlevel-group.com/storage/7/conversions/3-medium.webp"
+      "/buildings/nl-23.webp",
+      "/buildings/nl-20.webp",
+      "/buildings/nl-19.webp"
     ],
     "title": {
       "en": "About the company",
