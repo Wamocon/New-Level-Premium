@@ -31,7 +31,17 @@
     "subline": "New Level Group designs, builds and sells its own residential complexes in Alanya. Premium quality at every stage, guaranteed by the developer.",
     "ctaPrimary": "Browse properties",
     "ctaSecondary": "Book a consultation",
-    "scroll": "Scroll to explore"
+    "scroll": "Scroll to explore",
+    "trust": {
+      "starsAria": "Rated 5 out of 5 stars",
+      "googleRating": "Rated 5.0 on Google",
+      "verifiedDeveloper": "Verified developer profile",
+      "googleAria": "See New Level Group's 5.0 rating on Google, opens in a new tab",
+      "ataberk": "Same group · verified Google listing",
+      "ataberkAria": "View Ataberk Real Estate's verified Google listing, opens in a new tab",
+      "reviews": "Real 5-star client reviews",
+      "reviewsAria": "Read verified 5-star client reviews from buyers across Europe, Russia and Türkiye"
+    }
   },
   "search": {
     "title": "Find your property by the sea",

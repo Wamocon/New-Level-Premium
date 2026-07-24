@@ -36,7 +36,7 @@ export function ReviewsPage() {
             </div>
           </div>
           <Button asChild variant="outline">
-            <a href={site.reviews.google} target="_blank" rel="noopener noreferrer">
+            <a href={site.reviews.google.url} target="_blank" rel="noopener noreferrer">
               {t('google')}
               <ArrowUpRight className="size-4" />
             </a>
@@ -78,7 +78,7 @@ export function ReviewsPage() {
               <p className="mt-2 max-w-xl text-cloud/70">{t('leaveText')}</p>
             </div>
             <Button asChild variant="metal">
-              <a href={site.reviews.google} target="_blank" rel="noopener noreferrer">
+              <a href={site.reviews.google.url} target="_blank" rel="noopener noreferrer">
                 {t('google')}
                 <ArrowUpRight className="size-4" />
               </a>

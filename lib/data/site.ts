@@ -21,7 +21,9 @@ export const site = {
   // own 5.0 profile; `ataberk` is the group's agency (Ataberk Real Estate) at
   // the same Alanya office, its own verified Google listing.
   reviews: {
-    google: 'https://share.google/lL12rHhTqVJn4vpmL',
+    // New Level Group's own verified Google profile. `rating` is data-driven so
+    // the hero never hard-codes a live claim; update it if the profile drifts.
+    google: { url: 'https://share.google/lL12rHhTqVJn4vpmL', rating: 5.0 },
     ataberk: {
       name: 'Ataberk Real Estate',
       area: 'Alanya / Antalya',

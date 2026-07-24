@@ -31,7 +31,17 @@
     "subline": "New Level Group, Alanya'daki kendi konut projelerini tasarlar, inşa eder ve satar. Her aşamada premium kalite, geliştirici güvencesiyle.",
     "ctaPrimary": "Konutları inceleyin",
     "ctaSecondary": "Danışmanlık randevusu alın",
-    "scroll": "Keşfetmek için kaydırın"
+    "scroll": "Keşfetmek için kaydırın",
+    "trust": {
+      "starsAria": "5 üzerinden 5 yıldız",
+      "googleRating": "Google'da 5.0 puan",
+      "verifiedDeveloper": "Doğrulanmış geliştirici profili",
+      "googleAria": "New Level Group'un Google'daki 5.0 puanını görün, yeni sekmede açılır",
+      "ataberk": "Aynı grup · doğrulanmış Google kaydı",
+      "ataberkAria": "Ataberk Real Estate'in doğrulanmış Google kaydını görüntüleyin, yeni sekmede açılır",
+      "reviews": "Gerçek 5 yıldızlı müşteri yorumları",
+      "reviewsAria": "Avrupa, Rusya ve Türkiye'den alıcıların doğrulanmış 5 yıldızlı yorumlarını okuyun"
+    }
   },
   "search": {
     "title": "Deniz kıyısında mülkünüzü bulun",
