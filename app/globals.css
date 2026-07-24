@@ -30,6 +30,14 @@
   --color-sea: #123C42;
   --color-sea-soft: #2C7A80;
 
+  /* Fluid, optical display type + em tracking (never px, so Cyrillic/Turkish
+     word-lengths keep the same rhythm). Negative tracking on serif display only. */
+  --text-display: clamp(2.6rem, 1.5rem + 5.6vw, 5.6rem);
+  --text-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+  --tracking-display: -0.021em;
+  --tracking-h2: -0.015em;
+  --tracking-eyebrow: 0.24em;
+
   /* Motion + shape */
   --radius-xl2: 1.75rem;
   --radius-xl3: 2.5rem;
@@ -45,6 +53,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
 }
 
 body {
@@ -184,6 +193,126 @@ html.lenis body {
    source files) so clips read as beige/gold rather than cold drone blue-green. */
 .grade-warm {
   filter: saturate(1.1) contrast(1.05) sepia(0.15);
+}
+
+/* ============================================================
+   Modern craft layer: fluid type, scroll-driven reveals,
+   seamless route fade, metal-CTA specular sweep.
+   Every animated effect authored so the FINAL visible state is
+   the default (unsupported / reduced-motion just show content).
+   ============================================================ */
+
+/* ---- Fluid optical display type ---- */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: 0.98;
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+.h2-display {
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-h2);
+  text-wrap: balance;
+}
+/* Balanced headings, pretty body — kills orphans/rivers across tr/ru/en. */
+.font-display,
+.display,
+.h2-display {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+/* ---- Native scroll-driven reveal (zero-JS, progressive enhancement) ---- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes u-rise-kf {
+      from {
+        opacity: 0;
+        transform: translateY(var(--rise, 1.6rem));
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .u-rise {
+      animation: u-rise-kf linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 26%;
+    }
+  }
+}
+
+/* ---- Zero-JS gold reading-progress line ---- */
+.scroll-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--color-gold), var(--color-champagne));
+  z-index: 60;
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes progress-grow {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+    .scroll-progress {
+      animation: progress-grow linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+/* ---- Seamless route transition: warm cross-fade on every navigation ----
+   Starts at 0.55 (never 0) so the hero LCP paints immediately. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes routeFade {
+    from {
+      opacity: 0.55;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .route-fade {
+    animation: routeFade 0.5s var(--ease-lux) both;
+  }
+}
+
+/* ---- Metal CTA: slow specular champagne sweep on hover (pointer only) ---- */
+.btn-metal {
+  overflow: hidden;
+}
+.btn-metal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    color-mix(in oklab, var(--color-champagne) 32%, transparent) 50%,
+    transparent 62%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.8s var(--ease-lux);
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .btn-metal:hover::after {
+    transform: translateX(130%);
+  }
 }
 
 /* Hide scrollbars on horizontal filmstrips while keeping them scrollable. */

@@ -49,7 +49,7 @@ export default async function ComplexesPage({
           <ComplexesShowcase label={t('signatureLabel')} />
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="u-rise mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <Link
               key={p.id}

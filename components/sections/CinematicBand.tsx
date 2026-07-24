@@ -106,7 +106,7 @@ export function CinematicBand() {
           </span>
           <h2
             data-cin
-            className="mt-4 font-display text-[clamp(2rem,5vw,3.6rem)] font-bold leading-[1.03] tracking-tight text-cloud"
+            className="h2-display mt-4 font-display font-bold leading-[1.03] text-cloud"
           >
             {t('heading')}
           </h2>

@@ -94,6 +94,8 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-obsidian text-cloud antialiased">
+        {/* zero-JS gold reading-progress line, native scroll-timeline driven */}
+        <div className="scroll-progress" aria-hidden="true" />
         {/* set the theme before first paint (no flash), default to the brand's dark */}
         <script
           dangerouslySetInnerHTML={{

@@ -35,7 +35,7 @@ export function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] font-bold leading-[1.05] tracking-tight text-cloud">
+      <h2 className="h2-display font-display font-bold leading-[1.05] text-cloud">
         {heading}
       </h2>
       {subline && (

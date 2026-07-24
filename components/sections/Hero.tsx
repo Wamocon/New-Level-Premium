@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/Button';
 import { ScrambleText } from '@/components/anim/ScrambleText';
+import { CountUp } from '@/components/anim/CountUp';
 import { SearchBar } from '@/components/sections/SearchBar';
 import { site, stats } from '@/lib/data/site';
 import type { Locale } from '@/lib/types';
@@ -136,7 +137,7 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-[clamp(2.6rem,7vw,5.6rem)] font-extrabold leading-[0.98] tracking-tight">
+          <h1 className="display font-extrabold">
             <span data-hero className="block text-cloud">
               {t('headlineTop')}
             </span>
@@ -253,16 +254,23 @@ export function Hero() {
 
           {/* stats */}
           <div data-hero className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.value}>
-                <div className="font-display text-3xl font-bold text-gold sm:text-4xl">
-                  {s.value}
+            {stats.map((s) => {
+              const m = /^(\d[\d,]*)(.*)$/.exec(s.value);
+              return (
+                <div key={s.value}>
+                  <div className="font-display text-3xl font-bold text-gold sm:text-4xl">
+                    {m ? (
+                      <CountUp value={Number(m[1].replace(/,/g, ''))} suffix={m[2]} />
+                    ) : (
+                      s.value
+                    )}
+                  </div>
+                  <div className="mt-1 text-[0.72rem] uppercase tracking-wider text-cloud/45">
+                    {s.label[locale]}
+                  </div>
                 </div>
-                <div className="mt-1 text-[0.72rem] uppercase tracking-wider text-cloud/45">
-                  {s.label[locale]}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
