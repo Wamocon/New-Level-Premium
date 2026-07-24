@@ -35,7 +35,9 @@ export function BuildingShowcase() {
 
     const measure = () => {
       const cw = cards.current[0]?.offsetWidth || 340;
-      s.radius = (cw / 2) / Math.tan(Math.PI / N) * 1.42;
+      // Inscribed-ring radius: at *1.0 the cards sit edge-to-edge, so a slight
+      // 0.98 pulls them into a seamless, gap-free band (was 1.42 = big gaps).
+      s.radius = ((cw / 2) / Math.tan(Math.PI / N)) * 0.98;
       stage.style.perspective = `${Math.round(s.radius * 2.5)}px`;
     };
 
@@ -66,7 +68,7 @@ export function BuildingShowcase() {
       return () => window.removeEventListener('resize', onResize);
     }
 
-    const SPEED = 7; // deg / second
+    const SPEED = 4.2; // deg / second (dialed back ~40% for a calmer, classier drift)
     const tick = (_time: number, delta: number) => {
       if (s.auto && !s.dragging) s.rot -= (SPEED * delta) / 1000;
       apply();
@@ -196,7 +198,7 @@ function Reel({ label }: { label: string }) {
     <div className="on-dark relative hidden w-[176px] shrink-0 overflow-hidden rounded-[1.6rem] border border-white/12 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)] md:block">
       <video
         ref={ref}
-        className="block aspect-[9/16] w-full object-cover"
+        className="grade-warm block aspect-[9/16] w-full object-cover"
         poster="/buildings/tour-poster.jpg"
         muted
         loop

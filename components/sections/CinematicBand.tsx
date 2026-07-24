@@ -75,7 +75,7 @@ export function CinematicBand() {
       <div ref={media} className="absolute inset-x-0 top-[-14%] h-[128%] will-change-transform">
         <video
           ref={video}
-          className="size-full object-cover"
+          className="grade-warm size-full object-cover"
           poster="/buildings/aerial-poster.jpg"
           muted
           loop

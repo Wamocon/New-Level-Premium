@@ -180,6 +180,12 @@ html.lenis body {
   to { transform: scale(1.08); }
 }
 
+/* Unify all footage into one warm, cinematic palette (graded in CSS, not the
+   source files) so clips read as beige/gold rather than cold drone blue-green. */
+.grade-warm {
+  filter: saturate(1.1) contrast(1.05) sepia(0.15);
+}
+
 /* Hide scrollbars on horizontal filmstrips while keeping them scrollable. */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

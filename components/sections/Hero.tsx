@@ -100,7 +100,7 @@ export function Hero() {
             />
             <video
               ref={video}
-              className="absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-[1200ms] ease-out"
+              className="grade-warm absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-[1200ms] ease-out"
               muted
               loop
               playsInline
