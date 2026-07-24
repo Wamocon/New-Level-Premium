@@ -55,6 +55,12 @@
     "priceAll": "Any price",
     "cta": "Search"
   },
+  "flythrough": {
+    "eyebrow": "From the air",
+    "heading": "Fly over your future address.",
+    "subline": "Scroll to descend across the coastline — every terrace, pool and rooftop of the real complex, seen from above.",
+    "cue": "Scroll to fly"
+  },
   "showcase": {
     "eyebrow": "The residences",
     "heading": "See the real buildings, in the round.",

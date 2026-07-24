@@ -55,6 +55,12 @@
     "priceAll": "Tüm fiyatlar",
     "cta": "Ara"
   },
+  "flythrough": {
+    "eyebrow": "Havadan",
+    "heading": "Geleceğin adresinin üzerinde uçun.",
+    "subline": "Sahil boyunca alçalmak için kaydırın — gerçek kompleksin her terası, havuzu ve çatısı, yukarıdan.",
+    "cue": "Uçmak için kaydırın"
+  },
   "showcase": {
     "eyebrow": "Rezidanslarımız",
     "heading": "Gerçek binaları her açıdan görün.",
