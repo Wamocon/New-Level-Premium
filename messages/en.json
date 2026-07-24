@@ -58,7 +58,7 @@
   "flythrough": {
     "eyebrow": "From the air",
     "heading": "Fly over your future address.",
-    "subline": "Scroll to descend across the coastline — every terrace, pool and rooftop of the real complex, seen from above.",
+    "subline": "Scroll to descend along the coastline. Every terrace, pool and rooftop of the real complex, seen from above.",
     "cue": "Scroll to fly"
   },
   "showcase": {
@@ -100,13 +100,13 @@
     "heading": "The difference is in the details",
     "subline": "Four principles behind every home we build and every promise we keep.",
     "v1t": "Uncompromising quality of construction",
-    "v1d": "The focus of New Level Group standards is a principled approach to the quality of all our projects. As a reliable developer in Türkiye, we set a new level of construction, preserving the best and introducing the new. First-class materials and technologies, proven suppliers and a staff of professionals in their field: we lead and control the entire process of construction.",
+    "v1d": "Quality is the standard everything at New Level Group is measured against. We build with modern technology and materials we trust, work only with suppliers who have earned it, and watch over every stage on site ourselves. The result is a home that holds its value and its comfort for years.",
     "v2t": "Ideal location",
-    "v2d": "Selecting exclusively investment-attractive locations in Türkiye is key to the success of all New Level Group projects. We create a high-quality, modern product that takes into account all the needs of our clients: residential complexes in areas with good transport access and developed urban infrastructure, surrounded by the natural beauty of the Mediterranean.",
+    "v2d": "Every New Level Group project starts with the right piece of land. We choose locations that balance closeness to the sea, easy transport, real everyday infrastructure and strong investment potential, all wrapped in the natural beauty of the Mediterranean. So your property keeps rising in value and feels good to come home to.",
     "v3t": "Openness and responsibility",
-    "v3d": "We build transparent interactions with clients and partners: we provide all the necessary information, maintain open and trusting communication, and respond to requests in a timely manner. People are at the centre of our attention. We understand our responsibility to society and treat the wishes of our customers and colleagues with exceptional respect.",
+    "v3d": "We work with clients and partners on trust and full transparency. You get every detail you need, honest answers, and a quick reply when you reach out. People come first for us. We take our responsibility seriously and treat the wishes of our clients and colleagues with real respect.",
     "v4t": "Reliability, professionalism, individual approach",
-    "v4d": "We prioritise a personalised approach in every client interaction. We take into account all your requests and wishes, which lets us realise construction projects with individual adjustments. We advise and support you in resolving any issues related to buying a home and relocating. Our goal is to make the purchase simple and comfortable: from selecting apartments and closing the deal to caring for your future home."
+    "v4d": "We treat every client as their own story. We listen to what you want and adapt the details to fit, then guide you through every question that comes with buying a home and moving to a new country. Our goal is simple: to make the whole purchase easy and calm, from choosing the apartment and closing the deal to looking after your future home."
   },
   "projects": {
     "eyebrow": "Signature projects",
@@ -272,7 +272,7 @@
     "nextPhoto": "Next photo",
     "locationTitle": "Location",
     "showMap": "Show map",
-    "mapApprox": "Approximate area — the exact address is shared on request.",
+    "mapApprox": "Approximate area. We share the exact address on request.",
     "directions": "Directions",
     "nearbyTitle": "What's nearby",
     "planTitle": "Payment plan",
@@ -283,7 +283,7 @@
     "planRemaining": "Balance",
     "planDiscount": "5% full-payment discount",
     "planCta": "Get my personal plan",
-    "planNote": "Indicative interest-free developer plan — not a financial offer.",
+    "planNote": "Indicative interest-free developer plan, not a financial offer.",
     "similarTitle": "Similar homes"
   },
   "complex": {

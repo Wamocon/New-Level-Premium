@@ -39,7 +39,7 @@ export const leadPages: Record<string, LeadPageData> = {
     },
     benefits: [
       {
-        title: { en: 'Short and long term', ru: 'Кратко и долгосрочно', tr: 'Kısa ve uzun dönem' },
+        title: { en: 'Short and long term', ru: 'Краткосрочно и долгосрочно', tr: 'Kısa ve uzun dönem' },
         text: {
           en: 'From a two-week holiday stay to a multi-year lease, we cover every rental format.',
           ru: 'От двухнедельного отпуска до многолетней аренды, мы закрываем любой формат.',
@@ -175,9 +175,9 @@ export const leadPages: Record<string, LeadPageData> = {
       {
         title: { en: 'Dedicated partner manager', ru: 'Персональный менеджер', tr: 'Özel ortak yöneticisi' },
         text: {
-          en: 'A single point of contact who knows the inventory and answers fast, in your language.',
-          ru: 'Единая точка контакта, которая знает объекты и быстро отвечает на вашем языке.',
-          tr: 'Envanteri bilen ve kendi dilinizde hızlı yanıt veren tek bir iletişim noktası.',
+          en: 'One person who knows the inventory and answers fast, in your language.',
+          ru: 'Один менеджер, который знает все объекты и быстро отвечает на вашем языке.',
+          tr: 'Envanteri bilen ve kendi dilinizde hızlı yanıt veren tek bir yetkili.',
         },
       },
       {
@@ -269,9 +269,9 @@ export const leadPages: Record<string, LeadPageData> = {
       {
         title: { en: 'International buyer network', ru: 'Международная база покупателей', tr: 'Uluslararası alıcı ağı' },
         text: {
-          en: 'Your property is shown to our multilingual client base actively looking to buy on the coast.',
-          ru: 'Ваш объект показывается нашей многоязычной базе клиентов, которые активно ищут покупку на побережье.',
-          tr: 'Mülkünüz, kıyıda aktif olarak satın almak isteyen çok dilli müşteri tabanımıza gösterilir.',
+          en: 'We show your property to our multilingual clients who are already looking to buy on the coast.',
+          ru: 'Мы показываем ваш объект нашей многоязычной базе клиентов, которые уже ищут жильё на побережье.',
+          tr: 'Mülkünüzü, kıyıda aktif olarak satın almak isteyen çok dilli müşteri tabanımıza gösteririz.',
         },
       },
       {

@@ -58,7 +58,7 @@
   "flythrough": {
     "eyebrow": "Havadan",
     "heading": "Geleceğin adresinin üzerinde uçun.",
-    "subline": "Sahil boyunca alçalmak için kaydırın — gerçek kompleksin her terası, havuzu ve çatısı, yukarıdan.",
+    "subline": "Sahil boyunca alçalmak için kaydırın. Gerçek kompleksin her terası, havuzu ve çatısı, yukarıdan.",
     "cue": "Uçmak için kaydırın"
   },
   "showcase": {
@@ -100,13 +100,13 @@
     "heading": "Fark ayrıntılarda",
     "subline": "İnşa ettiğimiz her evin ve tuttuğumuz her sözün ardındaki dört ilke.",
     "v1t": "Ödünsüz inşaat kalitesi",
-    "v1d": "New Level Group standartlarının odak noktası, hayata geçirilen tüm projelerin kalitesine yönelik ilkeli bir yaklaşımdır. Türkiye’nin güvenilir bir geliştiricisi olarak, en iyiyi koruyup yeniyi sunarak inşaatta yeni bir seviye belirliyoruz. Birinci sınıf malzemeler ve teknolojiler, kendini kanıtlamış tedarikçiler ve alanında uzman profesyonellerden oluşan bir ekiple inşaat sürecinin tamamını yönetiyor ve kontrol ediyoruz.",
+    "v1d": "Kalite, New Level Group'ta her şeyin ölçüldüğü standarttır. Modern teknolojiyle ve güvendiğimiz malzemelerle inşa ediyor, yalnızca kendini kanıtlamış tedarikçilerle çalışıyor ve şantiyedeki her aşamayı bizzat takip ediyoruz. Sonuç, değerini ve konforunu yıllarca koruyan bir evdir.",
     "v2t": "İdeal konum",
-    "v2d": "New Level Group projelerinin başarısının ardında, Türkiye’de yalnızca yatırım potansiyeli yüksek lokasyonların seçilmesi yatar. Müşterilerimizin tüm ihtiyaçlarını gözeten, yüksek kaliteli ve modern bir ürün yaratıyoruz: konut kompleksleri, Akdeniz’in doğal güzelliğiyle çevrili, ulaşım kolaylığı ve gelişmiş altyapıya sahip bölgelerde yer alır.",
+    "v2d": "Her New Level Group projesi doğru arsayla başlar. Denize yakınlığı, kolay ulaşımı, gerçek günlük altyapıyı ve güçlü yatırım potansiyelini bir araya getiren, Akdeniz'in doğal güzelliğiyle çevrili konumlar seçiyoruz. Böylece mülkünüz hem değer kazanıyor hem de her gün dönmekten keyif aldığınız bir yuva oluyor.",
     "v3t": "Açıklık ve sorumluluk",
-    "v3d": "Müşterilerimiz ve ortaklarımızla şeffaf ilişkiler kuruyoruz: gerekli tüm bilgileri paylaşıyor, açık ve güvene dayalı bir iletişim sürdürüyor ve taleplere zamanında yanıt veriyoruz. Dikkatimizin merkezinde insan var. Topluma karşı sorumluluğumuzun bilincindeyiz ve müşterilerimizin istek ve önerilerine büyük bir saygıyla yaklaşıyoruz.",
+    "v3d": "Müşterilerimiz ve ortaklarımızla ilişkimizi güven ve tam şeffaflık üzerine kuruyoruz. İhtiyacınız olan her ayrıntıyı, dürüst yanıtları ve bize ulaştığınızda hızlı bir dönüşü alıyorsunuz. Bizim için önce insan gelir. Sorumluluğumuzu ciddiye alıyor, müşterilerimizin ve ekip arkadaşlarımızın isteklerine gerçek bir saygıyla yaklaşıyoruz.",
     "v4t": "Güvenilirlik, profesyonellik, bireysel yaklaşım",
-    "v4d": "Müşterilerimizle çalışırken kişiye özel yaklaşım temel prensibimizdir. Tüm istek ve arzularınızı dikkate alarak projeleri bireysel düzenlemelerle hayata geçiriyoruz. Konut edinimi ve taşınmayla ilgili her konuda danışmanlık ve destek sağlıyoruz. Amacımız satın alma sürecini basit ve konforlu kılmak: daire seçiminden anlaşmaya ve yeni evinize yerleşmenize kadar."
+    "v4d": "Her müşteriyi kendi hikâyesiyle ele alıyoruz. Ne istediğinizi dinliyor, ayrıntıları size göre uyarlıyor ve bir ev almanın, yeni bir ülkeye taşınmanın getirdiği her soruda yanınızda oluyoruz. Amacımız basit: daire seçiminden anlaşmaya ve gelecekteki evinize göz kulak olmaya kadar tüm satın alma sürecini kolay ve huzurlu kılmak."
   },
   "projects": {
     "eyebrow": "İmza projeler",
@@ -272,7 +272,7 @@
     "nextPhoto": "Sonraki fotoğraf",
     "locationTitle": "Konum",
     "showMap": "Haritayı göster",
-    "mapApprox": "Yaklaşık bölge — tam adres talep üzerine paylaşılır.",
+    "mapApprox": "Yaklaşık bölge. Tam adresi talep üzerine paylaşıyoruz.",
     "directions": "Yol tarifi",
     "nearbyTitle": "Yakında neler var",
     "planTitle": "Ödeme planı",
@@ -283,7 +283,7 @@
     "planRemaining": "Kalan",
     "planDiscount": "Peşin ödemede %5 indirim",
     "planCta": "Kişisel planımı al",
-    "planNote": "Gösterge niteliğinde, faizsiz geliştirici planı — finansal teklif değildir.",
+    "planNote": "Gösterge niteliğinde faizsiz geliştirici planı, finansal teklif değildir.",
     "similarTitle": "Benzer evler"
   },
   "complex": {

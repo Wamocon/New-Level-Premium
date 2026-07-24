@@ -1394,7 +1394,7 @@ export const properties: Property[] = [
     "ref": "NL-12300",
     "title": {
       "en": "Land in Avsallar",
-      "ru": "Земля Авсаллар",
+      "ru": "Земля, Авсаллар",
       "tr": "Avsallar, Arsa"
     },
     "type": "land",
@@ -1958,8 +1958,8 @@ export const properties: Property[] = [
     "id": "commercial-center-bn0m4j",
     "ref": "NL-12389",
     "title": {
-      "en": "Commercial property in Center",
-      "ru": "Коммерческая недвижимость Центр",
+      "en": "Commercial Property in Center",
+      "ru": "Коммерческая недвижимость, Центр",
       "tr": "Merkez, Ticari mülk"
     },
     "type": "commercial",
@@ -2242,7 +2242,7 @@ export const properties: Property[] = [
     "ref": "NL-12094",
     "title": {
       "en": "Land in Center",
-      "ru": "Земля Центр",
+      "ru": "Земля, Центр",
       "tr": "Merkez, Arsa"
     },
     "type": "land",
@@ -2282,7 +2282,7 @@ export const properties: Property[] = [
     "ref": "NL-12095",
     "title": {
       "en": "Land in Center",
-      "ru": "Земля Центр",
+      "ru": "Земля, Центр",
       "tr": "Merkez, Arsa"
     },
     "type": "land",

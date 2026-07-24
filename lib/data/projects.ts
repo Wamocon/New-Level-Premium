@@ -171,9 +171,9 @@ export const projects: Project[] = [
     location: { ru: 'Центр, Аланья', en: 'Center, Alanya', tr: 'Merkez, Alanya' },
     beach: { ru: 'центральный пляж', en: 'City beach', tr: 'Şehir plajı' },
     tagline: {
-      ru: 'Ликвидные апартаменты в самом центре Аланьи',
-      en: 'Liquid, profitable apartments in the heart of Alanya',
-      tr: 'Alanya’nın kalbinde kârlı, likit daireler',
+      ru: 'Ликвидные, доходные апартаменты в самом центре Аланьи',
+      en: 'Profitable, easy-to-resell apartments in central Alanya',
+      tr: 'Alanya’nın merkezinde kârlı, likit daireler',
     },
     description: {
       ru: 'Новый комплекс в центре города: магазины, школы и деловые районы рядом, технологии умного дома внутри.',
