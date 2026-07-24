@@ -6,7 +6,7 @@ import { ScrollTrigger, registerGsap } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect, prefersReducedMotion } from '@/lib/hooks';
 import { ArrowDown } from 'lucide-react';
 
-const FRAMES = 100;
+const FRAMES = 115;
 const frameSrc = (i: number) => `/buildings/flythrough/f-${String(i + 1).padStart(3, '0')}.webp`;
 
 /**

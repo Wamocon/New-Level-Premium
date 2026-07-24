@@ -42,3 +42,6 @@ yarn-error.log*
 
 # Raw source assets (photos/video) - kept local, optimized versions go in public/
 /Data/
+
+# Raw source footage (optimized outputs live in public/)
+Data/
