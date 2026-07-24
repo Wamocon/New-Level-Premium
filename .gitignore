@@ -45,3 +45,5 @@ yarn-error.log*
 
 # Raw source footage (optimized outputs live in public/)
 Data/
+*.zip
+Fotos.zip
